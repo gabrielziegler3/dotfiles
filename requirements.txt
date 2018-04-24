@@ -1,0 +1,9 @@
+scipy
+matplotlib
+numpy
+pandas
+pylint
+jupyter
+spacy
+xgboost
+tensorflow-gpu >= 1.8.0rc0
