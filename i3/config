@@ -13,7 +13,7 @@ set $mod Mod1
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:FontAwesome 11
+font pango:Monospace 11, FontAwesome 11
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -28,7 +28,7 @@ font pango:FontAwesome 11
 
 # Needed for i3-gaps
 for_window [class="^.*"] border pixel 3
-gaps inner 5
+gaps inner 10
 gaps outer 1
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -41,7 +41,7 @@ bindsym $mod+Return exec i3-sensible-terminal
 bindsym $mod+Shift+q kill
 
 # Ranger
-bindsym $mod+b --no-startup-id st -e ranger
+bindsym $mod+b exec --no-startup-id i3-sensible-terminal -e ranger
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id dmenu_run
@@ -107,14 +107,21 @@ bindsym $mod+a focus parent
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1: "
 set $ws2 "2: "
-set $ws3 "3: Telegram"
-set $ws4 "4: Browser"
-set $ws5 "5"
+set $ws3 "3: "
+set $ws4 "4: "
+set $ws5 "5: "
 set $ws6 "6"
 set $ws7 "7"
 set $ws8 "8"
 set $ws9 "9"
 set $ws10 "10"
+
+# Forces application workspace launch
+for_window [class="Spotify"] move workspace $ws2
+for_window [class="TelegramDesktop"] move workspace $ws4
+for_window [class="Google-chrome"] move workspace $ws3
+for_window [title="GIMP Startup"] move workspace $ws5
+for_window [class="Gimp"] move workspace $ws5
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -139,11 +146,6 @@ bindsym $mod+Shift+7 move container to workspace $ws7
 bindsym $mod+Shift+8 move container to workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws10
-
-# Forces application workspace launch
-assign [class='Spotify'] $ws2
-assign [class='TelegramDesktop'] $ws3
-assign [class='Google-chrome'] $ws4
 
 # reload the configuration file
 bindsym $mod+Shift+c reload
@@ -181,8 +183,8 @@ bindsym $mod+r mode "resize"
 
 # Resize overwritten keys
 bindsym $mod+Ctrl+Right resize shrink width 1 px or 1 ppt
-bindsym $mod+Ctrl+Up resize grow height 1 px or 1 ppt
-bindsym $mod+Ctrl+Down resize shrink height 1 px or 1 ppt
+bindsym $mod+Ctrl+Up resize shrink height 1 px or 1 ppt
+bindsym $mod+Ctrl+Down resize grow height 1 px or 1 ppt
 bindsym $mod+Ctrl+Left resize grow width 1 px or 1 ppt
 
 # Start i3bar to display a workspace bar (plus the system information i3status
@@ -196,35 +198,51 @@ exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/black-panther.j
 # Starts dunst for notifications:
 exec --no-startup-id dunst
 
-bar {
-	position top
-	colors {		      # outer    # inner      # font
-		background            #070328
-		statusline            #2a18bc
-		separator             #ffffff
-		focused_workspace     #00bfff     #00bfff     #000000
-        	active_workspace      #077093     #077093     #ffffff
-      		inactive_workspace    #077093     #077093     #ffffff
-        	urgent_workspace      #ef1342     #ef1342     #ffffff
-		}
-        status_command i3blocks -c ~/.config/i3/i3blocks.conf
-	font pango:FontAwesome 11
-}
+# Colors
+set $bg     #2c2c2e
+set $fg     #9f9f9f
+set $hi     #efef8f
+set $ac     #a0afa0
+set $tx     #040404
+set $ia     #8f8f8f
+set $be     #8faf9f
+set $yw     #ccdc90
+set $gn     #88b090
+set $rd     #e89393
 
-# My Custom:
+# set some nice colors      border     background  text
+client.focused              $ac        $ac         $tx
+client.unfocused            $bg        $bg         $ia
+client.focused_inactive     $bg        $bg         $ac
+client.urgent               $rd        $rd         $tx
+
+# Polybar
+exec_always --no-startup-id ~/.config/polybar/launch.sh
+
+#bar {
+#	position top
+#	colors {		      # outer    # inner      # font
+#		background            #070328
+#		statusline            #2a18bc
+#		separator             #ffffff
+#		focused_workspace     #00bfff     #00bfff     #000000
+#        	active_workspace      #077093     #077093     #ffffff
+#      		inactive_workspace    #077093     #077093     #ffffff
+#        	urgent_workspace      #ef1342     #ef1342     #ffffff
+#		}
+#        status_command i3blocks -c ~/.config/i3/i3blocks.conf
+#	font pango:FontAwesome 11
+#}
+
 # i3 Lock
-bindsym $mod+shift+x exec i3lock
-
-# Monitors position
-exec_always xrandr --output VGA-1 --mode 1024x768 --pos 0x0 --rotate normal --output HDMI-1 --off --output eDP-1 --mode 1920x1080 --pos 1024x0 --rotate normal
+bindsym $mod+shift+x exec "cd ~/.config/i3/i3lock-color && ./lock.sh"
 
 # Screenshot shortcut
 # take a screenshot of a screen region and copy it to a clipboard
 bindsym --release Shift+Print exec "~/.config/i3/screenshot.sh"
 
-# take a screenshot of a whole window and copy it to a clipboard
-# bindsym --release Print exec "scregcp ~/.config/i3/screeenshot.sh"
-
+# Fix Monitor Display
+exec_always xrandr --output VGA-1 --mode 1024x768 --pos 0x0 --rotate normal --output HDMI-1 --off --output eDP-1 --mode 1920x1080 --pos 1024x0 --rotate normal
 # Audio/Volume controls
 # increase sound volume
 bindsym XF86AudioRaiseVolume exec amixer -D pulse sset Master 10%+
@@ -235,11 +253,12 @@ bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 10%-
 # toggle mute
 bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle
 
-# Screen brightness controls
-bindsym XF86MonBrightnessUp exec xbacklight -inc 20 # increase screen brightness
-bindsym XF86MonBrightnessDown exec xbacklight -dec 20 # decrease screen brightness
-bindsym XF86Suspend exec xbacklight -dec 100 # suspend screen brightness
+# Keyboard Brightness controls
+bindsym XF86MonBrightnessUp exec --no-startup-id  ~/.scripts/keyboard-backlight.sh +1 # increase screen brightness
+bindsym XF86MonBrightnessDown # decrease screen brightness
 
+
+bindsym XF86KbdBrightnessDown exec sh ~/.scripts/keyboard-backlight.sh -1 
 # Touchpad controls
 # bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
 
