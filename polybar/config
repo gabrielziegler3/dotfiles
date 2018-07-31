@@ -1,6 +1,6 @@
 ;-------------------------------------------------
 ;                                                ;
-;           Polybar config for Cranium           ;
+;                 Ziegler Custom                 ;
 ;                                                ;
 ;-------------------------------------------------
 
@@ -8,26 +8,26 @@
 [colors]
 ;background = ${xrdb:color0:#222}
 ;background = #212E36
-background = #cf172a47
+background = #191919
 ;it's ARGB so "cfl" is for transparency
-background-alt = #cf3C5A46
+background-alt = #cf666666
 background-unf = #cf2E463E
 background-mod0 = #cf3C5A46
-background-mod1 = #cf546E53
-background-mod2 = #cf708963
+background-mod1 = #cfa0a0a0
+background-mod2 = #cfc4c4c4
 background-alrt = #cfA1BB76
 
 ;foreground = ${xrdb:color7:#222}
-foreground = #F3F3BA
-foreground-alt = #F3F3BA
-primary = #F3F3BA
-secondary = #F3F3BA
+foreground = #00ffff
+foreground-alt = #00bbff
+primary = #00ffff
+secondary = #00ffff
 
 
-[bar/example]
+[bar/topbar]
 monitor = ${env:MONITOR:DVI-I-1}
 width = 100%
-height = 30
+height = 40
 offset-x = 0%
 ;offset-y = 10%
 radius = 0.0
@@ -48,7 +48,7 @@ padding-right = 0
 module-margin-left = 0
 module-margin-right = 0
 
-font-0 = Misc Termsyn:size=8;1
+font-0 = Misc Termsyn:size=9;1
 ;font-0 = Ubuntu:size=10;1
 font-1 = FontAwesome:fontformat=truetype:size=12;1
 font-3 = Font Awesome 5 Free:style=Regular:pixelsize=8;1
@@ -56,24 +56,23 @@ font-4 = Font Awesome 5 Free:style=Solid:pixelsize=8;1
 font-5 = Font Awesome 5 Brands:pixelsize=8;1
 font-2 = sm4tik:pixelsize=10;1
 
-
 modules-left = i3 music
-modules-center =  date weather
-modules-right =    wireless-network volume battery powermenu
+modules-center = date memory cpu disk weather
+modules-right = xkeyboard wired-network wireless-network volume powermenu
 
-tray-position = hidden
-tray-padding = 11
-tray-transparent = true
-tray-offset-y = 22
-tray-offset-x = -0
-tray-maxsize = 18
-tray-detached = true
+;tray-position = hidden
+;tray-padding = 11
+;tray-transparent = true
+;tray-offset-y = 22
+;tray-offset-x = -0
+;tray-maxsize = 18
+;tray-detached = true
 ;tray-background = #0063ff
 
 ;wm-restack = bspwm
 wm-restack = i3
 
-;override-redirect = true
+;override-redirect = false
 
 ;scroll-up = bspwm-desknext
 ;scroll-down = bspwm-deskprev
@@ -81,12 +80,81 @@ wm-restack = i3
 ;scroll-up = i3wm-wsnext
 ;scroll-down = i3wm-wsprev
 
+
 [module/disk]
 type = custom/script
 interval = 10
 ;format = <label>
 format-prefix = "  "
-exec = ~/.config/i3/ssd-storage.sh
+format-suffix = "  "
+exec = ~/.scripts/ssd-storage.sh
+
+
+[module/memory]
+type = internal/memory
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 3
+format-prefix = "  "
+format-suffix = "  "
+label = %gb_used%
+
+; Only applies if <bar-used> is used
+bar-used-indicator =
+bar-used-width = 50
+bar-used-foreground-0 = #55aa55
+bar-used-foreground-1 = #557755
+bar-used-foreground-2 = #f5a70a
+bar-used-foreground-3 = #ff5555
+bar-used-fill = ▐
+bar-used-empty = ▐
+bar-used-empty-foreground = #444444
+
+; Only applies if <ramp-used> is used
+ramp-used-0 = ▁
+ramp-used-1 = ▂
+ramp-used-2 = ▃
+ramp-used-3 = ▄
+ramp-used-4 = ▅
+ramp-used-5 = ▆
+ramp-used-6 = ▇
+ramp-used-7 = █
+
+; Only applies if <ramp-free> is used
+ramp-free-0 = ▁
+ramp-free-1 = ▂
+ramp-free-2 = ▃
+ramp-free-3 = ▄
+ramp-free-4 = ▅
+ramp-free-5 = ▆
+ramp-free-6 = ▇
+ramp-free-7 = █
+
+
+[module/cpu]
+type = internal/cpu
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 0.5
+
+format-prefix = " CPU "
+format-suffix = "  "
+
+; Available tags:
+;   <label> (default)
+;   <bar-load>
+;   <ramp-load>
+;   <ramp-coreload>
+; format = <label> <ramp-coreload>
+
+; Available tokens:
+;   %percentage% (default) - total cpu load
+;   %percentage-cores% - load percentage for each core
+;   %percentage-core[1-9]% - load percentage for specific core
+label = %percentage%%
+
 
 [module/weather]
 type = custom/script
@@ -95,19 +163,23 @@ interval = 360
 ;format-background = ${colors.background-alt}
 format = <label>
 format-prefix = "   "
-#format-suffix = ""
+format-suffix = " "
 #format-prefix-foreground = ${colors.foreground-alt}
 exec = ~/.scripts/i3weather
 
+
 [module/music]
 type = custom/script
-interval = 1
+exec = python  ~/.scripts/spotify_status.py -f '{song} - {artist}'
+interval = 3
 bar-width = 50%
 
+format-prefix = "  "
+format-suffix = " "
 ;format-background = ${colors.background-alt}
-;format-foreground = ${colors.foreground-alt}
+format-foreground = ${colors.foreground-alt}
 
-label = " %output% "=
+;label = " %output% "=
 
 
 [module/i3]
@@ -178,7 +250,7 @@ label-urgent-padding = 4
 [module/wireless-network]
 type = internal/network
 interface = wlp3s0
-interval = 3.0
+interval = 3
 
 format-connected-prefix = " "
 
@@ -187,7 +259,7 @@ format-connected = "   <ramp-signal> <label-connected>  "
 format-connected-underline = #9f78e1
 label-connected =
 
-format-disconnected = " no wifi :( "
+format-disconnected = "   None "
 format-disconnected-background = ${colors.background-unf}
 ;format-disconnected-underline = ${self.format-connected-underline}
 ;label-disconnected = %ifname% disconnected
@@ -203,12 +275,13 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/wired-network]
 type = internal/network
-interface = enp0s25
-interval = 3.0
+interface = enp4s0
+interval = 3
 
 format-connected-underline = #55aa55
-format-connected-prefix = ""
-format-connected-prefix-foreground = ${colors.foreground-alt}
+format-connected-prefix = " IP "
+format-connected-prefix-foreground = ${colors.foreground}
+format-connected-suffix = " "
 label-connected = %local_ip%
 
 format-disconnected =
@@ -225,7 +298,7 @@ interval = 5
 date = 
 date-alt = " %Y-%m-%d"
 
-time = "   %a %b %d     %I:%M %p  "
+time = "    %a, %d %b      %H:%M:%S  "
 time-alt = %H:%M:%S
 
 format-prefix-foreground = ${colors.foreground-alt}
@@ -234,6 +307,7 @@ format-underline = #0a6cf5
 label = %date% %time%
 
 ;lable = %time%
+
 
 [module/volume]
 type = internal/pulseaudio
@@ -318,6 +392,7 @@ ramp-volume-1 = 
 #animation-charging-foreground = ${colors.foreground-alt}
 #animation-charging-framerate = 750
 
+
 [module/powermenu]
 type = custom/menu
 
@@ -361,23 +436,24 @@ margin-top = 5
 margin-bottom = 5
 
 
-; 
-; [module/xkeyboard]
-; type = internal/xkeyboard
-; blacklist-0 = num lock
-; 
-; format-prefix = " "
-; format-prefix-foreground = ${colors.foreground-alt}
-; format-prefix-underline = ${colors.secondary}
-; 
-; label-layout = %layout%
-; label-layout-underline = ${colors.secondary}
-; 
-; label-indicator-padding = 2
-; label-indicator-margin = 1
-; label-indicator-background = ${colors.secondary}
-; label-indicator-underline = ${colors.secondary}
-; 
+[module/xkeyboard]
+type = internal/xkeyboard
+blacklist-0 = num lock
+
+format-prefix = "   "
+format-suffix = " "
+format-prefix-foreground = ${colors.foreground}
+format-prefix-underline = ${colors.secondary}
+
+label-layout = %layout%
+label-layout-underline = ${colors.secondary}
+
+label-indicator-padding = 2
+label-indicator-margin = 1
+label-indicator-background = ${colors.secondary}
+label-indicator-underline = ${colors.secondary}
+
+
 ; [module/filesystem]
 ; type = internal/fs
 ; interval = 25
@@ -411,22 +487,3 @@ margin-bottom = 5
 ;inherit = module/xbacklight
 ;type = internal/backlight
 ;card = intel_backlight
-;
-;[module/cpu]
-;type = internal/cpu
-;interval = 2
-;format-prefix = " "
-;format-prefix-foreground = ${colors.foreground-alt}
-;format-prefix-background = ${colors.foreground-mod}
-;format-underline = #f90000
-;label = %percentage%%
-;
-;[module/memory]
-;type = internal/memory
-;interval = 2
-;format-prefix = " "
-;format-prefix-foreground = ${colors.foreground-alt}
-;format-underline = #4bffdc
-;label = %percentage_used%%
-
-; vim:ft=dosini

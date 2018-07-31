@@ -29,7 +29,7 @@ font pango:Monospace 11, FontAwesome 11
 # Needed for i3-gaps
 for_window [class="^.*"] border pixel 3
 gaps inner 10
-gaps outer 1
+gaps outer 10
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
@@ -122,6 +122,10 @@ for_window [class="TelegramDesktop"] move workspace $ws4
 for_window [class="Google-chrome"] move workspace $ws3
 for_window [title="GIMP Startup"] move workspace $ws5
 for_window [class="Gimp"] move workspace $ws5
+
+# Start apps on startup
+exec --no-startup-id google-chrome
+exec --no-startup-id i3-sensible-terminal
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -239,7 +243,7 @@ bindsym $mod+shift+x exec "cd ~/.config/i3/i3lock-color && ./lock.sh"
 
 # Screenshot shortcut
 # take a screenshot of a screen region and copy it to a clipboard
-bindsym --release Shift+Print exec "~/.config/i3/screenshot.sh"
+bindsym --release Shift+Print exec "~/.scripts/screenshot.sh"
 
 # Fix Monitor Display
 exec_always xrandr --output VGA-1 --mode 1024x768 --pos 0x0 --rotate normal --output HDMI-1 --off --output eDP-1 --mode 1920x1080 --pos 1024x0 --rotate normal
