@@ -200,7 +200,6 @@ label-unfocused-background = ${colors.background-unf}
 ;label-visible-underline = #555555
 ;label-visible-padding = 4
 
-
 ; Available tokens:
 ;   %mode%
 ; Default: %mode%
@@ -247,6 +246,7 @@ label-urgent-foreground = #000000
 label-urgent-background = ${colors.background-alrt}
 label-urgent-padding = 4
 
+
 [module/wireless-network]
 type = internal/network
 interface = wlp3s0
@@ -254,7 +254,7 @@ interval = 3
 
 format-connected-prefix = " "
 
-format-connected-background = ${colors.background-alt}
+format-connected-background = ${colors.background-mod0}
 format-connected = "   <ramp-signal> <label-connected>  "
 format-connected-underline = #9f78e1
 label-connected =
@@ -270,7 +270,7 @@ ramp-signal-1 = "    25%"
 ramp-signal-2 = "    50%"
 ramp-signal-3 = "    75%"
 ramp-signal-4 = "    100%"
-ramp-signal-foreground = ${colors.foreground-alt}
+ramp-signal-foreground = ${colors.foreground}
 
 
 [module/wired-network]
@@ -293,7 +293,7 @@ format-disconnected =
 
 [module/date]
 type = internal/date
-interval = 5
+interval = 1
 
 date = 
 date-alt = " %Y-%m-%d"
@@ -450,7 +450,7 @@ label-layout-underline = ${colors.secondary}
 
 label-indicator-padding = 2
 label-indicator-margin = 1
-label-indicator-background = ${colors.secondary}
+label-indicator-background = ${colors.background-mod0}
 label-indicator-underline = ${colors.secondary}
 
 

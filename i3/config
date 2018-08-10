@@ -258,11 +258,12 @@ bindsym XF86AudioLowerVolume exec amixer -D pulse sset Master 10%-
 bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle
 
 # Keyboard Brightness controls
-bindsym XF86MonBrightnessUp exec --no-startup-id  ~/.scripts/keyboard-backlight.sh +1 # increase screen brightness
-bindsym XF86MonBrightnessDown # decrease screen brightness
+bindsym XF86KbdBrightnessUp exec --no-startup-id  ~/.scripts/keyboard-backlight.sh +1 # increase keyboard brightness
+bindsym XF86KbdBrightnessDown exec --no-startup-id  ~/.scripts/keyboard-backlight.sh -1 # decrease keyboard brightness
 
+bindsym XF86MonBrightnessUp exec light -A 5 # increase keyboard brightness
+bindsym XF86MonBrightnessDown exec light -U 5 # decrease keyboard brightness
 
-bindsym XF86KbdBrightnessDown exec sh ~/.scripts/keyboard-backlight.sh -1 
 # Touchpad controls
 # bindsym XF86TouchpadToggle exec /some/path/toggletouchpad.sh # toggle touchpad
 
