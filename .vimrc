@@ -14,6 +14,8 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 " Plugin 'dracula/vim'
+Plugin 'HenryNewcomer/vim-theme-papaya'
+" Plugin 'noahfrederick/vim-hemisu'
 
 " ----- Vim as a programmer's text editor -----------------------------
 Plugin 'scrooloose/nerdtree'
@@ -25,6 +27,7 @@ Plugin 'majutsushi/tagbar'
 " Plugin 'ctrlpvim/ctrlp.vim'
 " Plugin 'vim-scripts/a.vim'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'scrooloose/nerdcommenter'
 
 " ----- Working with Git ----------------------------------------------
 Plugin 'airblade/vim-gitgutter'
@@ -70,6 +73,7 @@ set number
 set showcmd
 set incsearch
 set hlsearch
+set relativenumber
 
 syntax on
 
@@ -93,8 +97,7 @@ let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
 
 " Set the colorscheme
-" colorscheme solarized
-colorscheme elflord
+colorscheme papaya_original
 
 " ----- bling/vim-airline settings -----
 " Always show statusbar
@@ -116,13 +119,16 @@ let g:airline#extensions#tabline#enabled = 1
 set t_Co=256
 
 " Use the solarized theme for the Airline status bar
-let g:airline_theme='papercolor'
+let g:airline_theme='angr'
 
 " ----- jistr/vim-nerdtree-tabs -----
 " Open/close NERDTree Tabs with \t
-nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
+"nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
 " To have NERDTree always open on startup
 let g:nerdtree_tabs_open_on_console_startup = 0
+
+"------NERD TREE--------"
+map <C-n> :NERDTreeToggle<CR>
 
 
 " ----- scrooloose/syntastic settings -----

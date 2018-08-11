@@ -3,11 +3,12 @@ export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/gabrielziegler/.oh-my-zsh
+# export VIRTUAL_ENV_DISABLE_PROMPT=
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
-ZSH_THEME="dracula"
+ZSH_THEME="agnoster"
 
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
@@ -58,7 +59,7 @@ ZSH_THEME="dracula"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git python pip github zsh-syntax-highlighting)
+plugins=(git pip docker docker-compose virtualenv zsh-syntax-highlighting)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -70,11 +71,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
- if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='vim'
- else
-   export EDITOR='vim'
- fi
+# if [[ -n $SSH_CONNECTION ]]; then
+export EDITOR='vim'
+# else
+#   export EDITOR='vim'
+# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -95,12 +96,14 @@ eval `dircolors ~/.dir_colors/dircolors`
 
 synclient TapButton1=1 TapButton2=3 TapButton3=2
 
-# ALIAS
-alias machine_learning='source ~/PyEnv/MachineLearning/bin/activate'
-alias compilers='source ~/PyEnv/Compilers/bin/activate'
-alias fga_gpam='cd /etc/openvpn/chavedeacessoavpn && sudo openvpn --config client.gpam'
-alias gs='git status'
-alias ga='git add'
-alias upgrade='sudo apt-get upgrade'
-alias update='sudo apt-get update'
-export LD_LIBRARY_PATH="/usr/local/cuda-9.1/lib64/:$LD_LIBRARY_PATH"
+# Load aliases
+if [ -f ~/.bash_aliases ]; then
+	. ~/.bash_aliases
+fi
+
+#ENV VARIABLES FOR CUDA CONFIG
+export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
+export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+
+# No accessibility
+export NO_AT_BRIDGE=1
