@@ -1,3 +1,8 @@
-# Dotfiles & RICE
+# My i3wm environment
 
-## Ubuntu 16.04 unity running i3wm as window manager
+My specs
+![neofetch](./images/neofetch.png)
+
+System overview
+![fullscreen image](./images/fullscreen.png)
+
