@@ -1,4 +1,0 @@
-location="Brasilia"
-weather=$(curl -sS wttr.in/"${location}" | sed -n '4p' | cut -d' ' -f13,14 | sed 's/\x1b\[[0-9;]*m//g')
-
-echo "$location" "$weather"
