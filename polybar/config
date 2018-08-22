@@ -57,7 +57,7 @@ font-5 = Font Awesome 5 Brands:pixelsize=8;1
 font-2 = sm4tik:pixelsize=10;1
 
 modules-left = i3 music
-modules-center = date memory cpu disk weather
+modules-center = date disk weather
 modules-right = xkeyboard wired-network wireless-network volume powermenu
 
 ;tray-position = hidden
@@ -165,7 +165,7 @@ format = <label>
 format-prefix = "   "
 format-suffix = " "
 #format-prefix-foreground = ${colors.foreground-alt}
-exec = ~/.scripts/i3weather
+exec = ~/.scripts/weather.sh
 
 
 [module/music]
@@ -177,7 +177,7 @@ bar-width = 50%
 format-prefix = "  "
 format-suffix = " "
 ;format-background = ${colors.background-alt}
-format-foreground = ${colors.foreground-alt}
+format-foreground = ${colors.foreground}
 
 ;label = " %output% "=
 
