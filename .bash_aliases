@@ -26,4 +26,5 @@ alias upgrade='sudo aptitude upgrade'
 alias update='sudo aptitude update'
 alias aptinstall='sudo aptitude install'
 
-alias telegram='~/App/Telegram/Telegram &'
+alias telegram='nohup ~/App/Telegram/Telegram >/dev/null 2>&1'
+alias pokerstars='nohup wine ~/.wine/drive_c/Program\ Files\ \(x86\)/PokerStars/PokerStars.exe >/dev/null 2>&1'
