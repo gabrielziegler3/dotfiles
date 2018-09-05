@@ -13,7 +13,7 @@ Plugin 'VundleVim/Vundle.vim'
 " Plugin 'tomasr/molokai'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-" Plugin 'dracula/vim'
+Plugin 'dracula/vim'
 Plugin 'HenryNewcomer/vim-theme-papaya'
 " Plugin 'noahfrederick/vim-hemisu'
 
@@ -53,7 +53,7 @@ Plugin 'tpope/vim-surround'
 " Align CSV files at commas, align Markdown tables, and more
 Plugin 'godlygeek/tabular'
 " Automaticall insert the closing HTML tag
-"Plugin 'HTML-AutoCloseTag'
+Plugin 'HTML-AutoCloseTag'
 " Make tmux look like vim-airline (read README for extra instructions)
 "Plugin 'edkolev/tmuxline.vim'
 " All the other syntax plugins I use
@@ -61,6 +61,7 @@ Plugin 'ekalinin/Dockerfile.vim'
 " Plugin 'digitaltoad/vim-jade'
 " Plugin 'tpope/vim-liquid'
 "Plugin 'cakebaker/scss-syntax.vim'
+Plugin 'bash-support.vim'
 
 call vundle#end()
 
@@ -75,9 +76,9 @@ set incsearch
 set hlsearch
 set relativenumber
 
-syntax on
+filetype plugin on
 
-set mouse=a
+" set mouse=a
 
 " We need this for plugins like Syntastic and vim-gitgutter which put symbols
 " in the sign column.
@@ -85,16 +86,27 @@ hi clear SignColumn
 
 " ----- Plugin-Specific Settings --------------------------------------
 
+syntax enable
+
+if (has("termguicolors"))
+	set termguicolors
+endif
+
 " ----- altercation/vim-colors-solarized settings -----
 " Toggle this to "light" for light colorscheme
 set background=dark
 
 " Uncomment the next line if your terminal is not configured for solarized
-"let g:solarized_termcolors=256
+" let g:solarized_termcolors=256
+" let g:solarized_termtrans = 1
 
 " YouCompleteMe
 let g:ycm_autoclose_preview_window_after_insertion = 1
 let g:ycm_autoclose_preview_window_after_completion = 1
+
+if $COLORTERM == 'gnome-terminal'
+	set t_Co=256
+endif
 
 " Set the colorscheme
 colorscheme papaya_original
@@ -116,16 +128,16 @@ let g:airline_detect_paste=1
 " Show airline for tabs too
 let g:airline#extensions#tabline#enabled = 1
 
-set t_Co=256
 
 " Use the solarized theme for the Airline status bar
-let g:airline_theme='angr'
+let g:airline_theme='papercolor'
 
 " ----- jistr/vim-nerdtree-tabs -----
 " Open/close NERDTree Tabs with \t
 "nmap <silent> <leader>t :NERDTreeTabsToggle<CR>
 " To have NERDTree always open on startup
 let g:nerdtree_tabs_open_on_console_startup = 0
+
 
 "------NERD TREE--------"
 map <C-n> :NERDTreeToggle<CR>
@@ -134,13 +146,17 @@ map <C-n> :NERDTreeToggle<CR>
 " ----- scrooloose/syntastic settings -----
 let g:syntastic_error_symbol = '✘'
 let g:syntastic_warning_symbol = "▲"
+let g:syntastic_check_on_open = 1
+let g:syntastic_enable_lua_checker = 1
+
 augroup mySyntastic
   au!
   au FileType tex let b:syntastic_mode = "passive"
 augroup END
 
 let g:syntastic_python_checkers = ['pylint']
-
+let g:syntastic_lua_checkers = ["luacheck"]
+let g:syntastic_lua_luacheck_args = "--no-unused-args"
 
 " ----- xolox/vim-easytags settings -----
 " Where to look for tags files
