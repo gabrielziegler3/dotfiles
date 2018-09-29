@@ -12,14 +12,15 @@ datetimeformat = %d/%m/%Y %H:%M
 longdatetimeformat = %d/%m/%Y %H:%M
 
 [highlight_days]
-multiple = yellow
+multiple = dark blue
+color = dark blue
+method = fg
 
 [default]
 highlight_event_days = True
-timedelta = 7d
+timedelta = 14d
 
 [view]
 frame = top
 event_view_always_visible = True
 agenda_event_format = {calendar-color}{cancelled}{start-end-time-style} {title}{repeat-symbol}{description-separator}{location}{reset}
-

@@ -17,6 +17,8 @@ alias egrep='egrep --color=auto'
 alias xclip='xclip -selection clipboard'
 
 alias machine_learning='source ~/PyEnv/MachineLearning/bin/activate'
+alias deep_learning='source ~/PyEnv/DeepLearning/bin/activate'
+alias django='source ~/PyEnv/Django/bin/activate'
 
 alias gs='git status'
 alias ga='git add'

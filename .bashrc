@@ -123,4 +123,6 @@ fi
 
 # Tapbutton synaptics configuration
 synclient TapButton1=1 TapButton2=3 TapButton3=2
-
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
+export LANGUAGE=en_US.UTF-8

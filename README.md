@@ -1,8 +1,8 @@
-# My i3wm environment
+# Ubuntu 16.04 I3WM Environment
 
-My specs
+# Neofetch
 ![neofetch](./images/neofetch.png)
 
-System overview
+# System Overview
 ![fullscreen image](./images/fullscreen.png)
 

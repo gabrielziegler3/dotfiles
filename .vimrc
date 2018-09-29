@@ -9,18 +9,15 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " ----- Making Vim look good ------------------------------------------
-" Plugin 'altercation/vim-colors-solarized'
-" Plugin 'tomasr/molokai'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'dracula/vim'
+" Plugin 'dracula/vim'
 Plugin 'HenryNewcomer/vim-theme-papaya'
-" Plugin 'noahfrederick/vim-hemisu'
+Plugin 'noahfrederick/vim-hemisu'
 
 " ----- Vim as a programmer's text editor -----------------------------
 Plugin 'scrooloose/nerdtree'
 Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'vim-syntastic/syntastic'
 Plugin 'xolox/vim-misc'
 " Plugin 'xolox/vim-easytags'
 Plugin 'majutsushi/tagbar'
@@ -34,7 +31,7 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'tpope/vim-fugitive'
 
 " ----- Other text editing features -----------------------------------
-" Plugin 'Raimondi/delimitMate'
+Plugin 'Raimondi/delimitMate'
 
 " ----- man pages, tmux -----------------------------------------------
 Plugin 'jez/vim-superman'
@@ -44,6 +41,7 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'jez/vim-c0'
 Plugin 'jez/vim-ispc'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'w0rp/ale'
 
 " ---- Extras/Advanced plugins ----------------------------------------
 " Highlight and strip trailing whitespace
@@ -55,12 +53,12 @@ Plugin 'godlygeek/tabular'
 " Automaticall insert the closing HTML tag
 Plugin 'HTML-AutoCloseTag'
 " Make tmux look like vim-airline (read README for extra instructions)
-"Plugin 'edkolev/tmuxline.vim'
+" Plugin 'edkolev/tmuxline.vim'
 " All the other syntax plugins I use
 Plugin 'ekalinin/Dockerfile.vim'
 " Plugin 'digitaltoad/vim-jade'
 " Plugin 'tpope/vim-liquid'
-"Plugin 'cakebaker/scss-syntax.vim'
+" Plugin 'cakebaker/scss-syntax.vim'
 Plugin 'bash-support.vim'
 
 call vundle#end()
@@ -75,6 +73,8 @@ set showcmd
 set incsearch
 set hlsearch
 set relativenumber
+set cursorline
+"hi CursorLine term=none cterm=bold  guibg=#0cffff
 
 filetype plugin on
 
@@ -109,7 +109,7 @@ if $COLORTERM == 'gnome-terminal'
 endif
 
 " Set the colorscheme
-colorscheme papaya_original
+color hemisu
 
 " ----- bling/vim-airline settings -----
 " Always show statusbar
@@ -127,10 +127,7 @@ let g:airline_detect_paste=1
 
 " Show airline for tabs too
 let g:airline#extensions#tabline#enabled = 1
-
-
-" Use the solarized theme for the Airline status bar
-let g:airline_theme='papercolor'
+let g:airline_theme='ayu_mirage'
 
 " ----- jistr/vim-nerdtree-tabs -----
 " Open/close NERDTree Tabs with \t
@@ -142,21 +139,19 @@ let g:nerdtree_tabs_open_on_console_startup = 0
 "------NERD TREE--------"
 map <C-n> :NERDTreeToggle<CR>
 
+"------NERD Commenter--------"
+let NERDSpaceDelims=1
 
-" ----- scrooloose/syntastic settings -----
-let g:syntastic_error_symbol = '✘'
-let g:syntastic_warning_symbol = "▲"
-let g:syntastic_check_on_open = 1
-let g:syntastic_enable_lua_checker = 1
+" ----- ALE settings -----
+" Check Python files with flake8 and pylint.
+" Enable completion where available.
+let g:ale_completion_enabled = 1
 
-augroup mySyntastic
-  au!
-  au FileType tex let b:syntastic_mode = "passive"
-augroup END
-
-let g:syntastic_python_checkers = ['pylint']
-let g:syntastic_lua_checkers = ["luacheck"]
-let g:syntastic_lua_luacheck_args = "--no-unused-args"
+let b:ale_linters = ['flake8', 'pylint', 'luacheck']
+" Fix Python files with autopep8 and yapf.
+let b:ale_fixers = ['autopep8', 'yapf']
+" Disable warnings about trailing whitespace for Python files.
+let b:ale_warn_about_trailing_whitespace = 0
 
 " ----- xolox/vim-easytags settings -----
 " Where to look for tags files
@@ -180,14 +175,14 @@ let g:easytags_suppress_ctags_warning = 1
 let g:airline#extensions#hunks#non_zero_only = 1
 
 " ----- Raimondi/delimitMate settings -----
-" let delimitMate_expand_cr = 1
-" augroup mydelimitMate
-"  au!
-"  au FileType markdown let b:delimitMate_nesting_quotes = ["`"]
-"  au FileType tex let b:delimitMate_quotes = ""
-"  au FileType tex let b:delimitMate_matchpairs = "(:),[:],{:},`:'"
-"  au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
-" augroup END
+let delimitMate_expand_cr = 1
+augroup mydelimitMate
+ au!
+ au FileType markdown let b:delimitMate_nesting_quotes = ["`"]
+ au FileType tex let b:delimitMate_quotes = ""
+ au FileType tex let b:delimitMate_matchpairs = "(:),[:],{:},`:'"
+ au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
+augroup END
 
 " ----- jez/vim-superman settings -----
 " better man page support
