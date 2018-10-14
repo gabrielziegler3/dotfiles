@@ -11,9 +11,10 @@ Plugin 'VundleVim/Vundle.vim'
 " ----- Making Vim look good ------------------------------------------
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-" Plugin 'dracula/vim'
+Plugin 'dracula/vim'
 Plugin 'HenryNewcomer/vim-theme-papaya'
 Plugin 'noahfrederick/vim-hemisu'
+Plugin 'rakr/vim-one'
 
 " ----- Vim as a programmer's text editor -----------------------------
 Plugin 'scrooloose/nerdtree'
@@ -25,6 +26,7 @@ Plugin 'majutsushi/tagbar'
 " Plugin 'vim-scripts/a.vim'
 Plugin 'Valloric/YouCompleteMe'
 Plugin 'scrooloose/nerdcommenter'
+Plugin 'chrisbra/Colorizer'
 
 " ----- Working with Git ----------------------------------------------
 Plugin 'airblade/vim-gitgutter'
@@ -32,6 +34,7 @@ Plugin 'tpope/vim-fugitive'
 
 " ----- Other text editing features -----------------------------------
 Plugin 'Raimondi/delimitMate'
+" Plugin 'inkarkat/vim-spellcheck'
 
 " ----- man pages, tmux -----------------------------------------------
 Plugin 'jez/vim-superman'
@@ -66,6 +69,7 @@ call vundle#end()
 filetype plugin indent on
 
 " --- General settings ---
+set t_Co=256
 set backspace=indent,eol,start
 set ruler
 set number
@@ -74,10 +78,12 @@ set incsearch
 set hlsearch
 set relativenumber
 set cursorline
+hi MatchParen cterm=bold ctermbg=green ctermfg=blue
 "hi CursorLine term=none cterm=bold  guibg=#0cffff
 
 filetype plugin on
 
+" Allow mouse clicks
 " set mouse=a
 
 " We need this for plugins like Syntastic and vim-gitgutter which put symbols
@@ -94,22 +100,19 @@ endif
 
 " ----- altercation/vim-colors-solarized settings -----
 " Toggle this to "light" for light colorscheme
-set background=dark
+set background=light
 
-" Uncomment the next line if your terminal is not configured for solarized
-" let g:solarized_termcolors=256
-" let g:solarized_termtrans = 1
-
-" YouCompleteMe
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
-
-if $COLORTERM == 'gnome-terminal'
-	set t_Co=256
-endif
+" if $COLORTERM == 'gnome-terminal'
+" endif
 
 " Set the colorscheme
-color hemisu
+color one
+
+hi clear SpellBad
+hi SpellBad cterm=bold ctermbg=blue ctermfg=green
+hi SpellCap cterm=underline ctermbg=red ctermfg=white
+hi SpellLocal cterm=underline ctermbg=red ctermfg=white
+hi SpellRare cterm=underline  ctermbg=red ctermfg=white
 
 " ----- bling/vim-airline settings -----
 " Always show statusbar
@@ -135,6 +138,12 @@ let g:airline_theme='ayu_mirage'
 " To have NERDTree always open on startup
 let g:nerdtree_tabs_open_on_console_startup = 0
 
+" ---- Colorizer ----
+" let g:colorizer_auto_color = 1
+
+" YouCompleteMe
+let g:ycm_autoclose_preview_window_after_insertion = 1
+let g:ycm_autoclose_preview_window_after_completion = 1
 
 "------NERD TREE--------"
 map <C-n> :NERDTreeToggle<CR>
@@ -169,6 +178,9 @@ let g:easytags_suppress_ctags_warning = 1
 " Uncomment to open tagbar automatically whenever possible
 "autocmd BufEnter * nested :call tagbar#autoopen(0)
 
+" ----- Spellcheck -----
+" Spell-check set to F6:
+map <F6> :setlocal spell! spelllang=en_us,pt_br<CR>
 
 " ----- airblade/vim-gitgutter settings -----
 " In vim-airline, only display "hunks" if the diff is non-zero
