@@ -110,9 +110,9 @@ color one
 
 hi clear SpellBad
 hi SpellBad cterm=bold ctermbg=blue ctermfg=green
-hi SpellCap cterm=underline ctermbg=red ctermfg=white
-hi SpellLocal cterm=underline ctermbg=red ctermfg=white
-hi SpellRare cterm=underline  ctermbg=red ctermfg=white
+hi SpellCap cterm=underline ctermfg=red
+hi SpellLocal cterm=bold ctermbg=green ctermfg=blue
+hi SpellRare cterm=underline  ctermfg=red
 
 " ----- bling/vim-airline settings -----
 " Always show statusbar
@@ -180,7 +180,7 @@ let g:easytags_suppress_ctags_warning = 1
 
 " ----- Spellcheck -----
 " Spell-check set to F6:
-map <F6> :setlocal spell! spelllang=en_us,pt_br<CR>
+map <F6> :setlocal spell! spelllang=en_gb,pt_br<CR>
 
 " ----- airblade/vim-gitgutter settings -----
 " In vim-airline, only display "hunks" if the diff is non-zero
