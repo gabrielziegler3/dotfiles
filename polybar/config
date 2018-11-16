@@ -4,7 +4,6 @@
 ;                                                ;
 ;-------------------------------------------------
 
-
 [colors]
 ;background = ${xrdb:color0:#222}
 ;background = #212E36
@@ -262,7 +261,7 @@ label-connected =
 format-disconnected = "   None "
 format-disconnected-background = ${colors.background-unf}
 ;format-disconnected-underline = ${self.format-connected-underline}
-;label-disconnected = %ifname% disconnected
+label-disconnected = %ifname% disconnected
 label-disconnected-foreground = ${colors.foreground-alt}
 
 ramp-signal-0 = "    0%"
@@ -295,7 +294,7 @@ format-disconnected =
 type = internal/date
 interval = 1
 
-date = 
+date =
 date-alt = " %Y-%m-%d"
 
 time = "    %a, %d %b      %H:%M:%S  "

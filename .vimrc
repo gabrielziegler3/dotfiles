@@ -182,6 +182,9 @@ let g:easytags_suppress_ctags_warning = 1
 " Spell-check set to F6:
 map <F6> :setlocal spell! spelllang=en_gb,pt_br<CR>
 
+"Remove all trailing whitespace by pressing F5
+nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
 " ----- airblade/vim-gitgutter settings -----
 " In vim-airline, only display "hunks" if the diff is non-zero
 let g:airline#extensions#hunks#non_zero_only = 1
