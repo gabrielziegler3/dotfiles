@@ -9,7 +9,7 @@ W='#880000bb'  # wrong
 V='#bb00bbbb'  # verifying
 LB='#00ffffff'   # light blue
 
-./x86_64-pc-linux-gnu/i3lock \
+i3lock \
 --insidevercolor=$B   \
 --ringvercolor=$LB    \
 \
@@ -33,7 +33,7 @@ LB='#00ffffff'   # light blue
 --indicator           \
 --timestr="%H:%M:%S"  \
 --datestr="%A, %m %Y" \
---image /home/gabrielziegler/Pictures/Wallpapers/deep-space.png \
+--image /home/ziegler/Pictures/Wallpapers/great-wave.jpg \
 -t \
 # --keylayout 2         \
 
