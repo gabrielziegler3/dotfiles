@@ -2,7 +2,7 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/gabrielziegler/.oh-my-zsh
+export ZSH=/home/ziegler/.oh-my-zsh
 # export VIRTUAL_ENV_DISABLE_PROMPT=
 
 # Set name of the theme to load. Optionally, if you set this to "random"
@@ -92,9 +92,7 @@ export EDITOR='vim'
 alias zshconfig="vim ~/.zshrc"
 alias ohmyzsh="vim ~/.oh-my-zsh"
 
-eval `dircolors ~/.dir_colors/dircolors`
-
-synclient TapButton1=1 TapButton2=3 TapButton3=2
+# synclient TapButton1=1 TapButton2=3 TapButton3=2
 
 # Load aliases
 if [ -f ~/.bash_aliases ]; then
@@ -102,8 +100,10 @@ if [ -f ~/.bash_aliases ]; then
 fi
 
 #ENV VARIABLES FOR CUDA CONFIG
-export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
-export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
+# export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
+export PATH=/home/ziegler/.local/bin${PATH:+:${PATH}}
+# export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
 # No accessibility
 export NO_AT_BRIDGE=1
+
