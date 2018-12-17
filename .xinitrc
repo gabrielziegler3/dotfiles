@@ -1,11 +1,8 @@
 #!/bin/sh
 
-# Set locale
-export LANG=en_US.UTF-8
-export LANGUAGE=en_US.UTF-8
-export LC_COLLATE=C
-export LC_CTYPE=en_US.UTF-8
-export LC_ALL=en_US.UTF-8
+if [ -f ~/.env_variables ]; then
+    . ~/.env_variables
+fi
 
 [ -f ~/.Xresources ] && xrdb -merge ~/.Xresources
 

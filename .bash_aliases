@@ -29,11 +29,6 @@ alias dps='sudo docker ps'
 alias dcbuild='sudo docker-compose build'
 alias dcup='sudo docker-compose up'
 
-# Aptitude
-alias upgrade='sudo aptitude upgrade'
-alias update='sudo aptitude update'
-alias aptinstall='sudo aptitude install'
-
 # Others
 alias xclip='xclip -selection clipboard'
 alias vimconfig='vim ~/.vimrc'

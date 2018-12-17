@@ -24,7 +24,9 @@ Plugin 'xolox/vim-misc'
 Plugin 'majutsushi/tagbar'
 " Plugin 'ctrlpvim/ctrlp.vim'
 " Plugin 'vim-scripts/a.vim'
-Plugin 'Valloric/YouCompleteMe'
+
+Plugin 'maralla/completor.vim'
+
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'chrisbra/Colorizer'
 
@@ -78,8 +80,9 @@ set incsearch
 set hlsearch
 set relativenumber
 set cursorline
+
 hi MatchParen cterm=bold ctermbg=green ctermfg=blue
-"hi CursorLine term=none cterm=bold  guibg=#0cffff
+hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white
 
 filetype plugin on
 
@@ -94,19 +97,18 @@ hi clear SignColumn
 
 syntax enable
 
-if (has("termguicolors"))
-	set termguicolors
-endif
+" if (has("termguicolors"))
+    " set termguicolors
+" endif
+
+set t_Co=256
 
 " ----- altercation/vim-colors-solarized settings -----
 " Toggle this to "light" for light colorscheme
-set background=light
-
-" if $COLORTERM == 'gnome-terminal'
-" endif
+set background=dark
 
 " Set the colorscheme
-color one
+color papaya_original
 
 hi clear SpellBad
 hi SpellBad cterm=bold ctermbg=blue ctermfg=green
@@ -141,9 +143,9 @@ let g:nerdtree_tabs_open_on_console_startup = 0
 " ---- Colorizer ----
 " let g:colorizer_auto_color = 1
 
-" YouCompleteMe
-let g:ycm_autoclose_preview_window_after_insertion = 1
-let g:ycm_autoclose_preview_window_after_completion = 1
+
+" Use deoplete.
+let g:deoplete#enable_at_startup = 1
 
 "------NERD TREE--------"
 map <C-n> :NERDTreeToggle<CR>
@@ -178,9 +180,18 @@ let g:easytags_suppress_ctags_warning = 1
 " Uncomment to open tagbar automatically whenever possible
 "autocmd BufEnter * nested :call tagbar#autoopen(0)
 
+" ----- Completor -----
+inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
+inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
+inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
+
 " ----- Spellcheck -----
 " Spell-check set to F6:
 map <F6> :setlocal spell! spelllang=en_gb,pt_br<CR>
+
+" ----- Fugitive -----
+" Toggle git blame
+map <F7> :Gblame<CR>
 
 "Remove all trailing whitespace by pressing F5
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>

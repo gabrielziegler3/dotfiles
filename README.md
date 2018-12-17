@@ -1,8 +1,15 @@
-# Ubuntu 16.04 I3WM Environment
+# Arch Linux i3wm setup
 
-# Neofetch
+### Currently using
+
+* xinit
+* termite and urxvt
+* zsh 
+* Inconsolata 15
+
+## Specs
 ![neofetch](./images/neofetch.png)
 
-# System Overview
+## System Overview
 ![fullscreen image](./images/fullscreen.png)
 

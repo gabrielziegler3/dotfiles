@@ -33,26 +33,26 @@ Xft.hintstyle:              hintslight
 *.color1:       #ff6a00
 *.color9:       #b8ff9a
 
-! syntax correct
+! correct syntax
 *.color2:       #00e56e
 ! ranger dir
-*.color10:      #3080b2
+*.color10:      #00e5ff
 
 ! git staged changes
 *.color3:       #ff8800
 *.color11:      #ffffff
 
 ! powerline symbol
-*.color4:       #ffff00
+*.color4:       #91ffe1
 ! ls dir color
 *.color12:      #7a94ff
 
 *.color5:       #7a94ff
 *.color13:      #d18a99
 
-*.color6:       #006000
+*.color6:       #00ffbb
 *.color14:      #c2ffd7
 
-*.color7:       #ffffff
-*.color15:      #ff0000
+*.color7:       #ff00ff
+*.color15:      #04b2d1
 
