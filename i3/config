@@ -119,10 +119,11 @@ for_window [class="Opera"] move workspace $ws3
 for_window [class="TelegramDesktop"] move workspace $ws4
 for_window [class="Slack"] move workspace $ws4
 for_window [class="Steam"] move workspace $ws5
+for_window [class="Lutris"] move workspace $ws5
 
 # Start apps on startup
 # exec --no-startup-id opera
-exec --no-startup-id google-chrome-stable
+exec --no-startup-id google-chrome-beta
 exec --no-startup-id termite
 
 # switch to workspace
@@ -248,8 +249,8 @@ bindsym XF86KbdBrightnessUp exec --no-startup-id  ~/.scripts/keyboard-backlight.
 bindsym XF86KbdBrightnessDown exec --no-startup-id  ~/.scripts/keyboard-backlight.sh -1 # decrease keyboard brightness
 
 # Monitor Brightness controls
-bindsym XF86MonBrightnessUp exec light -A 5
-bindsym XF86MonBrightnessDown exec light -U 5
+bindsym XF86MonBrightnessUp exec light -A 3
+bindsym XF86MonBrightnessDown exec light -U 3
 
 # Media player controls
 bindsym XF86AudioPause exec playerctl play-pause

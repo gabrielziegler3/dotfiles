@@ -14,6 +14,7 @@ Plugin 'vim-airline/vim-airline-themes'
 Plugin 'dracula/vim'
 Plugin 'HenryNewcomer/vim-theme-papaya'
 Plugin 'noahfrederick/vim-hemisu'
+Plugin 'cseelus/vim-colors-lucid'
 Plugin 'rakr/vim-one'
 
 " ----- Vim as a programmer's text editor -----------------------------
@@ -81,8 +82,8 @@ set hlsearch
 set relativenumber
 set cursorline
 
-hi MatchParen cterm=bold ctermbg=green ctermfg=blue
-hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white
+" hi MatchParen cterm=bold ctermbg=green ctermfg=blue
+" hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white
 
 filetype plugin on
 
@@ -97,24 +98,24 @@ hi clear SignColumn
 
 syntax enable
 
-" if (has("termguicolors"))
-    " set termguicolors
-" endif
+if (has("termguicolors"))
+    set termguicolors
+endif
 
-set t_Co=256
+" set t_Co=256
 
 " ----- altercation/vim-colors-solarized settings -----
 " Toggle this to "light" for light colorscheme
 set background=dark
 
 " Set the colorscheme
-color papaya_original
+color lucid
 
 hi clear SpellBad
-hi SpellBad cterm=bold ctermbg=blue ctermfg=green
-hi SpellCap cterm=underline ctermfg=red
-hi SpellLocal cterm=bold ctermbg=green ctermfg=blue
-hi SpellRare cterm=underline  ctermfg=red
+" hi SpellBad cterm=bold ctermbg=blue ctermfg=green
+" hi SpellCap cterm=underline ctermfg=red
+" hi SpellLocal cterm=bold ctermbg=green ctermfg=blue
+" hi SpellRare cterm=underline  ctermfg=red
 
 " ----- bling/vim-airline settings -----
 " Always show statusbar
