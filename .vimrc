@@ -11,11 +11,12 @@ Plugin 'VundleVim/Vundle.vim'
 " ----- Making Vim look good ------------------------------------------
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
-Plugin 'dracula/vim'
-Plugin 'HenryNewcomer/vim-theme-papaya'
-Plugin 'noahfrederick/vim-hemisu'
+" Plugin 'dracula/vim'
+" Plugin 'HenryNewcomer/vim-theme-papaya'
+" Plugin 'noahfrederick/vim-hemisu'
 Plugin 'cseelus/vim-colors-lucid'
-Plugin 'rakr/vim-one'
+" Plugin 'rakr/vim-one'
+Plugin 'ayu-theme/ayu-vim'
 
 " ----- Vim as a programmer's text editor -----------------------------
 Plugin 'scrooloose/nerdtree'
@@ -37,7 +38,8 @@ Plugin 'tpope/vim-fugitive'
 
 " ----- Other text editing features -----------------------------------
 Plugin 'Raimondi/delimitMate'
-" Plugin 'inkarkat/vim-spellcheck'
+Plugin 'inkarkat/vim-spellcheck'
+Plugin 'inkarkat/vim-ingo-library'
 
 " ----- man pages, tmux -----------------------------------------------
 Plugin 'jez/vim-superman'
@@ -102,11 +104,11 @@ if (has("termguicolors"))
     set termguicolors
 endif
 
-" set t_Co=256
-
 " ----- altercation/vim-colors-solarized settings -----
 " Toggle this to "light" for light colorscheme
 set background=dark
+
+let ayucolor="mirage"
 
 " Set the colorscheme
 color lucid
@@ -133,7 +135,7 @@ let g:airline_detect_paste=1
 
 " Show airline for tabs too
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='ayu_mirage'
+let g:airline_theme='lucius'
 
 " ----- jistr/vim-nerdtree-tabs -----
 " Open/close NERDTree Tabs with \t
@@ -143,7 +145,6 @@ let g:nerdtree_tabs_open_on_console_startup = 0
 
 " ---- Colorizer ----
 " let g:colorizer_auto_color = 1
-
 
 " Use deoplete.
 let g:deoplete#enable_at_startup = 1
@@ -159,7 +160,7 @@ let NERDSpaceDelims=1
 " Enable completion where available.
 let g:ale_completion_enabled = 1
 
-let b:ale_linters = ['flake8', 'pylint', 'luacheck']
+let b:ale_linters = ['flake8', 'luacheck']
 " Fix Python files with autopep8 and yapf.
 let b:ale_fixers = ['autopep8', 'yapf']
 " Disable warnings about trailing whitespace for Python files.
@@ -186,6 +187,9 @@ inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
 inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
 inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
 
+" Remove all trailing whitespace by pressing F5
+nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
+
 " ----- Spellcheck -----
 " Spell-check set to F6:
 map <F6> :setlocal spell! spelllang=en_gb,pt_br<CR>
@@ -193,9 +197,6 @@ map <F6> :setlocal spell! spelllang=en_gb,pt_br<CR>
 " ----- Fugitive -----
 " Toggle git blame
 map <F7> :Gblame<CR>
-
-"Remove all trailing whitespace by pressing F5
-nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 " ----- airblade/vim-gitgutter settings -----
 " In vim-airline, only display "hunks" if the diff is non-zero

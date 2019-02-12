@@ -196,7 +196,10 @@ bindsym $mod+Ctrl+j resize grow height 1 px or 1 ppt
 bindsym $mod+Ctrl+h resize grow width 1 px or 1 ppt
 
 # Start Compton
-exec_always compton -f
+exec_always --no-startup-id compton -f
+
+# Start Conky
+exec_always --no-startup-id ~/.config/conky/launch
 
 # Setting the background:
 exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/wallpaper.jpg
