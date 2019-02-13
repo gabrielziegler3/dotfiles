@@ -4,7 +4,7 @@
 #bold_is_bright = true
 #clickable_url = true
 #dynamic_title = true
-font = Monospace 15
+font = Inconsolata 14
 #fullscreen = true
 #icon_name = terminal
 #mouse_autohide = false
@@ -21,10 +21,10 @@ scrollback_lines = 10000
 #browser = xdg-open
 
 # "system", "on" or "off"
-#cursor_blink = system
+cursor_blink = on
 
 # "block", "underline" or "ibeam"
-#cursor_shape = block
+cursor_shape = block
 
 # Hide links that are no longer valid in url select overlay mode
 #filter_unmatched_urls = true
@@ -36,38 +36,48 @@ scrollback_lines = 10000
 #size_hints = false
 
 # "off", "left" or "right"
-#scrollbar = off
+scrollbar = off
+
 
 [colors]
-# If both of these are unset, cursor falls back to the foreground color,
-# and cursor_foreground falls back to the background color.
-cursor = #00ffff
-#cursor_foreground = #dcdccc
 
-#foreground = #dcdccc
-#foreground_bold = #ffffff
-background = rgba(0, 0, 0, 0.9)
+# special
+foreground      = #fdfdfd
+foreground_bold = #fdfdfd
+cursor          = #fdfdfd
+background      = rgba(29, 31, 40, 0.8)
 
-# If unset, will reverse foreground and background
-highlight = #2f2f2f
+# black
+color0  = #282a36
+color8  = #414458
 
-# Colors from color0 to color254 can be set
-color0 = #2f1e2e
-color8 = #606060
-color1 = #ef6155
-color9 = #ef6155
-color2 = #3fff6c
-color10 = #48b685
-color3 = #fec418
-color11 = #fec418
-color4 = #ccffff
-color12 = #06b6ef
-color5 = #815ba4
-color13 = #815ba4
-color6 = #5bc4bf
-color14 = #5bc4bf
-color7 = #ccffff
-color15 = #e7e9db
+# red
+color1  = #f37f97
+color9  = #ff4971
+
+# green
+color2  = #00ff88
+color10 = #18e3c8
+
+# yellow
+color3  = #ffe35b
+color11 = #ff8037
+
+# blue
+color4  = #8897f4
+color12 = #556fff
+
+# magenta
+color5  = #c574dd
+color13 = #b043d1
+
+# cyan
+color6  = #79e6f3
+color14 = #3fdcee
+
+# white
+color7  = #fdfdfd
+color15 = #bebec1
 
 [hints]
 #font = Monospace 12
