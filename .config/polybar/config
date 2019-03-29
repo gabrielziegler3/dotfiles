@@ -51,27 +51,28 @@ font-1 = FontAwesome:fontformat=truetype:size=12;1
 font-3 = Font Awesome 5 Free:style=Regular:pixelsize=12;1
 font-4 = Font Awesome 5 Free:style=Solid:pixelsize=12;1
 font-5 = Font Awesome 5 Brands:pixelsize=12;1
+font-6 = Weather Icons:size=12;1
 font-2 = sm4tik:pixelsize=10;1
 
 modules-left = i3 pulseaudio-tail player-mpris-tail
-modules-center = date disk
+modules-center = date disk openweathermap-fullfeatured
 modules-right = xkeyboard wired-network wireless-network
 
 wm-restack = i3
 
 [module/pulseaudio-tail]
 type = custom/script
-exec = ~/polybar-scripts/pulseaudio-tail.sh
+exec = ~/polybar-scripts/polybar-scripts/pulseaudio-tail/pulseaudio-tail.sh
 tail = true
 click-right = exec pavucontrol &
-click-left = ~/polybar-scripts/pulseaudio-tail.sh --mute
-scroll-up = ~/polybar-scripts/pulseaudio-tail.sh --up
-scroll-down = ~/polybar-scripts/pulseaudio-tail.sh --down
+click-left = ~/polybar-scripts/polybar-scripts/pulseaudio-tail/pulseaudio-tail.sh --mute
+scroll-up = ~/polybar-scripts/polybar-scripts/pulseaudio-tail/pulseaudio-tail.sh --up
+scroll-down = ~/polybar-scripts/polybar-scripts/pulseaudio-tail/pulseaudio-tail.sh --down
 
 
 [module/player-mpris-tail]
 type = custom/script
-exec = ~/polybar-scripts/player-mpris-tail.py -f '{icon} {:artist:t18:{artist}:}{:artist: - :}{:t20:{title}:}  %{A1:~/polybar-scripts/player-mpris-tail.py previous -b vlc -b plasma-browser-integration:} ⏮ %{A} %{A1:~/polybar-scripts/player-mpris-tail.py play-pause -b vlc -b plasma-browser-integration:} {icon-reversed} %{A} %{A1:~/polybar-scripts/player-mpris-tail.py next -b vlc -b plasma-browser-integration:} ⏭ %{A}' -b vlc -b plasma-browser-integration
+exec = python3 ~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py -f '{icon} {:artist:t18:{artist}:}{:artist: - :}{:t20:{title}:}  %{A1:~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py previous:} ⏮ %{A} %{A1:~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py play-pause:} {icon-reversed} %{A} %{A1:~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py next:} ⏭ %{A}'
 tail = true
 label = %output%
 
@@ -172,9 +173,9 @@ label = %percentage%%
 
 [module/openweathermap-fullfeatured]
 type = custom/script
-exec = ~/polybar-scripts/openweathermap-fullfeatured.sh
+exec = ~/polybar-scripts/polybar-scripts/openweathermap-fullfeatured/openweathermap-fullfeatured.sh
 interval = 600
-label-font = 3
+label-font = 7
 
 [module/music]
 type = custom/script

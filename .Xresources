@@ -1,5 +1,3 @@
-Xcursor.theme: Deepin-Cursor
-
 URxvt.scrollBar: false
 URxvt.cursorBlink: true
 
@@ -11,48 +9,70 @@ Xft.rgba:                   rgb
 Xft.hinting:                true
 Xft.hintstyle:              hintslight
 
-*cursorColor: #ffffff
-! *pointerColorBackground: #586e75
-! *pointerColorForeground: #93a1a1
+! *cursorColor: #ffffff
+
+Xcursor.theme: xcursor-breeze
+Xcursor.size:                     0
+
+*pointerColorBackground:          #2B2C2B
+*pointerColorForeground:          #16A085
 
 ! ! URxvt.resize-font.smaller: C--
 ! ! URxvt.resize-font.bigger: C-+
 
-! ! Dracula Xresources palette
-!
+URxvt.perl-ext-common: selection-to-clipboard
+
 ! special
-*.foreground:   #eeeeee
-*.background:   #000000
-*.cursorColor:  #dfedff
+! *.foreground:   #eeeeee
+! *.background:   #000000
+! *.cursorColor:  #dfedff
 
-! Computer name background
-*.color0:       #3a3a3a
-*.color8:       #e788ff
+! ! Computer name background
+! *.color0:       #3a3a3a
+! *.color8:       #e788ff
 
-! red
-*.color1:       #ff6a00
-*.color9:       #b8ff9a
+! ! red
+! *.color1:       #ff6a00
+! *.color9:       #b8ff9a
 
-! correct syntax
-*.color2:       #00e56e
-! ranger dir
-*.color10:      #00e5ff
+! ! correct syntax
+! *.color2:       #00e56e
+! ! ranger dir
+! *.color10:      #00e5ff
 
-! git staged changes
-*.color3:       #ff8800
-*.color11:      #ffffff
+! ! git staged changes
+! *.color3:       #ff8800
+! *.color11:      #ffffff
 
-! powerline symbol
-*.color4:       #91ffe1
-! ls dir color
-*.color12:      #7a94ff
+! ! powerline symbol
+! *.color4:       #91ffe1
+! ! ls dir color
+! *.color12:      #7a94ff
 
-*.color5:       #7a94ff
-*.color13:      #d18a99
+! *.color5:       #7a94ff
+! *.color13:      #d18a99
 
-*.color6:       #00ffbb
-*.color14:      #c2ffd7
+! *.color6:       #00ffbb
+! *.color14:      #c2ffd7
 
-*.color7:       #ff00ff
-*.color15:      #04b2d1
-
+! *.color7:       #ff00ff
+! *.color15:      #04b2d1
+*background:	#1D1F28
+*foreground:	#FDFDFD
+*cursorColor:	#C574DD
+*color0:	#282A36
+*color1:	#F37F97
+*color2:	#5ADECD
+*color3:	#F2A272
+*color4:	#8897F4
+*color5:	#C574DD
+*color6:	#79E6F3
+*color7:	#FDFDFD
+*color8:	#414458
+*color9:	#FF4971
+*color10:	#18E3C8
+*color11:	#FF8037
+*color12:	#556FFF
+*color13:	#B043D1
+*color14:	#3FDCEE
+*color15:	#BEBEC1
