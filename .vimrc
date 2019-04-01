@@ -1,6 +1,4 @@
 " Gotta be first
-set nocompatible
-
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -15,8 +13,9 @@ Plugin 'vim-airline/vim-airline-themes'
 " Plugin 'HenryNewcomer/vim-theme-papaya'
 " Plugin 'noahfrederick/vim-hemisu'
 Plugin 'cseelus/vim-colors-lucid'
-" Plugin 'rakr/vim-one'
+Plugin 'rakr/vim-one'
 Plugin 'ayu-theme/ayu-vim'
+Plugin 'NLKNguyen/papercolor-theme'
 
 " ----- Vim as a programmer's text editor -----------------------------
 Plugin 'scrooloose/nerdtree'
@@ -216,3 +215,4 @@ augroup END
 " better man page support
 noremap K :SuperMan <cword><CR>
 
+au BufEnter,BufRead *conf* setf dosini

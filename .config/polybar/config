@@ -4,17 +4,18 @@
 ;                                                ;
 ;-------------------------------------------------
 
+
 [colors]
-background = ${xrdb:color0:#222}
-;background = #cf000000
+;background = ${xrdb:color0:#222}
+background = #cfl000000
 
 ;it's ARGB so "cfl" is for transparency
-background-alt = #cf666666
-background-unf = #cf2E463E
-background-mod0 = #cf3C5A46
-background-mod1 = #cfa0a0a0
-background-mod2 = #cfc4c4c4
-background-alrt = #cfA1BB76
+background-alt = #cfl666666
+background-unf = #cfl2E463E
+background-mod0 = #cfl3C5A46
+background-mod1 = #cfla0a0a0
+background-mod2 = #cflc4c4c4
+background-alrt = #cflA1BB76
 
 ;foreground = ${xrdb:color1:#222}
 foreground = #00ffff
@@ -22,10 +23,11 @@ foreground-alt = #00bbff
 primary = #00ffff
 secondary = #00ffff
 
+
 [bar/topbar]
 monitor = ${env:MONITOR:DVI-I-1}
 width = 100%
-height = 40
+height = 35
 offset-x = 0%
 ;offset-y = 10%
 radius = 0.0
@@ -33,7 +35,7 @@ fixed-center = true
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-line-size = 0
+line-size = 2
 line-color = #f00
 
 border-size = 0
@@ -42,8 +44,8 @@ border-color = #00000000
 padding-left = 0
 padding-right = 0
 
-module-margin-left = 0
-module-margin-right = 0
+module-margin-left = 1
+module-margin-right = 1
 
 ;font-0 = Misc Termsyn:size=9;1
 font-0 = Ubuntu:size=12;1
@@ -56,7 +58,7 @@ font-2 = sm4tik:pixelsize=10;1
 
 modules-left = i3 pulseaudio-tail player-mpris-tail
 modules-center = date disk openweathermap-fullfeatured
-modules-right = xkeyboard wired-network wireless-network
+modules-right = xkeyboard backlight wired-network wireless-network
 
 wm-restack = i3
 
@@ -72,9 +74,12 @@ scroll-down = ~/polybar-scripts/polybar-scripts/pulseaudio-tail/pulseaudio-tail.
 
 [module/player-mpris-tail]
 type = custom/script
-exec = python3 ~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py -f '{icon} {:artist:t18:{artist}:}{:artist: - :}{:t20:{title}:}  %{A1:~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py previous:} ⏮ %{A} %{A1:~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py play-pause:} {icon-reversed} %{A} %{A1:~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py next:} ⏭ %{A}'
+exec = python3 ~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py -f '{icon} {:artist:t18:{artist}:}{:artist: - :}{:t20:{title}:}  %{A1:~/polybar-scripts/player-mpris-tail.py previous:} ⏮ %{A} %{A1:~/polybar-scripts/player-mpris-tail.py play-pause:} {icon-reversed} %{A} %{A1:~/polybar-scripts/player-mpris-tail.py next:} ⏭ %{A}'
 tail = true
 label = %output%
+click-left = ~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py previous
+click-right = ~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py next
+click-middle = ~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py play-pause
 
 
 [module/system-usb-udev]
@@ -89,8 +94,7 @@ click-right = ~/polybar-scripts/system-usb-udev.sh --unmount
 type = custom/script
 interval = 10
 ;format = <label>
-format-prefix = "  "
-format-suffix = "  "
+format-prefix = " "
 exec = ~/.scripts/ssd-storage.sh
 
 
@@ -100,8 +104,7 @@ type = internal/memory
 ; Seconds to sleep between updates
 ; Default: 1
 interval = 3
-format-prefix = "  "
-format-suffix = "  "
+format-prefix = " "
 label = %gb_used%
 
 ; Only applies if <bar-used> is used
@@ -143,8 +146,7 @@ type = internal/cpu
 ; Default: 1
 interval = 0.5
 
-format-prefix = " CPU "
-format-suffix = "  "
+format-prefix = "CPU"
 
 ; Available tags:
 ;   <label> (default)
@@ -160,35 +162,12 @@ format-suffix = "  "
 label = %percentage%%
 
 
-;[module/weather]
-;type = custom/script
-;interval = 360
-;
-;;format-background = ${colors.background-alt}
-;format = <label>
-;format-prefix = "   "
-;format-suffix = " "
-;#format-prefix-foreground = ${colors.foreground-alt}
-;exec = ~/.scripts/weather.sh
-
 [module/openweathermap-fullfeatured]
 type = custom/script
 exec = ~/polybar-scripts/polybar-scripts/openweathermap-fullfeatured/openweathermap-fullfeatured.sh
 interval = 600
+format-prefix = "  "
 label-font = 7
-
-[module/music]
-type = custom/script
-exec = python  ~/.scripts/spotify_status.py -f '{song} - {artist}'
-interval = 3
-bar-width = 50%
-
-format-prefix = "  "
-format-suffix = " "
-;format-background = ${colors.background-alt}
-format-foreground = ${colors.foreground}
-
-;label = " %output% "=
 
 
 [module/i3]
@@ -225,7 +204,7 @@ label-mode-background = #e60053
 label-focused = %name%
 label-focused-foreground = #ffffff
 label-focused-background = ${colors.background-alt}
-label-focused-underline = #fba922
+label-focused-underline = #000000
 label-focused-padding = 6
 
 ; Available tokens:
@@ -261,11 +240,9 @@ type = internal/network
 interface = wlp3s0
 interval = 3
 
-format-connected-prefix = " "
-
 format-connected-background = ${colors.background-mod0}
 format-connected = "   <ramp-signal> <label-connected>  "
-format-connected-underline = #9f78e1
+format-connected-underline = #00ffff
 label-connected =
 
 format-disconnected = "   None "
@@ -288,9 +265,7 @@ interface = enp4s0
 interval = 3
 
 format-connected-underline = #55aa55
-format-connected-prefix = " IP "
 format-connected-prefix-foreground = ${colors.foreground}
-format-connected-suffix = " "
 label-connected = %local_ip%
 
 format-disconnected =
@@ -370,7 +345,6 @@ label = %date% %time%
 ;format-muted-background = ${colors.background-unf}
 ;format-volume-background = ${colors.background-alt}
 ;format-volume = "   <ramp-volume>  <label-volume>  "
-;format-volume-prefix = " "
 ;label-muted = "   mute   "
 ;
 ;;label-muted = "          "
@@ -391,7 +365,6 @@ label = %date% %time%
 #format-charging = "⁣   <animation-charging> <label-charging>"
 #format-charging-underline = #ffb52a
 #
-#format-charging-suffix = "   "
 #
 #format-discharging-background = ${colors.background-alt}
 #format-discharging = "⁣  <ramp-capacity> <label-discharging>  "
@@ -424,7 +397,7 @@ type = custom/menu
 format-spacing = 1
 
 label-open = "      "
-label-open-background = ${colors.background-mod1}
+label-open-background = ${colors.background}
 label-open-foreground = ${colors.secondary}
 label-close = "    cancel   "
 label-close-background = ${colors.background-mod2}
@@ -465,8 +438,7 @@ margin-bottom = 5
 type = internal/xkeyboard
 blacklist-0 = num lock
 
-format-prefix = "   "
-format-suffix = " "
+format-prefix = "  "
 format-prefix-foreground = ${colors.foreground}
 format-prefix-underline = ${colors.secondary}
 
@@ -489,26 +461,31 @@ label-indicator-underline = ${colors.secondary}
 ; label-unmounted = %mountpoint% not mounted
 ; label-unmounted-foreground = ${colors.foreground-alt}
 ;
+; [module/backlight]
+; type = internal/backlight
 ;
-;[module/xbacklight]
-;type = internal/xbacklight
-;
-;format = <label> <bar>
-;label = BL
-;
-;bar-width = 10
-;bar-indicator = |
-;bar-indicator-foreground = #ff
-;bar-indicator-font = 2
-;bar-fill = -
-;bar-fill-font = 2
-;bar-fill-foreground = #9f78e1
-;bar-empty = -
-;bar-empty-font = 2
-;bar-empty-foreground = ${colors.foreground-alt}
-;bar-empty-background = ${colors.foreground-mod}
-;
+; ; Use the following command to list available cards:
+; ; $ ls -1 /sys/class/backlight/
+; card = intel_backlight
+
+[module/backlight]
+type = internal/xbacklight
+
+; XRandR output to get get values from
+; Default: the monitor defined for the running bar
+output = HDMI-1
+
+; Create scroll handlers used to set the backlight value
+; Default: true
+enable-scroll = false
+
 ;[module/backlight-acpi]
 ;inherit = module/xbacklight
 ;type = internal/backlight
 ;card = intel_backlight
+
+[module/isrunning-compton]
+type = custom/script
+exec = ~/polybar-scripts/polybar-scripts/isrunning-compton/isrunning-compton.sh
+interval = 5
+click-left = ~/polybar-scripts/isrunning-compton.sh --toggle
