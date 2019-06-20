@@ -10,7 +10,7 @@ Plugin 'VundleVim/Vundle.vim'
 Plugin 'vim-airline/vim-airline'
 Plugin 'vim-airline/vim-airline-themes'
 " Plugin 'dracula/vim'
-" Plugin 'HenryNewcomer/vim-theme-papaya'
+Plugin 'HenryNewcomer/vim-theme-papaya'
 " Plugin 'noahfrederick/vim-hemisu'
 Plugin 'cseelus/vim-colors-lucid'
 Plugin 'rakr/vim-one'
@@ -25,6 +25,7 @@ Plugin 'xolox/vim-misc'
 Plugin 'majutsushi/tagbar'
 " Plugin 'ctrlpvim/ctrlp.vim'
 " Plugin 'vim-scripts/a.vim'
+Plugin 'alvan/vim-closetag'
 
 Plugin 'maralla/completor.vim'
 
@@ -37,8 +38,8 @@ Plugin 'tpope/vim-fugitive'
 
 " ----- Other text editing features -----------------------------------
 Plugin 'Raimondi/delimitMate'
-Plugin 'inkarkat/vim-spellcheck'
-Plugin 'inkarkat/vim-ingo-library'
+" Plugin 'inkarkat/vim-spellcheck'
+" Plugin 'inkarkat/vim-ingo-library'
 
 " ----- man pages, tmux -----------------------------------------------
 Plugin 'jez/vim-superman'
@@ -110,13 +111,17 @@ set background=dark
 let ayucolor="mirage"
 
 " Set the colorscheme
-color lucid
+colorscheme lucid
 
+" Toggle background transparency
+" hi Normal guibg=NONE ctermbg=NONE ctermfg=NONE
+
+" Spell check error highlighting
 hi clear SpellBad
-" hi SpellBad cterm=bold ctermbg=blue ctermfg=green
-" hi SpellCap cterm=underline ctermfg=red
-" hi SpellLocal cterm=bold ctermbg=green ctermfg=blue
-" hi SpellRare cterm=underline  ctermfg=red
+hi SpellBad cterm=underline ctermfg=white ctermbg=red
+hi SpellCap cterm=underline ctermfg=red
+hi SpellLocal cterm=underline ctermbg=green ctermfg=blue
+hi SpellRare cterm=underline  ctermfg=red
 
 " ----- bling/vim-airline settings -----
 " Always show statusbar
@@ -134,7 +139,7 @@ let g:airline_detect_paste=1
 
 " Show airline for tabs too
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='lucius'
+let g:airline_theme='papercolor'
 
 " ----- jistr/vim-nerdtree-tabs -----
 " Open/close NERDTree Tabs with \t
@@ -159,7 +164,7 @@ let NERDSpaceDelims=1
 " Enable completion where available.
 let g:ale_completion_enabled = 1
 
-let b:ale_linters = ['flake8', 'luacheck']
+let b:ale_linters = ['flake8', 'luacheck', 'yamllint']
 " Fix Python files with autopep8 and yapf.
 let b:ale_fixers = ['autopep8', 'yapf']
 " Disable warnings about trailing whitespace for Python files.
@@ -215,4 +220,14 @@ augroup END
 " better man page support
 noremap K :SuperMan <cword><CR>
 
+" filenames like *.xml, *.html, *.xhtml, ...
+" These are the file extensions where this plugin is enabled.
+"
+let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.md'
+
+" Syntax Highlight conf files
 au BufEnter,BufRead *conf* setf dosini
+
+" Ctrl r for quick replacing
+vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+

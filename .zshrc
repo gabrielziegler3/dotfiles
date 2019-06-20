@@ -59,9 +59,10 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git pip zsh-256color virtualenv zsh-syntax-highlighting)
+plugins=(git pip virtualenv zsh-syntax-highlighting cp sudo docker)
 
 source $ZSH/oh-my-zsh.sh
+
 
 # User configuration
 
@@ -73,9 +74,6 @@ source $ZSH/oh-my-zsh.sh
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
 export EDITOR='vim'
-# else
-#   export EDITOR='vim'
-# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -107,3 +105,11 @@ export PATH=/home/ziegler/.local/bin${PATH:+:${PATH}}
 # No accessibility
 export NO_AT_BRIDGE=1
 
+# added by travis gem
+[ -f /home/ziegler/.travis/travis.sh ] && source /home/ziegler/.travis/travis.sh
+
+# Kubernetes autocomplete
+if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
+
+# Kompose autocomplete
+if [ /usr/local/bin/kompose ]; then source <(kompose completion zsh); fi

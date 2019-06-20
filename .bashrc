@@ -117,3 +117,6 @@ if ! shopt -oq posix; then
 fi
 
 
+
+# added by travis gem
+[ -f /home/ziegler/.travis/travis.sh ] && source /home/ziegler/.travis/travis.sh

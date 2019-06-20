@@ -18,10 +18,10 @@ background-mod2 = #cflc4c4c4
 background-alrt = #cflA1BB76
 
 ;foreground = ${xrdb:color1:#222}
-foreground = #00ffff
+foreground = #e0ffff
 foreground-alt = #00bbff
-primary = #00ffff
-secondary = #00ffff
+primary = #e0ffff
+secondary = #e0ffff
 
 
 [bar/topbar]
@@ -205,9 +205,9 @@ label-mode-background = #e60053
 ;   %output%
 ; Default: %icon%  %name%
 label-focused = %name%
-label-focused-foreground = #ffffff
+label-focused-foreground = ${colors.foreground}
 label-focused-background = ${colors.background-alt}
-label-focused-underline = #000000
+label-focused-underline = ${colors.foreground}
 label-focused-padding = 6
 
 ; Available tokens:
@@ -233,7 +233,8 @@ label-visible-padding = 6
 ;   %index%
 ; Default: %icon%  %name%
 label-urgent = %name%
-label-urgent-foreground = #000000
+;label-urgent-foreground = #000000
+label-urgent-foreground = ${colors.foreground-alt}
 label-urgent-background = ${colors.background-alrt}
 label-urgent-padding = 6
 
@@ -245,7 +246,7 @@ interval = 3
 
 format-connected-background = ${colors.background-mod0}
 format-connected = "<label-connected>  <ramp-signal> "
-format-connected-underline = #00ffff
+format-connected-underline = ${colors.foreground}
 label-connected = " %essid%"
 
 format-disconnected = "  None "
@@ -267,7 +268,7 @@ type = internal/network
 interface = enp4s0
 interval = 3
 
-format-connected-underline = #00ffff
+format-connected-underline = ${colors.foreground}
 format-connected-prefix-foreground = ${colors.foreground}
 label-connected = %local_ip%
 
@@ -285,7 +286,7 @@ interval = 1
 date =
 date-alt = " %Y-%m-%d"
 
-time = " %a, %d %b     %H:%M:%S"
+time = " %a, %d %b    %H:%M:%S"
 time-alt = %H:%M:%S
 
 format-prefix-foreground = ${colors.foreground-alt}
@@ -434,3 +435,4 @@ type = custom/script
 exec = ~/polybar-scripts/polybar-scripts/isrunning-compton/isrunning-compton.sh
 interval = 5
 click-left = ~/polybar-scripts/isrunning-compton.sh --toggle
+

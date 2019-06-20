@@ -1,14 +1,17 @@
-rofi.color-enabled:     false
-rofi.color-window:      #000, #000, #000
-rofi.color-normal:      #111, #819396, #222, #008ed4, #ffffff
+rofi.color-enabled:     true
+rofi.color-window:      #222, black, lightcyan
+rofi.color-normal:      #222, lightcyan , black, lightcyan, black
 rofi.color-active:      #002b37, #008ed4, #003643, #008ed4, #66c6ff
 rofi.color-urgent:      #002b37, #da4281, #003643, #008ed4, #890661
 
 rofi.fake-transparency: true
-rofi.lines:             4
-rofi.eh:                3
+rofi.font		Inconsolata for Powerline 10
+rofi.lines:             8
+rofi.eh:                2
 rofi.bw:                0
-rofi.opacity:           "65"
-rofi.hide-scrollbar:    false
-rofi.width:             100
-rofi.padding:           80
+rofi.opacity:           65
+rofi.hide-scrollbar:    true
+rofi.width:             50
+rofi.padding:           10
+rofi.show-icons: 	true
+rofi.sidebar-mode:	false
