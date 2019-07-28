@@ -28,8 +28,8 @@ font pango:Monospace 11, FontAwesome 11
 
 # Needed for i3-gaps
 for_window [class="^.*"] border pixel 3
-gaps inner 3
-gaps outer 3
+gaps inner 2
+gaps outer 2
 # smart_gaps on
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -42,7 +42,13 @@ bindsym $mod+Return exec termite
 bindsym $mod+Shift+q kill
 
 # Ranger
-bindsym $mod+b exec --no-startup-id urxvt -e ranger
+bindsym $mod+b exec --no-startup-id xst -e ranger
+
+# Music
+bindsym $mod+m exec --no-startup-id xst -e ncmpcpp
+
+# Calc
+bindsym $mod+c exec --no-startup-id termite -e python
 
 # Rofi dmenu
 bindsym $mod+d exec rofi -show run -modi run -show-icons
@@ -115,15 +121,28 @@ set $ws10 "10"
 # Move applications to their respective workspaces
 for_window [class="Spotify"] move workspace $ws2
 for_window [class="Google-chrome"] move workspace $ws3
+for_window [class="Firefox"] move workspace $ws3
 for_window [class="Opera"] move workspace $ws3
 for_window [class="TelegramDesktop"] move workspace $ws4
 for_window [class="Slack"] move workspace $ws4
 for_window [class="Steam"] move workspace $ws5
 for_window [class="Lutris"] move workspace $ws5
 
+# Set floating windows
+for_window [class="^Steam$" title="^Friends$"] floating enable
+for_window [class="^Steam$" title="Steam - News"] floating enable
+for_window [class="^Steam$" title=".* - Chat"] floating enable
+for_window [class="^Steam$" title="^Settings$"] floating enable
+for_window [class="^Steam$" title=".* - event started"] floating enable
+for_window [class="^Steam$" title=".* CD key"] floating enable
+for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
+for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
+for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
+for_window [title="^Steam Keyboard$"] floating enable
+
+
 # Start apps on startup
-# exec --no-startup-id opera
-exec --no-startup-id firefox
+exec --no-startup-id google-chrome-stable
 exec --no-startup-id termite
 
 # switch to workspace
@@ -184,7 +203,7 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-# Resize overwritten keys
+# Overwrite resize keys
 bindsym $mod+Ctrl+Right resize shrink width 1 px or 1 ppt
 bindsym $mod+Ctrl+Up resize shrink height 1 px or 1 ppt
 bindsym $mod+Ctrl+Down resize grow height 1 px or 1 ppt
@@ -205,13 +224,13 @@ exec_always --no-startup-id ~/.config/conky/launch
 exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/death-of-socrates.jpeg
 
 # Starts dunst for notifications:
-# exec --no-startup-id dunst
+exec_always --no-startup-id dunst -conf ~/.config/dunst/dunstrc &
 
 # Colors
 set $bg     #2c2c2e
 set $fg     #9f9f9f
 set $hi     #efef8f
-set $ac     #a0afa0
+set $ac     #e0ffff
 set $tx     #040404
 set $ia     #8f8f8f
 set $be     #8faf9f
@@ -263,3 +282,4 @@ bindsym XF86AudioPrev exec playerctl previous
 
 # Miscellaneous
 bindsym XF86Calculator exec cat ~/Text/en-linkedin | xclip -selection clipboard
+
