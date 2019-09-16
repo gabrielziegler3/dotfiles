@@ -73,7 +73,7 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-export EDITOR='vim'
+export EDITOR='nvim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -87,8 +87,8 @@ export EDITOR='vim'
 # For a full list of active aliases, run `alias`.
 #
 # Example aliases
-alias zshconfig="vim ~/.zshrc"
-alias ohmyzsh="vim ~/.oh-my-zsh"
+alias zshconfig="nvim ~/.zshrc"
+alias ohmyzsh="nvim ~/.oh-my-zsh"
 
 # synclient TapButton1=1 TapButton2=3 TapButton3=2
 
@@ -100,6 +100,7 @@ fi
 #ENV VARIABLES FOR CUDA CONFIG
 # export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
 export PATH=/home/ziegler/.local/bin${PATH:+:${PATH}}
+export PATH="$PATH:/home/ziegler/App/flutter/bin"
 # export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
 
 # No accessibility

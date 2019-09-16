@@ -11,6 +11,8 @@
 
 set $mod Mod1
 
+focus_follows_mouse no
+
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
 font pango:Monospace 11, FontAwesome 11
@@ -139,6 +141,7 @@ for_window [class="^Steam$" title="^Steam - Self Updater$"] floating enable
 for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
 for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 for_window [title="^Steam Keyboard$"] floating enable
+for_window [class="Nemo"] floating enable
 
 
 # Start apps on startup
@@ -215,40 +218,31 @@ bindsym $mod+Ctrl+j resize grow height 1 px or 1 ppt
 bindsym $mod+Ctrl+h resize grow width 1 px or 1 ppt
 
 # Start Compton
-exec_always --no-startup-id compton -f
+exec --no-startup-id compton -f
 
 # Start Conky
 exec_always --no-startup-id ~/.config/conky/launch
 
 # Setting the background:
-exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/death-of-socrates.jpeg
+exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/great-wave.jpg
 
 # Starts dunst for notifications:
 exec_always --no-startup-id dunst -conf ~/.config/dunst/dunstrc &
 
-# Colors
-set $bg     #2c2c2e
-set $fg     #9f9f9f
-set $hi     #efef8f
-set $ac     #e0ffff
-set $tx     #040404
-set $ia     #8f8f8f
-set $be     #8faf9f
-set $yw     #ccdc90
-set $gn     #88b090
-set $rd     #e89393
+# Starts libinput for multi gestures
+exec_always --no-startup-id libinput-gestures-setup start
 
 # set some nice colors      border     background  text
-client.focused              $ac        $ac         $tx
-client.unfocused            $bg        $bg         $ia
-client.focused_inactive     $bg        $bg         $ac
-client.urgent               $rd        $rd         $tx
+client.focused              #5ADECD    #5ADECD     #1D1F28
+client.unfocused            #1D1F28    #1D1F28     #1D1F28
+client.focused_inactive     #C574DD    #1D1F28     #1D1F28
+client.urgent               #FF4971    #1D1F28     #1D1F28
 
 # Polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
 # i3 Lock
-bindsym $mod+shift+x exec "cd ~/.config/i3/i3lock-color && ./lock.sh"
+bindsym $mod+shift+x exec ~/.config/i3/i3lock-color/lock.sh
 
 # Screenshot shortcut
 # take a screenshot of a screen region and copy it to a clipboard

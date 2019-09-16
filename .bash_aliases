@@ -31,4 +31,6 @@ alias dcup='sudo docker-compose up'
 
 # Others
 alias xclip='xclip -selection clipboard'
-alias vimconfig='vim ~/.vimrc'
+alias vimconfig='nvim ~/.vimrc'
+alias i3config='nvim ~/.config/i3/config'
+alias dunstconfig='nvim ~/.config/dunst/dunstrc'

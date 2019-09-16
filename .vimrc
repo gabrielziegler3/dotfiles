@@ -1,4 +1,4 @@
-" Gotta be first
+
 filetype off
 
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -26,11 +26,12 @@ Plugin 'majutsushi/tagbar'
 " Plugin 'ctrlpvim/ctrlp.vim'
 " Plugin 'vim-scripts/a.vim'
 Plugin 'alvan/vim-closetag'
-
-Plugin 'maralla/completor.vim'
-
+" Plugin 'maralla/completor.vim'
+Plugin 'zxqfl/tabnine-vim'
 Plugin 'scrooloose/nerdcommenter'
 Plugin 'chrisbra/Colorizer'
+" Plugin 'kiteco/vim-plugin'
+Plugin 'Shougo/denite.nvim'
 
 " ----- Working with Git ----------------------------------------------
 Plugin 'airblade/vim-gitgutter'
@@ -53,7 +54,7 @@ Plugin 'w0rp/ale'
 
 " ---- Extras/Advanced plugins ----------------------------------------
 " Highlight and strip trailing whitespace
-Plugin 'ntpeters/vim-better-whitespace'
+" Plugin 'ntpeters/vim-better-whitespace'
 " Easily surround chunks of text
 Plugin 'tpope/vim-surround'
 " Align CSV files at commas, align Markdown tables, and more
@@ -75,6 +76,7 @@ filetype plugin indent on
 
 " --- General settings ---
 set t_Co=256
+set t_ut=
 set backspace=indent,eol,start
 set ruler
 set number
@@ -83,6 +85,10 @@ set incsearch
 set hlsearch
 set relativenumber
 set cursorline
+set inccommand=nosplit
+" Unset gui cursor in nVim
+set guifont=Inconsolata
+set guicursor=
 
 " hi MatchParen cterm=bold ctermbg=green ctermfg=blue
 " hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white
@@ -125,6 +131,7 @@ hi SpellRare cterm=underline  ctermfg=red
 
 " ----- bling/vim-airline settings -----
 " Always show statusbar
+set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
 set laststatus=2
 
 " Fancy arrow symbols, requires a patched font
@@ -151,13 +158,14 @@ let g:nerdtree_tabs_open_on_console_startup = 0
 " let g:colorizer_auto_color = 1
 
 " Use deoplete.
-let g:deoplete#enable_at_startup = 1
+" let g:deoplete#enable_at_startup = 1
 
 "------NERD TREE--------"
 map <C-n> :NERDTreeToggle<CR>
 
 "------NERD Commenter--------"
 let NERDSpaceDelims=1
+
 
 " ----- ALE settings -----
 " Check Python files with flake8 and pylint.
@@ -186,11 +194,6 @@ let g:easytags_suppress_ctags_warning = 1
 " Uncomment to open tagbar automatically whenever possible
 "autocmd BufEnter * nested :call tagbar#autoopen(0)
 
-" ----- Completor -----
-inoremap <expr> <Tab> pumvisible() ? "\<C-n>" : "\<Tab>"
-inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
-inoremap <expr> <cr> pumvisible() ? "\<C-y>\<cr>" : "\<cr>"
-
 " Remove all trailing whitespace by pressing F5
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
@@ -216,6 +219,29 @@ augroup mydelimitMate
  au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
 augroup END
 
+" === Denite shorcuts === "
+"   ;         - Browser currently open buffers
+"   <leader>t - Browse list of files in current directory
+"   <leader>g - Search current directory for occurences of given term and
+"   close window if no results
+"   <leader>j - Search current directory for occurences of word under cursor
+nmap ; :Denite buffer -split=floating -winrow=1<CR>
+nmap <leader>t :Denite file/rec -split=floating -winrow=1<CR>
+nnoremap <leader>g :<C-u>Denite grep:. -no-empty -mode=normal<CR>
+nnoremap <leader>j :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
+
+let s:denite_options = {'default' : {
+\ 'auto_resize': 1,
+\ 'prompt': 'λ:',
+\ 'direction': 'rightbelow',
+\ 'winminheight': '10',
+\ 'highlight_mode_insert': 'Visual',
+\ 'highlight_mode_normal': 'Visual',
+\ 'prompt_highlight': 'Function',
+\ 'highlight_matched_char': 'Function',
+\ 'highlight_matched_range': 'Normal'
+\ }}
+
 " ----- jez/vim-superman settings -----
 " better man page support
 noremap K :SuperMan <cword><CR>
@@ -228,6 +254,6 @@ let g:closetag_filenames = '*.html,*.xhtml,*.phtml,*.md'
 " Syntax Highlight conf files
 au BufEnter,BufRead *conf* setf dosini
 
-" Ctrl r for quick replacing
+" Ctrl r when in visual mode for quick replacing
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
