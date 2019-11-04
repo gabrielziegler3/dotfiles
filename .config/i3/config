@@ -168,7 +168,7 @@ for_window [class="^Steam$" title="^Screenshot Uploader$"] floating enable
 for_window [class="^Steam$" title="^Steam Guard - Computer Authorization Required$"] floating enable
 for_window [title="^Steam Keyboard$"] floating enable
 for_window [class="Nemo"] floating enable
-
+for_window [title="*.exe"] floating enable
 
 # Start apps on startup
 exec --no-startup-id google-chrome-stable
@@ -278,10 +278,10 @@ bindsym --release Ctrl+Shift+Print exec "~/.scripts/screenshot.sh 'selection'"
 
 # Audio/Volume controls
 # increase sound volume
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume 0 +3%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +3%
 
 # decrease sound volume
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume 0 -3%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -3%
 
 # toggle mute
 bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle

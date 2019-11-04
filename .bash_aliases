@@ -25,12 +25,16 @@ alias ga='git add'
 alias gco='git checkout'
 
 # Docker
-alias dps='sudo docker ps'
-alias dcbuild='sudo docker-compose build'
-alias dcup='sudo docker-compose up'
+alias dps='docker ps'
+alias dcbuild='docker-compose build'
+alias dcup='docker-compose up'
+alias dcdown='docker-compose down'
 
-# Others
-alias xclip='xclip -selection clipboard'
+# Config
 alias vimconfig='nvim ~/.vimrc'
 alias i3config='nvim ~/.config/i3/config'
 alias dunstconfig='nvim ~/.config/dunst/dunstrc'
+
+# Misc
+alias xclip='xclip -selection clipboard'
+alias pandoc="docker run --privileged --rm -u `id -u`:`id -g` -v `pwd`:/pandoc dalibo/pandocker"
