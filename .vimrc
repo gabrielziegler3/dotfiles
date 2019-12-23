@@ -1,76 +1,62 @@
-
-filetype off
-
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-
-Plugin 'VundleVim/Vundle.vim'
+" Specify a directory for plugins
+" - For Neovim: stdpath('data') . '/plugged'
+" - Avoid using standard Vim directory names like 'plugin'
+call plug#begin('~/.vim/plugged')
 
 " ----- Making Vim look good ------------------------------------------
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
-" Plugin 'dracula/vim'
-Plugin 'HenryNewcomer/vim-theme-papaya'
-" Plugin 'noahfrederick/vim-hemisu'
-Plugin 'cseelus/vim-colors-lucid'
-Plugin 'rakr/vim-one'
-Plugin 'ayu-theme/ayu-vim'
-Plugin 'NLKNguyen/papercolor-theme'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
+" Plug 'HenryNewcomer/vim-theme-papaya'
+Plug 'cseelus/vim-colors-lucid'
+Plug 'rakr/vim-one'
+Plug 'ayu-theme/ayu-vim'
+Plug 'NLKNguyen/papercolor-theme'
 
 " ----- Vim as a programmer's text editor -----------------------------
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-Plugin 'xolox/vim-misc'
-" Plugin 'xolox/vim-easytags'
-Plugin 'majutsushi/tagbar'
-" Plugin 'ctrlpvim/ctrlp.vim'
-" Plugin 'vim-scripts/a.vim'
-Plugin 'alvan/vim-closetag'
-" Plugin 'maralla/completor.vim'
-Plugin 'zxqfl/tabnine-vim'
-Plugin 'scrooloose/nerdcommenter'
-Plugin 'chrisbra/Colorizer'
-" Plugin 'kiteco/vim-plugin'
-Plugin 'Shougo/denite.nvim'
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+Plug 'xolox/vim-misc'
+Plug 'majutsushi/tagbar'
+Plug 'alvan/vim-closetag'
+Plug 'scrooloose/nerdcommenter'
+Plug 'chrisbra/Colorizer'
+" Plug 'Shougo/denite.nvim'
+Plug 'dart-lang/dart-vim-plugin'
+Plug 'elzr/vim-json'
+Plug 'ycm-core/YouCompleteMe'
 
 " ----- Working with Git ----------------------------------------------
-Plugin 'airblade/vim-gitgutter'
-Plugin 'tpope/vim-fugitive'
+Plug 'airblade/vim-gitgutter'
+Plug 'tpope/vim-fugitive'
 
 " ----- Other text editing features -----------------------------------
-Plugin 'Raimondi/delimitMate'
-" Plugin 'inkarkat/vim-spellcheck'
-" Plugin 'inkarkat/vim-ingo-library'
+Plug 'Raimondi/delimitMate'
 
 " ----- man pages, tmux -----------------------------------------------
-Plugin 'jez/vim-superman'
-Plugin 'christoomey/vim-tmux-navigator'
+Plug 'jez/vim-superman'
+Plug 'christoomey/vim-tmux-navigator'
 
 " ----- Syntax plugins ------------------------------------------------
-Plugin 'jez/vim-c0'
-Plugin 'jez/vim-ispc'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'w0rp/ale'
+Plug 'jez/vim-c0'
+Plug 'jez/vim-ispc'
+Plug 'kchmck/vim-coffee-script'
+" Plug 'w0rp/ale'
 
 " ---- Extras/Advanced plugins ----------------------------------------
 " Highlight and strip trailing whitespace
-" Plugin 'ntpeters/vim-better-whitespace'
+" Plug 'ntpeters/vim-better-whitespace'
 " Easily surround chunks of text
-Plugin 'tpope/vim-surround'
+Plug 'tpope/vim-surround'
 " Align CSV files at commas, align Markdown tables, and more
-Plugin 'godlygeek/tabular'
+Plug 'godlygeek/tabular'
 " Automaticall insert the closing HTML tag
-Plugin 'HTML-AutoCloseTag'
 " Make tmux look like vim-airline (read README for extra instructions)
-" Plugin 'edkolev/tmuxline.vim'
+" Plug 'edkolev/tmuxline.vim'
 " All the other syntax plugins I use
-Plugin 'ekalinin/Dockerfile.vim'
-" Plugin 'digitaltoad/vim-jade'
-" Plugin 'tpope/vim-liquid'
-" Plugin 'cakebaker/scss-syntax.vim'
-Plugin 'bash-support.vim'
+Plug 'ekalinin/Dockerfile.vim'
 
-call vundle#end()
+call plug#end()
 
 filetype plugin indent on
 
@@ -85,10 +71,12 @@ set incsearch
 set hlsearch
 set relativenumber
 set cursorline
-set inccommand=nosplit
-" Unset gui cursor in nVim
-set guifont=Inconsolata
-set guicursor=
+if (has('nvim'))
+    set inccommand=nosplit
+    " Unset gui cursor in nVim
+    set guifont=Inconsolata
+    set guicursor=
+endif
 
 " hi MatchParen cterm=bold ctermbg=green ctermfg=blue
 " hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white
@@ -131,7 +119,7 @@ hi SpellRare cterm=underline  ctermfg=red
 
 " ----- bling/vim-airline settings -----
 " Always show statusbar
-set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
+" set statusline=%<%f\ %h%m%r%{kite#statusline()}%=%-14.(%l,%c%V%)\ %P
 set laststatus=2
 
 " Fancy arrow symbols, requires a patched font
@@ -146,7 +134,7 @@ let g:airline_detect_paste=1
 
 " Show airline for tabs too
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='papercolor'
+let g:airline_theme='lucius'
 
 " ----- jistr/vim-nerdtree-tabs -----
 " Open/close NERDTree Tabs with \t
@@ -157,42 +145,11 @@ let g:nerdtree_tabs_open_on_console_startup = 0
 " ---- Colorizer ----
 " let g:colorizer_auto_color = 1
 
-" Use deoplete.
-" let g:deoplete#enable_at_startup = 1
-
 "------NERD TREE--------"
 map <C-n> :NERDTreeToggle<CR>
 
 "------NERD Commenter--------"
 let NERDSpaceDelims=1
-
-
-" ----- ALE settings -----
-" Check Python files with flake8 and pylint.
-" Enable completion where available.
-let g:ale_completion_enabled = 1
-
-let b:ale_linters = ['flake8', 'luacheck', 'yamllint']
-" Fix Python files with autopep8 and yapf.
-let b:ale_fixers = ['autopep8', 'yapf']
-" Disable warnings about trailing whitespace for Python files.
-let b:ale_warn_about_trailing_whitespace = 0
-
-" ----- xolox/vim-easytags settings -----
-" Where to look for tags files
-set tags=./tags;,~/.vimtags
-" Sensible defaults
-let g:easytags_events = ['BufReadPost', 'BufWritePost']
-let g:easytags_async = 1
-let g:easytags_dynamic_files = 2
-let g:easytags_resolve_links = 1
-let g:easytags_suppress_ctags_warning = 1
-
-" ----- majutsushi/tagbar settings -----
-" Open/close tagbar with \b
-" nmap <silent> <leader>b :TagbarToggle<CR>
-" Uncomment to open tagbar automatically whenever possible
-"autocmd BufEnter * nested :call tagbar#autoopen(0)
 
 " Remove all trailing whitespace by pressing F5
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
@@ -219,29 +176,6 @@ augroup mydelimitMate
  au FileType python let b:delimitMate_nesting_quotes = ['"', "'"]
 augroup END
 
-" === Denite shorcuts === "
-"   ;         - Browser currently open buffers
-"   <leader>t - Browse list of files in current directory
-"   <leader>g - Search current directory for occurences of given term and
-"   close window if no results
-"   <leader>j - Search current directory for occurences of word under cursor
-nmap ; :Denite buffer -split=floating -winrow=1<CR>
-nmap <leader>t :Denite file/rec -split=floating -winrow=1<CR>
-nnoremap <leader>g :<C-u>Denite grep:. -no-empty -mode=normal<CR>
-nnoremap <leader>j :<C-u>DeniteCursorWord grep:. -mode=normal<CR>
-
-let s:denite_options = {'default' : {
-\ 'auto_resize': 1,
-\ 'prompt': 'λ:',
-\ 'direction': 'rightbelow',
-\ 'winminheight': '10',
-\ 'highlight_mode_insert': 'Visual',
-\ 'highlight_mode_normal': 'Visual',
-\ 'prompt_highlight': 'Function',
-\ 'highlight_matched_char': 'Function',
-\ 'highlight_matched_range': 'Normal'
-\ }}
-
 " ----- jez/vim-superman settings -----
 " better man page support
 noremap K :SuperMan <cword><CR>
@@ -256,4 +190,134 @@ au BufEnter,BufRead *conf* setf dosini
 
 " Ctrl r when in visual mode for quick replacing
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
+
+" COC CONFIG
+" if hidden is not set, TextEdit might fail.
+set hidden
+
+" Some servers have issues with backup files, see #649
+set nobackup
+set nowritebackup
+
+" Better display for messages
+set cmdheight=2
+
+" You will have bad experience for diagnostic messages when it's default 4000.
+set updatetime=300
+
+" don't give |ins-completion-menu| messages.
+set shortmess+=c
+
+" always show signcolumns
+set signcolumn=yes
+
+" Use tab for trigger completion with characters ahead and navigate.
+" Use command ':verbose imap <tab>' to make sure tab is not mapped by other plugin.
+inoremap <silent><expr> <TAB>
+      \ pumvisible() ? "\<C-n>" :
+      \ <SID>check_back_space() ? "\<TAB>" :
+      \ coc#refresh()
+inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+function! s:check_back_space() abort
+  let col = col('.') - 1
+  return !col || getline('.')[col - 1]  =~# '\s'
+endfunction
+
+" Use <c-space> to trigger completion.
+inoremap <silent><expr> <c-space> coc#refresh()
+
+" Use <cr> to confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+" Or use `complete_info` if your vim support it, like:
+" inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Use `[g` and `]g` to navigate diagnostics
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+" function! s:show_documentation()
+"   if (index(['vim','help'], &filetype) >= 0)
+"     execute 'h '.expand('<cword>')
+"   else
+"     call CocAction('doHover')
+"   endif
+" endfunction
+
+" Highlight symbol under cursor on CursorHold
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+" Remap for rename current word
+nmap <leader>rn <Plug>(coc-rename)
+
+" Remap for format selected region
+xmap <leader>f  <Plug>(coc-format-selected)
+nmap <leader>f  <Plug>(coc-format-selected)
+
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
+
+" Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap for do codeAction of current line
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Fix autofix problem of current line
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Create mappings for function text object, requires document symbols feature of languageserver.
+xmap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap if <Plug>(coc-funcobj-i)
+omap af <Plug>(coc-funcobj-a)
+
+" Use <C-d> for select selections ranges, needs server support, like: coc-tsserver, coc-python
+nmap <silent> <C-d> <Plug>(coc-range-select)
+xmap <silent> <C-d> <Plug>(coc-range-select)
+
+" Use `:Format` to format current buffer
+command! -nargs=0 Format :call CocAction('format')
+
+" Use `:Fold` to fold current buffer
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" use `:OR` for organize import of current buffer
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add status line support, for integration with other plugin, checkout `:h coc-status`
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
+
+" Using CocList
+" Show all diagnostics
+nnoremap <silent> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions
+nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
+" Show commands
+nnoremap <silent> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document
+nnoremap <silent> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols
+nnoremap <silent> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list
+nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 
