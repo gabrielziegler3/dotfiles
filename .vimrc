@@ -11,9 +11,11 @@ Plug 'cseelus/vim-colors-lucid'
 Plug 'rakr/vim-one'
 Plug 'ayu-theme/ayu-vim'
 Plug 'NLKNguyen/papercolor-theme'
+Plug 'ryanoasis/vim-devicons'
 
 " ----- Vim as a programmer's text editor -----------------------------
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'xolox/vim-misc'
@@ -21,7 +23,6 @@ Plug 'majutsushi/tagbar'
 Plug 'alvan/vim-closetag'
 Plug 'scrooloose/nerdcommenter'
 Plug 'chrisbra/Colorizer'
-" Plug 'Shougo/denite.nvim'
 Plug 'dart-lang/dart-vim-plugin'
 Plug 'elzr/vim-json'
 Plug 'ycm-core/YouCompleteMe'
@@ -35,7 +36,6 @@ Plug 'Raimondi/delimitMate'
 
 " ----- man pages, tmux -----------------------------------------------
 Plug 'jez/vim-superman'
-Plug 'christoomey/vim-tmux-navigator'
 
 " ----- Syntax plugins ------------------------------------------------
 Plug 'jez/vim-c0'
@@ -192,6 +192,9 @@ au BufEnter,BufRead *conf* setf dosini
 vnoremap <C-r> "hy:%s/<C-r>h//gc<left><left><left>
 
 " COC CONFIG
+"
+" Run prettier on save
+command! -nargs=0 Prettier :CocCommand prettier.formatFile
 " if hidden is not set, TextEdit might fail.
 set hidden
 
@@ -246,13 +249,13 @@ nmap <silent> gr <Plug>(coc-references)
 " Use K to show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
 
-" function! s:show_documentation()
-"   if (index(['vim','help'], &filetype) >= 0)
-"     execute 'h '.expand('<cword>')
-"   else
-"     call CocAction('doHover')
-"   endif
-" endfunction
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 " Highlight symbol under cursor on CursorHold
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -320,4 +323,3 @@ nnoremap <silent> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
-
