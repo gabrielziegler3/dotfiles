@@ -29,6 +29,12 @@ sudo pacman --needed -S git \
 
 yay --needed -S termite docker docker-compose polybar xst rxvt-unicode neovim google-chrome rofi telegram-desktop ttf-font-awesome pavucontrol pamixer tzupdate boost slack-desktop code zotero xorg-xwininfo python-neovim-git ttf-inconsolata opera nemo xst vulkan-amdgpu-pro dunst-git
 
+# Make docker usable without sudo
+sudo usermod -aG docker $USER
+newgrp docker
+
+# Install Polybar scripts
+
 git clone https://github.com/polybar/polybar-scripts $HOME/polybar-scripts
 
 # Install ZSH dependencies
@@ -40,6 +46,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 chsh -s $(which zsh)
 
 ## Fix Ycm plugin
+
 python /home/gabrielziegler/.vim/plugged/YouCompleteMe/install.py
 
 ## Install Syntax Highlightin for ZSH
