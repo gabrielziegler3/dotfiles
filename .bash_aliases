@@ -31,7 +31,7 @@ alias dcup='docker-compose up'
 alias dcdown='docker-compose down'
 
 # Config
-alias vimconfig='nvim ~/.vimrc'
+alias vimconfig='nvim ~/.config/nvim/init.vim'
 alias i3config='nvim ~/.config/i3/config'
 alias dunstconfig='nvim ~/.config/dunst/dunstrc'
 

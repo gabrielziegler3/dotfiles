@@ -59,21 +59,57 @@ font-5 = Font Awesome 5 Brands:pixelsize=12;1
 font-6 = Weather Icons:size=12;1
 ;font-7 = "Wuncon Siji:pixelsize=12;1"
 
-modules-left = i3 pulseaudio-tail player-mpris-tail
+modules-left = i3 pulseaudio player-mpris-tail
 modules-center = date disk openweathermap-fullfeatured
-modules-right = xkeyboard backlight wired-network wireless-network
+modules-right = xkeyboard wired-network wireless-network
 
 wm-restack = i3
 
-[module/pulseaudio-tail]
-type = custom/script
-exec = ~/polybar-scripts/polybar-scripts/pulseaudio-tail/pulseaudio-tail.sh
-tail = true
-click-right = exec pavucontrol &
-click-left = ~/polybar-scripts/polybar-scripts/pulseaudio-tail/pulseaudio-tail.sh --mute
-scroll-up = ~/polybar-scripts/polybar-scripts/pulseaudio-tail/pulseaudio-tail.sh --up
-scroll-down = ~/polybar-scripts/polybar-scripts/pulseaudio-tail/pulseaudio-tail.sh --down
-format-underline = ${colors.secondary}
+[module/pulseaudio]
+type = internal/pulseaudio
+
+; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
+; If not, uses default sink
+sink = alsa_output.pci-0000_12_00.3.analog-stereo
+
+; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
+; Default: true
+use-ui-max = true
+
+; Interval for volume increase/decrease (in percent points)
+; Default: 5
+interval = 5
+; Available tags:
+;   <label-volume> (default)
+;   <ramp-volume>
+;   <bar-volume>
+format-volume = <ramp-volume> <label-volume>
+
+; Available tags:
+;   <label-muted> (default)
+;   <ramp-volume>
+;   <bar-volume>
+;format-muted = <label-muted>
+
+; Available tokens:
+;   %percentage% (default)
+;   %decibels% (unreleased)
+;label-volume = %percentage%%
+
+; Available tokens:
+;   %percentage% (default)
+;   %decibels% (unreleased)
+label-muted = 🔇 muted
+label-muted-foreground = #666
+
+; Only applies if <ramp-volume> is used
+ramp-volume-0 = 🔈
+ramp-volume-1 = 🔉
+ramp-volume-2 = 🔊
+
+; Right and Middle click (unreleased)
+click-right = pavucontrol &
+; click-middle = 
 
 
 [module/player-mpris-tail]
