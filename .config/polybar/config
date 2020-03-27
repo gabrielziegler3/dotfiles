@@ -60,10 +60,9 @@ font-6 = Weather Icons:size=12;1
 ;font-7 = "Wuncon Siji:pixelsize=12;1"
 
 modules-left = i3 pulseaudio player-mpris-tail
-modules-center = date disk openweathermap-fullfeatured
+modules-center = date disk redshift
 modules-right = xkeyboard wired-network wireless-network
 
-wm-restack = i3
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -99,28 +98,38 @@ format-volume = <ramp-volume> <label-volume>
 ; Available tokens:
 ;   %percentage% (default)
 ;   %decibels% (unreleased)
-label-muted = 🔇 muted
+label-muted = 
 label-muted-foreground = #666
 
 ; Only applies if <ramp-volume> is used
-ramp-volume-0 = 🔈
-ramp-volume-1 = 🔉
-ramp-volume-2 = 🔊
+ramp-volume-0 = " "
+ramp-volume-1 = " "
+ramp-volume-2 = " "
 
 ; Right and Middle click (unreleased)
 click-right = pavucontrol &
-; click-middle = 
+; click-middle =
 
 
 [module/player-mpris-tail]
 type = custom/script
-exec = python3 ~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py -f '{icon} {:artist:t18:{artist}:}{:artist: - :}{:t20:{title}:}  %{A1:~/polybar-scripts/player-mpris-tail.py previous:} ⏮ %{A} %{A1:~/polybar-scripts/player-mpris-tail.py play-pause:} {icon-reversed} %{A} %{A1:~/polybar-scripts/player-mpris-tail.py next:} ⏭ %{A}'
+exec = ~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py -f '   {artist} - {title}'
 tail = true
 label = %output%
-click-left = ~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py previous
-click-right = ~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py next
-click-middle = ~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py play-pause
+;click-left = ~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py previous
+;click-right = ~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py next
+;click-middle = ~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py play-pause
 format-underline = ${colors.secondary}
+
+
+[module/redshift]
+type = custom/script
+format-prefix = " "
+exec = source ~/scripts/polybar-redshift/env.sh && ~/scripts/polybar-redshift/redshift.sh temperature
+click-left = source ~/scripts/polybar-redshift/env.sh && ~/scripts/polybar-redshift/redshift.sh toggle
+scroll-up = source ~/scripts/polybar-redshift/env.sh && ~/scripts/polybar-redshift/redshift.sh increase
+scroll-down = source ~/scripts/polybar-redshift/env.sh && ~/scripts/polybar-redshift/redshift.sh decrease
+interval=0.5
 
 
 [module/system-usb-udev]
