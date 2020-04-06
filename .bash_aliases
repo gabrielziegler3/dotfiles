@@ -34,6 +34,7 @@ alias dcdown='docker-compose down'
 alias vimconfig='nvim ~/.config/nvim/init.vim'
 alias i3config='nvim ~/.config/i3/config'
 alias dunstconfig='nvim ~/.config/dunst/dunstrc'
+alias polybarconfig='nvim ~/.config/polybar/config'
 
 # Misc
 alias xclip='xclip -selection clipboard'

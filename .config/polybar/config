@@ -113,7 +113,7 @@ click-right = pavucontrol &
 
 [module/player-mpris-tail]
 type = custom/script
-exec = ~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py -f '   {artist} - {title}'
+exec = ~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py -f '  {:artist:t18:{artist}:}{:artist: - :}{:t20:{title}:}'
 tail = true
 label = %output%
 ;click-left = ~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py previous
