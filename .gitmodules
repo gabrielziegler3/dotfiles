@@ -1,0 +1,3 @@
+[submodule ".scripts/.scripts/polybar-redshift"]
+	path = .scripts/.scripts/polybar-redshift
+	url = https://github.com/VineshReddy/polybar-redshift.git
