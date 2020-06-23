@@ -44,7 +44,7 @@ bindsym $mod+Return exec termite
 bindsym $mod+Shift+q kill
 
 # Ranger
-bindsym $mod+b exec --no-startup-id xst -e ranger
+bindsym $mod+b exec --no-startup-id termite -e ranger
 
 # Music
 bindsym $mod+m exec --no-startup-id xst -e ncmpcpp
@@ -122,9 +122,10 @@ set $ws10 "10"
 
 # Move applications to their respective workspaces
 for_window [class="Spotify"] move workspace $ws2
-for_window [class="Google-chrome"] move workspace $ws3
 for_window [class="Firefox"] move workspace $ws3
-for_window [class="Opera"] move workspace $ws3
+for_window [class="Google-chrome"] move workspace $ws3
+for_window [class="Chromium"] move workspace $ws3
+# for_window [class="Opera"] move workspace $ws3
 for_window [class="TelegramDesktop"] move workspace $ws4
 for_window [class="Slack"] move workspace $ws4
 for_window [class="Steam"] move workspace $ws5
@@ -172,7 +173,10 @@ for_window [title="*.exe"] floating enable
 
 # Start apps on startup
 exec --no-startup-id google-chrome-stable
+exec --no-startup-id chromium
 exec --no-startup-id termite
+exec --no-startup-id spotify
+exec --no-startup-id telegram-desktop
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -205,33 +209,6 @@ bindsym $mod+Shift+r restart
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
 
-# resize window (you can also use the mouse for that)
-mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym j resize shrink width 10 px or 10 ppt
-        bindsym k resize grow height 10 px or 10 ppt
-        bindsym l resize shrink height 10 px or 10 ppt
-        bindsym semicolon resize grow width 10 px or 10 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
-
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
-}
-
-bindsym $mod+r mode "resize"
-
 # Overwrite resize keys
 bindsym $mod+Ctrl+Right resize shrink width 1 px or 1 ppt
 bindsym $mod+Ctrl+Up resize shrink height 1 px or 1 ppt
@@ -250,7 +227,7 @@ exec --no-startup-id compton -f
 exec_always --no-startup-id ~/.config/conky/launch
 
 # Setting the background:
-exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/the-great-wave.jpg
+exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/death-of-socrates.jpg
 
 # Starts dunst for notifications:
 exec_always --no-startup-id dunst -conf ~/.config/dunst/dunstrc &
@@ -267,6 +244,56 @@ client.urgent               #FF4971    #1D1F28     #1D1F28
 # Polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
+set $height 34
+
+set_from_resource $darkred     color1  #000000
+set_from_resource $red         color9  #000000
+set_from_resource $darkgreen   color2  #000000
+set_from_resource $green       color10 #000000
+set_from_resource $darkyellow  color3  #000000
+set_from_resource $yellow      color11 #000000
+set_from_resource $darkblue    color4  #000000
+set_from_resource $blue        color12 #000000
+set_from_resource $darkmagenta color5  #000000
+set_from_resource $magenta     color13 #000000
+set_from_resource $darkcyan    color6  #000000
+set_from_resource $cyan        color14 #000000
+set_from_resource $darkwhite   color7  #000000
+set_from_resource $white       color15 #000000
+# Use custom colors for black
+set $black       #282828
+set $darkblack   #1d2021
+set $transparent #00000000
+
+
+# bar {
+# #    verbose yes
+#     status_command i3blocks
+#     i3bar_command i3bar -t
+#     position bottom
+#     font pango:Hack, FontAwesome 8
+#     strip_workspace_numbers yes
+#     separator_symbol "■"
+#     bindsym button4 nop
+#     bindsym button5 nop
+#     tray_output eDP1
+#     tray_output LVDS-0
+#     tray_padding 0
+#     height $height
+#     colors {
+#         statusline         $white
+#         background         $black
+#         separator          $black
+# 
+# #                          BORDER       BACKGROUND   TEXT
+#         focused_workspace  $black       $black       $darkwhite
+#         inactive_workspace $black       $black       $white
+#         active_workspace   $black       $black       $white
+#         urgent_workspace   $darkred     $darkred     $transparent
+#         binding_mode       $darkred     $darkred     $transparent
+#     }
+# }
+
 # i3 Lock
 bindsym $mod+shift+x exec ~/.config/i3/i3lock-color/lock.sh
 
@@ -275,6 +302,9 @@ bindsym $mod+shift+x exec ~/.config/i3/i3lock-color/lock.sh
 bindsym --release Print exec "~/.scripts/screenshot.sh"
 bindsym --release Shift+Print exec "~/.scripts/screenshot.sh 'full'"
 bindsym --release Ctrl+Shift+Print exec "~/.scripts/screenshot.sh 'selection'"
+
+# Toggle keyboard language
+bindsym --release Ctrl+Shift+Delete exec "~/.scripts/toggle-keyboard.sh"
 
 # Audio/Volume controls
 # increase sound volume
@@ -297,7 +327,4 @@ bindsym XF86ScreenSaver exec light -S 0
 bindsym XF86AudioPause exec playerctl play-pause
 bindsym XF86AudioNext exec playerctl next
 bindsym XF86AudioPrev exec playerctl previous
-
-# Miscellaneous
-bindsym XF86Calculator exec cat ~/Text/en-linkedin | xclip -selection clipboard
 

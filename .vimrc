@@ -6,7 +6,7 @@ call plug#begin('~/.vim/plugged')
 " ----- Making Vim look good ------------------------------------------
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-" Plug 'HenryNewcomer/vim-theme-papaya'
+Plug 'HenryNewcomer/vim-theme-papaya'
 Plug 'cseelus/vim-colors-lucid'
 Plug 'rakr/vim-one'
 Plug 'ayu-theme/ayu-vim'
@@ -105,7 +105,7 @@ set background=dark
 let ayucolor="mirage"
 
 " Set the colorscheme
-colorscheme lucid
+colorscheme papaya
 
 " Toggle background transparency
 " hi Normal guibg=NONE ctermbg=NONE ctermfg=NONE

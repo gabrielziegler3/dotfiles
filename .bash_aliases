@@ -38,4 +38,4 @@ alias polybarconfig='nvim ~/.config/polybar/config'
 
 # Misc
 alias xclip='xclip -selection clipboard'
-alias pandoc="docker run --privileged --rm -u `id -u`:`id -g` -v `pwd`:/pandoc dalibo/pandocker"
+alias pandoc="docker run --privileged --rm -u `id -u`:`id -g` -v $(pwd):/pandoc dalibo/pandocker"

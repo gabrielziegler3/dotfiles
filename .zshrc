@@ -2,7 +2,7 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/ziegler/.oh-my-zsh
+export ZSH=/home/gabrielziegler/.oh-my-zsh
 # export VIRTUAL_ENV_DISABLE_PROMPT=
 
 # Set name of the theme to load. Optionally, if you set this to "random"
@@ -63,7 +63,6 @@ plugins=(git pip virtualenv zsh-syntax-highlighting cp sudo docker)
 
 source $ZSH/oh-my-zsh.sh
 
-
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -73,7 +72,6 @@ source $ZSH/oh-my-zsh.sh
 
 # Preferred editor for local and remote sessions
 # if [[ -n $SSH_CONNECTION ]]; then
-export EDITOR='nvim'
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -97,20 +95,13 @@ if [ -f ~/.bash_aliases ]; then
 	. ~/.bash_aliases
 fi
 
-#ENV VARIABLES FOR CUDA CONFIG
-# export PATH=/usr/local/cuda-9.0/bin${PATH:+:${PATH}}
-export PATH=/home/ziegler/.local/bin${PATH:+:${PATH}}
-export PATH="$PATH:/home/ziegler/App/flutter/bin"
-# export LD_LIBRARY_PATH=/usr/local/cuda-9.0/lib64${LD_LIBRARY_PATH:+:${LD_LIBRARY_PATH}}
-
-# No accessibility
-export NO_AT_BRIDGE=1
-
-# added by travis gem
-[ -f /home/ziegler/.travis/travis.sh ] && source /home/ziegler/.travis/travis.sh
-
 # Kubernetes autocomplete
-if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
+# if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
 
 # Kompose autocomplete
-if [ /usr/local/bin/kompose ]; then source <(kompose completion zsh); fi
+# if [ /usr/local/bin/kompose ]; then source <(kompose completion zsh); fi
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# Set keyboard speed 
+xset r rate 250 40
