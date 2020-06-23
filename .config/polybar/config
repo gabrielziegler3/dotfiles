@@ -8,7 +8,8 @@
 [colors]
 ;background = ${xrdb:color0:#222}
 ;background = #cfl000000
-background = #1D1F28
+;background = #1D1F28
+background = #000000
 
 ;it's ARGB so "cfl" is for transparency
 background-alt = #cfl666666
@@ -21,7 +22,7 @@ background-alrt = #cflA1BB76
 ;foreground = ${xrdb:color1:#222}
 ;foreground = #e0ffff
 foreground = #FDFDFD
-foreground-alt = #00bbff
+foreground-alt = #00aaaa
 primary = #C574DD
 secondary = #5ADECD
 
@@ -69,11 +70,11 @@ type = internal/pulseaudio
 
 ; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
 ; If not, uses default sink
-sink = alsa_output.pci-0000_12_00.3.analog-stereo
+sink = sh ~/.scripts/pulseaudio-sink.sh
 
 ; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
 ; Default: true
-use-ui-max = true
+use-ui-max = false
 
 ; Interval for volume increase/decrease (in percent points)
 ; Default: 5
@@ -125,10 +126,10 @@ format-underline = ${colors.secondary}
 [module/redshift]
 type = custom/script
 format-prefix = " "
-exec = source ~/scripts/polybar-redshift/env.sh && ~/scripts/polybar-redshift/redshift.sh temperature
-click-left = source ~/scripts/polybar-redshift/env.sh && ~/scripts/polybar-redshift/redshift.sh toggle
-scroll-up = source ~/scripts/polybar-redshift/env.sh && ~/scripts/polybar-redshift/redshift.sh increase
-scroll-down = source ~/scripts/polybar-redshift/env.sh && ~/scripts/polybar-redshift/redshift.sh decrease
+exec = source ~/.scripts/polybar-redshift/env.sh && ~/.scripts/polybar-redshift/redshift.sh temperature
+click-left = source ~/.scripts/polybar-redshift/env.sh && ~/.scripts/polybar-redshift/redshift.sh toggle
+scroll-up = source ~/.scripts/polybar-redshift/env.sh && ~/.scripts/polybar-redshift/redshift.sh increase
+scroll-down = source ~/.scripts/polybar-redshift/env.sh && ~/.scripts/polybar-redshift/redshift.sh decrease
 interval=0.5
 
 
