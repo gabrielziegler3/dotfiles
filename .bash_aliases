@@ -1,9 +1,9 @@
 # System functions
-alias rm="rm -v"
-alias mv="mv -v"
-alias chown="chown -v"
-alias chmod="chmod -v"
-alias cp="cp -v"
+alias rm='rm -v'
+alias mv='mv -v'
+alias chown='chown -v'
+alias chmod='chmod -v'
+alias cp='cp -v'
 alias ll='ls -alF'
 alias la='ls -A'
 alias l='ls -al'
@@ -38,4 +38,4 @@ alias polybarconfig='nvim ~/.config/polybar/config'
 
 # Misc
 alias xclip='xclip -selection clipboard'
-alias pandoc="docker run --privileged --rm -u `id -u`:`id -g` -v $(pwd):/pandoc dalibo/pandocker"
+alias pandoc='docker run --privileged --rm -u `id -u`:`id -g` -v $(pwd):/pandoc dalibo/pandocker'
