@@ -2,7 +2,7 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 export EDITOR='nvim'
 export VISUAL='nvim'
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
-export BROWSER=/usr/bin/chromium
+export BROWSER=/usr/bin/google-chrome-beta
 
 # less syntax highlighting
 export LESS=-R
@@ -21,3 +21,6 @@ export PATH=/home/gabrielziegler/.local/bin${PATH:+:${PATH}}
 
 # No accessibility
 export NO_AT_BRIDGE=1
+
+export JAVA_HOME=/usr/lib/jvm/default
+

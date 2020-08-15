@@ -118,12 +118,12 @@ endif
 
 " ----- altercation/vim-colors-solarized settings -----
 " Toggle this to "light" for light colorscheme
-set background=light
+set background=dark
 
 let ayucolor="mirage"
 
 " Set the colorscheme
-colorscheme buttercream
+colorscheme lucid
 
 " Toggle background transparency
 " hi Normal guibg=NONE ctermbg=NONE ctermfg=NONE
@@ -359,7 +359,6 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " in the sign column.
 highlight clear SignColumn
 
-map <F3> :wall<cr>:!compilation_files/compile simple<cr><esc>
+map <F3> :wall<cr>:!compilation_files/compile full<cr><esc>
 map <F2> :wall<cr>:silent exec "!zathura *.pdf"<cr><esc>
 map <F4> :wall<cr>:!compilation_files/compile bibtex<cr>
-" English

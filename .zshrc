@@ -104,4 +104,4 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Set keyboard speed 
-xset r rate 250 40
+xset r rate 250 60

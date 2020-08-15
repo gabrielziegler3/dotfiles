@@ -124,6 +124,7 @@ set $ws10 "10"
 for_window [class="Spotify"] move workspace $ws2
 for_window [class="Firefox"] move workspace $ws3
 for_window [class="Google-chrome"] move workspace $ws3
+for_window [class="Google-chrome-beta"] move workspace $ws3
 for_window [class="Chromium"] move workspace $ws3
 # for_window [class="Opera"] move workspace $ws3
 for_window [class="TelegramDesktop"] move workspace $ws4
@@ -173,6 +174,7 @@ for_window [title="*.exe"] floating enable
 
 # Start apps on startup
 exec --no-startup-id google-chrome-stable
+exec --no-startup-id google-chrome-beta
 exec --no-startup-id chromium
 exec --no-startup-id termite
 exec --no-startup-id spotify
@@ -220,8 +222,8 @@ bindsym $mod+Ctrl+k resize shrink height 1 px or 1 ppt
 bindsym $mod+Ctrl+j resize grow height 1 px or 1 ppt
 bindsym $mod+Ctrl+h resize grow width 1 px or 1 ppt
 
-# Start Compton
-exec --no-startup-id compton -f
+# Start Picom
+exec --no-startup-id picom --config ~/.config/picom.config
 
 # Start Conky
 exec_always --no-startup-id ~/.config/conky/launch

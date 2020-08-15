@@ -8,6 +8,7 @@ cp ~/.zshrc ~/.bashrc ~/.vimrc ~/.profile ~/.Xresources ~/.xinitrc ~/.bash_alias
 
 # Update config files
 cp -r ~/.config/i3 ~/dotfiles/.config/
+cp -r ~/.config/picom.conf ~/dotfiles/.config/
 cp -r ~/.config/polybar ~/dotfiles/.config/
 cp -r ~/.config/dunst ~/dotfiles/.config/
 cp -r ~/.config/cava ~/dotfiles/.config/
