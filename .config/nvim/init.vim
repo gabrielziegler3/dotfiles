@@ -75,7 +75,7 @@ set showcmd
 set incsearch
 set hlsearch
 set relativenumber
-set cursorline
+" set cursorline
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -86,6 +86,12 @@ augroup FoldingMethods
     autocmd FileType tex set foldmethod=marker
     autocmd FileType python set foldmethod=indent
     autocmd FileType python set foldnestmax=1
+augroup END
+
+augroup CompileDocument
+    autocmd!
+    autocmd FileType tex map <F3> :wall<cr>:!compilation_files/compile full<cr><esc>
+    autocmd FileType markdown map <F3> :wall<cr>:!docker run --privileged --rm -u `id -u`:`id -g` -v $(pwd):/pandoc dalibo/pandocker % -o output.pdf<cr><esc>
 augroup END
 
 if (has('nvim'))
@@ -103,10 +109,8 @@ else
 endif
 
 " hi MatchParen cterm=bold ctermbg=green ctermfg=blue
-" hi CursorLine cterm=NONE ctermbg=darkred ctermfg=white
 
 filetype plugin on
-
 
 " ----- Plugin-Specific Settings --------------------------------------
 
@@ -125,15 +129,16 @@ let ayucolor="mirage"
 " Set the colorscheme
 colorscheme lucid
 
-" Toggle background transparency
-" hi Normal guibg=NONE ctermbg=NONE ctermfg=NONE
-
 " Spell check error highlighting
 hi clear SpellBad
 hi SpellBad cterm=underline ctermfg=white ctermbg=red
 hi SpellCap cterm=underline ctermfg=red
 hi SpellLocal cterm=underline ctermbg=green ctermfg=blue
 hi SpellRare cterm=underline  ctermfg=red
+
+" Toggle background transparency
+" hi Normal guibg=NONE ctermbg=NONE ctermfg=NONE
+hi CursorLine cterm=bold ctermbg=darkred ctermfg=white guibg=Black
 
 " ALE Config
 let g:ale_linters = {'python': ['flake8', 'pyls']}
@@ -358,7 +363,3 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " We need this for plugins like Syntastic and vim-gitgutter which put symbols
 " in the sign column.
 highlight clear SignColumn
-
-map <F3> :wall<cr>:!compilation_files/compile full<cr><esc>
-map <F2> :wall<cr>:silent exec "!zathura *.pdf"<cr><esc>
-map <F4> :wall<cr>:!compilation_files/compile bibtex<cr>
