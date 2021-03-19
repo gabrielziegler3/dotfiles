@@ -149,7 +149,7 @@
     ignore_newline = no
 
     # Stack together notifications with the same content
-    stack_duplicates = true
+    stack_duplicates = false
 
     # Hide the count of stacked notifications with the same content
     hide_duplicate_count = false
@@ -292,7 +292,7 @@
     background = "#1D1F28"
     foreground = "#5ADECD"
     frame_color = "#F37F97"
-    timeout = 0
+    timeout = 5
     # Icon for notifications with critical urgency, uncomment to enable
     #icon = /path/to/icon
 

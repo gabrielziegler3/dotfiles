@@ -13,6 +13,14 @@ elif [[ "$1" == "full" ]]; then
 	import -window root $file
 	xclip -selection clipboard $file -target image/png -i < ${file}
 
+# THESIS SCRIPT
+# If "selectionsave" is passed, selection screenshot will be saved to UnB/
+elif [[ "$1" == "thesis" ]]; then
+	base_folder=~/UnB/TCC/bachelor-thesis/figuras/
+	base_folder=~/Pictures/presentation/
+	file=${base_folder}$(date '+%Y-%m-%d_%H-%M-%S')-screenshot.png
+	import $file
+
 # If "selection", screenshot selection will be copied to clipboard
 elif [[ "$1" == "selection" ]]; then
 	import $file

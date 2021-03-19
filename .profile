@@ -2,9 +2,8 @@ export QT_QPA_PLATFORMTHEME="qt5ct"
 export EDITOR='nvim'
 export VISUAL='nvim'
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
-export BROWSER=/usr/bin/google-chrome-beta
 
-# less syntax highlighting
+# less and man colors
 export LESS=-R
 export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
 export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
@@ -24,3 +23,5 @@ export NO_AT_BRIDGE=1
 
 export JAVA_HOME=/usr/lib/jvm/default
 
+# Display percentage on man document
+export MANPAGER='less -s -M +Gg'

@@ -64,3 +64,6 @@ get_session(){
 }
 
 exec $(get_session)
+
+# Run Picom at start
+picom -b --config ~/.config/picom.conf

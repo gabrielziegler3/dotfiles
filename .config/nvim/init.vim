@@ -47,6 +47,7 @@ Plug 'jez/vim-c0'
 Plug 'jez/vim-ispc'
 Plug 'kchmck/vim-coffee-script'
 Plug 'w0rp/ale'
+Plug 'harenome/vim-mipssyntax'
 
 " ---- Extras/Advanced plugins ----------------------------------------
 " Highlight and strip trailing whitespace
@@ -114,20 +115,16 @@ filetype plugin on
 
 " ----- Plugin-Specific Settings --------------------------------------
 
+" Set highlight syntax for MIPS assembly
+if @% =~# '.spim'
+    set ft=mips
+endif
+
 syntax enable
 
 if (has("termguicolors"))
     set termguicolors
 endif
-
-" ----- altercation/vim-colors-solarized settings -----
-" Toggle this to "light" for light colorscheme
-set background=dark
-
-let ayucolor="mirage"
-
-" Set the colorscheme
-colorscheme lucid
 
 " Spell check error highlighting
 hi clear SpellBad
@@ -137,8 +134,17 @@ hi SpellLocal cterm=underline ctermbg=green ctermfg=blue
 hi SpellRare cterm=underline  ctermfg=red
 
 " Toggle background transparency
-" hi Normal guibg=NONE ctermbg=NONE ctermfg=NONE
+hi Normal guibg=NONE ctermbg=NONE ctermfg=NONE
 hi CursorLine cterm=bold ctermbg=darkred ctermfg=white guibg=Black
+
+" ----- altercation/vim-colors-solarized settings -----
+" Toggle this to "light" for light colorscheme
+set background=dark
+
+" Set the colorscheme
+colorscheme papaya_original
+
+let ayucolor="mirage"
 
 " ALE Config
 let g:ale_linters = {'python': ['flake8', 'pyls']}
@@ -363,3 +369,7 @@ nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
 " We need this for plugins like Syntastic and vim-gitgutter which put symbols
 " in the sign column.
 highlight clear SignColumn
+
+" Fix SQL problem
+let g:omni_sql_no_default_maps = 1
+
