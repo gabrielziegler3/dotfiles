@@ -14,6 +14,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'ryanoasis/vim-devicons'
 Plug 'rainglow/vim'
 Plug 'vim-scripts/buttercream.vim'
+" Plug 'dylanaraps/wal'
 
 " ----- Vim as a programmer's text editor -----------------------------
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -46,7 +47,7 @@ Plug 'jez/vim-superman'
 Plug 'jez/vim-c0'
 Plug 'jez/vim-ispc'
 Plug 'kchmck/vim-coffee-script'
-Plug 'w0rp/ale'
+" Plug 'w0rp/ale'
 Plug 'harenome/vim-mipssyntax'
 
 " ---- Extras/Advanced plugins ----------------------------------------
@@ -67,7 +68,7 @@ call plug#end()
 filetype plugin indent on
 
 " --- General settings ---
-set t_Co=256
+" set t_Co=256
 set t_ut=
 set backspace=indent,eol,start
 set ruler
@@ -100,6 +101,7 @@ if (has('nvim'))
     " Unset gui cursor in nVim
     set guifont=Inconsolata
     set guicursor=
+    set emoji
 endif
 
 " Figure out the system Python for Neovim.
@@ -126,16 +128,19 @@ if (has("termguicolors"))
     set termguicolors
 endif
 
+if has('terminal') && !(&term ==# 'xterm-kitty') && !(&term ==# 'xterm-256color')
+    " Avoid setting this variable when it is not absolutely neccesary
+    " since it is very very slow (10 times as long startuptime as
+    " everything else combined)
+    set term=xterm-256color " Falls back to 'xterm' if it does not start with xtert
+endif
+
 " Spell check error highlighting
 hi clear SpellBad
 hi SpellBad cterm=underline ctermfg=white ctermbg=red
 hi SpellCap cterm=underline ctermfg=red
 hi SpellLocal cterm=underline ctermbg=green ctermfg=blue
 hi SpellRare cterm=underline  ctermfg=red
-
-" Toggle background transparency
-hi Normal guibg=NONE ctermbg=NONE ctermfg=NONE
-hi CursorLine cterm=bold ctermbg=darkred ctermfg=white guibg=Black
 
 " ----- altercation/vim-colors-solarized settings -----
 " Toggle this to "light" for light colorscheme
@@ -144,14 +149,23 @@ set background=dark
 " Set the colorscheme
 colorscheme papaya_original
 
+" Toggle background transparency
+" hi Normal guibg=NONE ctermbg=NONE ctermfg=NONE
+" hi CursorLine cterm=bold ctermbg=darkred ctermfg=white guibg=Black
+
 let ayucolor="mirage"
 
 " ALE Config
-let g:ale_linters = {'python': ['flake8', 'pyls']}
-let g:ale_fixers = {'python': ['autopep8']}
-let g:ale_completion_enabled = 1
-let g:ale_completion_delay = 0
-let g:ale_fix_on_save = 0
+" let g:ale_linters = {'python': ['flake8', 'pyls']}
+" let g:ale_linters = {'python': ['flake8']}
+" let g:ale_fixers = {'python': ['autopep8']}
+" let g:ale_completion_enabled = 1
+" let g:ale_completion_delay = 0
+" let g:ale_fix_on_save = 0
+" let g:ale_python_flake8_options = '--ignore=E501'
+" let g:ale_python_flake8_args = '--ignore=E501'
+
+
 
 " Cycle suggestion with TAB
 inoremap <silent><expr> <Tab>
@@ -372,4 +386,3 @@ highlight clear SignColumn
 
 " Fix SQL problem
 let g:omni_sql_no_default_maps = 1
-

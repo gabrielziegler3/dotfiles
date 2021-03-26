@@ -25,3 +25,8 @@ export JAVA_HOME=/usr/lib/jvm/default
 
 # Display percentage on man document
 export MANPAGER='less -s -M +Gg'
+
+export BROWSER=/usr/bin/google-chrome-stable
+
+# Run Picom at start
+picom -b --config ~/.config/picom.conf
