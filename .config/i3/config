@@ -30,27 +30,35 @@ font pango:Monospace 11, FontAwesome 11
 
 # Needed for i3-gaps
 for_window [class="^.*"] border pixel 3
-gaps inner 2
-gaps outer 2
+# for_window [class="^.*"] border normal 0
+# float all windows by default
+# for_window [class="^.*"] floating enable
+# gaps inner 2
+# gaps outer 2
+gaps inner 5
+gaps outer 5
+gaps top 5
+gaps bottom 5
 # smart_gaps on
+# smart_borders on
 
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec termite
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
 
 # Ranger
-bindsym $mod+b exec --no-startup-id termite -e ranger
+bindsym $mod+b exec --no-startup-id kitty -e ranger
 
 # Music
 # bindsym $mod+m exec --no-startup-id xst -e ncmpcpp
 
 # Calc
-bindsym $mod+c exec --no-startup-id termite -e ipython
+bindsym $mod+c exec --no-startup-id kitty -e ipython
 
 # Rofi dmenu
 bindsym $mod+d exec rofi -show drun -show-icons -modi drun
@@ -174,9 +182,9 @@ for_window [class="Nemo"] floating enable
 for_window [title="*.exe"] floating enable
 
 # Start apps on startup
-exec --no-startup-id termite
+exec --no-startup-id kitty
 # exec --no-startup-id brave
-exec --no-startup-id google-chrome-beta
+exec --no-startup-id google-chrome-stable
 exec --no-startup-id spotify
 exec --no-startup-id telegram-desktop
 
@@ -229,7 +237,7 @@ exec_always --no-startup-id picom -b --config ~/.config/picom.config
 exec_always --no-startup-id ~/.config/conky/launch
 
 # Setting the background wallpaper:
-exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/pexels-tim-mossholder-1000653.jpg
+# exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/pexels-tim-mossholder-1000653.jpg
 
 # Starts dunst for notifications:
 exec_always --no-startup-id dunst -conf ~/.config/dunst/dunstrc &
@@ -238,63 +246,55 @@ exec_always --no-startup-id dunst -conf ~/.config/dunst/dunstrc &
 exec_always --no-startup-id libinput-gestures-setup start
 
 # set some nice colors      border     background  text
-client.focused              #5ADECD    #5ADECD     #1D1F28
-client.unfocused            #1D1F28    #1D1F28     #1D1F28
-client.focused_inactive     #C574DD    #1D1F28     #1D1F28
-client.urgent               #FF4971    #1D1F28     #1D1F28
+# client.focused              #5ADECD    #5ADECD     #1D1F28
+# client.unfocused            #1D1F28    #1D1F28     #1D1F28
+# client.focused_inactive     #C574DD    #1D1F28     #1D1F28
+# client.urgent               #FF4971    #1D1F28     #1D1F28
+
+# in order to work with dylanaraps/wal we use this to change colors on the fly
+# Set colors from Xresources
+# Change 'color7' and 'color2' to whatever colors you want i3 to use
+# from the generated scheme.
+# NOTE: The '#f0f0f0' in the lines below is the color i3 will use if
+# it fails to get colors from Xresources for some reason.
+
+set_from_resource $fg i3wm.color7 #f0f0f0
+set_from_resource $bg i3wm.color2 #f0f0f0
+# set $tb                           #cc222222
+set $tb                           #000000
+
+# class                 border  backgr. text indicator child_border
+client.focused          $bg     $bg     $fg  $bg       $bg
+client.focused_inactive $bg     $bg     $fg  $bg       $bg
+client.unfocused        $tb     $rb     $fg  $bg       $tb
+client.urgent           $bg     $bg     $fg  $bg       $bg
+client.placeholder      $bg     $bg     $fg  $bg       $bg
+
+client.background       $bg
 
 # Polybar
 exec_always --no-startup-id ~/.config/polybar/launch.sh
 
-set $height 34
+# set $height 34
 
-set_from_resource $darkred     color1  #000000
-set_from_resource $red         color9  #000000
-set_from_resource $darkgreen   color2  #000000
-set_from_resource $green       color10 #000000
-set_from_resource $darkyellow  color3  #000000
-set_from_resource $yellow      color11 #000000
-set_from_resource $darkblue    color4  #000000
-set_from_resource $blue        color12 #000000
-set_from_resource $darkmagenta color5  #000000
-set_from_resource $magenta     color13 #000000
-set_from_resource $darkcyan    color6  #000000
-set_from_resource $cyan        color14 #000000
-set_from_resource $darkwhite   color7  #000000
-set_from_resource $white       color15 #000000
-# Use custom colors for black
+# set_from_resource $darkred     color1  #000000
+# set_from_resource $red         color9  #000000
+# set_from_resource $darkgreen   color2  #000000
+# set_from_resource $green       color10 #000000
+# set_from_resource $darkyellow  color3  #000000
+# set_from_resource $yellow      color11 #000000
+# set_from_resource $darkblue    color4  #000000
+# set_from_resource $blue        color12 #000000
+# set_from_resource $darkmagenta color5  #000000
+# set_from_resource $magenta     color13 #000000
+# set_from_resource $darkcyan    color6  #000000
+# set_from_resource $cyan        color14 #000000
+# set_from_resource $darkwhite   color7  #000000
+# set_from_resource $white       color15 #000000
+# # Use custom colors for black
 set $black       #282828
 set $darkblack   #1d2021
 set $transparent #00000000
-
-
-# bar {
-# #    verbose yes
-#     status_command i3blocks
-#     i3bar_command i3bar -t
-#     position bottom
-#     font pango:Hack, FontAwesome 8
-#     strip_workspace_numbers yes
-#     separator_symbol "■"
-#     bindsym button4 nop
-#     bindsym button5 nop
-#     tray_output eDP1
-#     tray_output LVDS-0
-#     tray_padding 0
-#     height $height
-#     colors {
-#         statusline         $white
-#         background         $black
-#         separator          $black
-# 
-# #                          BORDER       BACKGROUND   TEXT
-#         focused_workspace  $black       $black       $darkwhite
-#         inactive_workspace $black       $black       $white
-#         active_workspace   $black       $black       $white
-#         urgent_workspace   $darkred     $darkred     $transparent
-#         binding_mode       $darkred     $darkred     $transparent
-#     }
-# }
 
 # i3 Lock
 bindsym $mod+shift+x exec ~/.config/i3/i3lock-color/lock.sh
@@ -303,11 +303,12 @@ bindsym $mod+shift+x exec ~/.config/i3/i3lock-color/lock.sh
 # take a screenshot of a screen region and copy it to a clipboard
 bindsym --release Print exec "~/.scripts/screenshot.sh"
 bindsym --release Shift+Print exec "~/.scripts/screenshot.sh 'full'"
-bindsym --release Ctrl+Shift+Print exec "~/.scripts/screenshot.sh 'selection'"
+# bindsym --release Ctrl+Shift+Print exec "~/.scripts/screenshot.sh 'selection'"
+bindsym --release Mod4+Shift+s exec "~/.scripts/screenshot.sh 'selection'"
 bindsym --release Ctrl+Print exec "~/.scripts/screenshot.sh 'thesis'"
 
-# Toggle keyboard language
-bindsym --release Ctrl+Shift+Delete exec "~/.scripts/toggle-keyboard.sh"
+# Toggle keyboard language layout between US and US(intl)
+bindsym --release Mod4+space exec "~/.scripts/toggle-keyboard.sh"
 
 # Audio/Volume controls
 # increase sound volume
@@ -316,6 +317,7 @@ bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +3%
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -3%
 # toggle mute
 bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle
+# bindsym XF86AudioMute exec --no-startup-id amixer -q sset Master toggle
 
 # Keyboard Brightness controls
 bindsym XF86KbdBrightnessUp exec --no-startup-id  ~/.scripts/keyboard-backlight.sh +1 # increase keyboard brightness
@@ -327,6 +329,15 @@ bindsym XF86MonBrightnessDown exec light -U 3
 bindsym XF86ScreenSaver exec light -S 0
 
 # Media player controls
-bindsym XF86AudioPause exec playerctl play-pause
-bindsym XF86AudioNext exec playerctl next
-bindsym XF86AudioPrev exec playerctl previous
+bindsym XF86AudioPause exec playerctl --player=spotify play-pause
+bindsym XF86AudioNext exec playerctl --player=spotify next
+bindsym XF86AudioPrev exec playerctl --player=spotify previous
+
+# Add this to your .xinitrc or whatever file starts programs on startup.
+exec --no-startup-id $HOME/.local/bin/wal -i "$(< "${HOME}/.cache/wal/wal")"
+
+# Cycle wallpapers and apply new colorscheme.
+bindsym $mod+n exec --no-startup-id "$HOME/.local/bin/wal -i $HOME/Pictures/Wallpapers/"
+
+# Persist colorscheme
+exec --no-startup-id wal -R
