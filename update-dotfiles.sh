@@ -18,3 +18,4 @@ cp -r ~/.config/ncmpcpp/ ~/dotfiles/.config/
 cp -r ~/.config/nvim/ ~/dotfiles/.config/
 cp -r ~/.config/ranger/ ~/dotfiles/.config/
 cp -r ~/.config/rofi/ ~/dotfiles/.config/
+cp -r ~/.config/kitty/ ~/dotfiles/.config/
