@@ -1,25 +1,35 @@
-## Arch i3wm setup
-[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
+# Dotfiles
 
-### System Overview
-![2019-04-01_11-15-11-screenshot](https://user-images.githubusercontent.com/18370133/55334986-ab636900-5470-11e9-90f7-16339c41098e.png)
+## Inspirations
 
-### Currently using
+Some snippets and configurations (specially, Polybar and PyWal config) were taken from [this repo](https://github.com/NicklasLallo/dotfiles).
 
-* xinit
-* termite and urxvt
-* zsh 
-* Inconsolata 15
+## Information
 
+* OS: Manjaro
+* WM: i3
+* Terminal: kitty
+* Shell: zsh
+* File Manager: Nemo for GUI, Ranger for terminal
+* Launcher: Rofi
+* Bar: Polybar (3 instances)
+* Editor: Neovim
 
-## Contributors
+## Custom keybinds
+### i3
 
-Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+Mostly default keybindings. For more information check out the i3 config file. Here are some additions:
 
-<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
-<!-- prettier-ignore -->
-<table><tr><td align="center"><a href="https://www.linkedin.com/in/gabriel-ziegler-323121106/"><img src="https://avatars2.githubusercontent.com/u/18370133?v=4" width="100px;" alt="Gabriel Ziegler"/><br /><sub><b>Gabriel Ziegler</b></sub></a><br /><a href="https://github.com/gabrielziegler3/My-Setup/commits?author=gabrielziegler3" title="Code">💻</a></td></tr></table>
+* <kbd>Super</kbd> + <kbd>enter</kbd> - Launch Kitty running tmux
+* <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>enter</kbd> - Launch Kitty running ranger
+* <kbd>Super</kbd> + <kbd>d</kbd> - Launch Rofi
+* <kbd>Super</kbd> + <kbd>hjkl</kbd> - Move focus with vim keybindings
+* <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>hjkl</kbd> - Move windows with vim keybindings
+* <kbd>Super</kbd> + <kbd>n</kbd> - Run `pywal`. Automatically select a new random wallpaper from `~/Pictures/Wallpapers/`, generate new colorthemes for polybar, kitty, i3, rofi, and automatically tell those applications to update (polybar restarts quietly). This is also done on each restart.
 
-<!-- ALL-CONTRIBUTORS-LIST:END -->
+### Demo
+![Demo](./figures/system-demo.gif)
 
-This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!
+### Full screen picture
+
+![](./figures/fullscreen.png)
