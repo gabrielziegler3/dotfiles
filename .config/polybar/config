@@ -8,15 +8,9 @@
 [colors]
 ;background = ${xrdb:color0:#222}
 ;background = #cfl000000
-;background = #1D1F28
-background = #50000000
+background = #90000000
 
 ;it's ARGB so "cfl" is for transparency
-;background-alt = #cfl666666
-;background-unf = #cfl2E463E
-;background-mod0 = #cfl3C5A46
-;background-mod1 = #cfla0a0a0
-;background-mod2 = #cflc4c4c4
 ;background-alrt = #cflA1BB76
 i3_background = ${xrdb:color3:#222}
 i3_foreground = ${xrdb:color5:#222}
@@ -25,10 +19,6 @@ i3_unfocused_foreground = ${xrdb:color2:#222}
 
 foreground = ${xrdb:color7:#222}
 foreground-alt=${xrdb:color7:#222}
-;foreground = #FDFDFD
-;foreground-alt = #00aaaa
-primary = #C574DD
-secondary = #5ADECD
 
 status_good = ${xrdb:color7}
 status_sub = ${xrdb:color6}
@@ -44,7 +34,7 @@ tray_background = #60e7ecdb
 width = 100%
 height = 35
 clickarea = 25
-offset-x = 10
+offset-x = 0.5%
 offset-y = 5
 
 border-size = 0
@@ -55,11 +45,10 @@ border-bottom = 3
 
 module-margin-left = 0
 module-margin-right = 0
-format-padding = 1
+format-padding = 2
 
 spacing = 1
 line-height = 4
-
 line-size = 0
 
 radius = 0
@@ -73,6 +62,9 @@ font-3 = Font Awesome 5 Free:style=Regular:pixelsize=12;1
 font-4 = Font Awesome 5 Free:style=Solid:pixelsize=12;1
 font-5 = Font Awesome 5 Brands:pixelsize=12;1
 
+; mostly for i3 workspaces
+padding = 6
+
 
 [bar/left]
 ;monitor = ${env:MONITOR:DVI-I-1}
@@ -80,7 +72,7 @@ dpi = 100
 top = true
 override-redirect = true
 wm-restack = i3
-width = 500
+width = 25%
 height = ${const.height}
 clickareas = ${const.clickareas}
 offset-x = ${const.offset-x}
@@ -89,11 +81,11 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 line-color = ${colors.line-color}
 line-size = ${const.line-size}
-border-color = ${colors.foreground}
-border-left-size = ${const.border-left-size}
-border-right-size = ${const.border-right}
-border-top-size = ${const.border-top}
-border-bottom-size = ${const.border-bottom}
+;border-color = ${colors.foreground}
+;border-left-size = ${const.border-left-size}
+;border-right-size = ${const.border-right}
+;border-top-size = ${const.border-top}
+;border-bottom-size = ${const.border-bottom}
 radius-top = ${const.radius-top}
 radius-bottom = ${const.radius-bottom}
 module-margin-left = ${const.module-margin-left}
@@ -106,7 +98,7 @@ font-2 = ${const.font-2}
 font-3 = ${const.font-3}
 font-4 = ${const.font-4}
 font-5 = ${const.font-5}
-modules-left = i3 pulseaudio
+modules-left = i3
 
 
 [bar/center]
@@ -114,20 +106,20 @@ top = true
 override-redirect = true
 wm-restack = i3
 ;monitor = DP-0
-width = 25%
+width = 30%
 height = ${const.height}
 clickareas = ${const.clickareas}
-offset-x = 37.5%
+offset-x = 35%
 offset-y = ${const.offset-y}
 background = ${colors.background}
 foreground = ${colors.foreground}
 line-color = ${colors.line-color}
 line-size = ${const.line-size}
-border-color = ${colors.foreground}
-border-left-size = ${const.border-left-size}
-border-right-size = ${const.border-right}
-border-top-size = ${const.border-top}
-border-bottom-size = ${const.border-bottom}
+;border-color = ${colors.foreground}
+;border-left-size = ${const.border-left-size}
+;border-right-size = ${const.border-right}
+;border-top-size = ${const.border-top}
+;border-bottom-size = ${const.border-bottom}
 radius-top = ${const.radius-top}
 radius-bottom = ${const.radius-bottom}
 module-margin-left = ${const.module-margin-left}
@@ -140,29 +132,30 @@ font-2 = ${const.font-2}
 font-3 = ${const.font-3}
 font-4 = ${const.font-4}
 font-5 = ${const.font-5}
-modules-left = clock
-modules-center = player-mpris-tail
+modules-left = pulseaudio
+modules-center = spotify
 
 
 [bar/right]
 top = true
 override-redirect = true
-; wm-restack = i3
+wm-restack = i3
 ;monitor = DP-0
-width = 15%
+width = 25%
 height = ${const.height}
 clickareas = ${const.clickareas}
-offset-x = 85%
+; screen_width - bar_width - offset-x
+offset-x = 1907.2
 offset-y = ${const.offset-y}
 background = ${colors.background}
 foreground = ${colors.foreground}
 line-color = ${colors.line-color}
 line-size = ${const.line-size}
-border-color = ${colors.foreground}
-border-left-size = ${const.border-left-size}
-border-right-size = ${const.border-right}
-border-top-size = ${const.border-top}
-border-bottom-size = ${const.border-bottom}
+;border-color = ${colors.foreground}
+;border-left-size = ${const.border-left-size}
+;border-right-size = ${const.border-right}
+;border-top-size = ${const.border-top}
+;border-bottom-size = ${const.border-bottom}
 radius-top = ${const.radius-top}
 radius-bottom = ${const.radius-bottom}
 module-margin-left = ${const.module-margin-left}
@@ -175,7 +168,7 @@ font-2 = ${const.font-2}
 font-3 = ${const.font-3}
 font-4 = ${const.font-4}
 font-5 = ${const.font-5}
-modules-right = redshift disk xkeyboard wired-network
+modules-right = redshift disk xkeyboard wired-network clock
 
 
 [module/pulseaudio]
@@ -186,44 +179,33 @@ type = internal/pulseaudio
 ; If not, uses default sink
 sink = sh ~/.scripts/pulseaudio-sink.sh
 
-; Use PA_VOLUME_UI_MAX (~153%) if true, or PA_VOLUME_NORM (100%) if false
-; Default: true
 use-ui-max = false
-
 ; Interval for volume increase/decrease (in percent points)
-; Default: 5
-interval = 5
-; Available tags:
-;   <label-volume> (default)
-;   <ramp-volume>
-;   <bar-volume>
+interval = 3
 format-volume = <ramp-volume> <label-volume>
 
-; Available tags:
-;   <label-muted> (default)
-;   <ramp-volume>
-;   <bar-volume>
-;format-muted = <label-muted>
-
-; Available tokens:
-;   %percentage% (default)
-;   %decibels% (unreleased)
-;label-volume = %percentage%%
-
-; Available tokens:
-;   %percentage% (default)
-;   %decibels% (unreleased)
 label-muted = 
 label-muted-foreground = #666
 
-; Only applies if <ramp-volume> is used
-ramp-volume-0 = " "
-ramp-volume-1 = " "
-ramp-volume-2 = " "
+ramp-volume-0 = "  "
+ramp-volume-1 = "  "
+ramp-volume-2 = "  "
 
-; Right and Middle click (unreleased)
 click-right = pavucontrol &
-; click-middle =
+
+
+[module/spotify]
+format-padding = ${const.format-padding}
+type = custom/script
+exec = ~/.scripts/spotify_status.sh
+exec-if = pgrep spotify > /dev/null
+interval = 2.0
+click-left = playerctl -p spotify play-pause
+format-foreground = ${colors.foreground}
+# format-background = #191A29
+label = "%output%"
+content = 
+content-foreground = #23B37A
 
 
 [module/player-mpris-tail]
@@ -232,10 +214,7 @@ type = custom/script
 exec = ~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py -f '{:artist:t18:{artist}:}{:artist: - :}{:t20:{title}:}'
 tail = true
 label = %output%
-;click-left = ~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py previous
-;click-right = ~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py next
-;click-middle = ~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py play-pause
-format-underline = ${colors.secondary}
+format-underline = ${colors.primary}
 
 
 [module/redshift]
@@ -262,7 +241,7 @@ type = custom/script
 interval = 10
 ;format = <label>
 format-prefix = " "
-format-underline = ${colors.secondary}
+format-underline = ${colors.foreground}
 exec = ~/.scripts/ssd-storage.sh
 
 
@@ -309,24 +288,8 @@ ramp-free-7 = █
 
 [module/cpu]
 type = internal/cpu
-
-; Seconds to sleep between updates
-; Default: 1
 interval = 0.5
-
 format-prefix = "CPU"
-
-; Available tags:
-;   <label> (default)
-;   <bar-load>
-;   <ramp-load>
-;   <ramp-coreload>
-; format = <label> <ramp-coreload>
-
-; Available tokens:
-;   %percentage% (default) - total cpu load
-;   %percentage-cores% - load percentage for each core
-;   %percentage-core[1-9]% - load percentage for specific core
 label = %percentage%%
 
 
@@ -334,28 +297,21 @@ label = %percentage%%
 type = custom/script
 exec = ~/polybar-scripts/polybar-scripts/openweathermap-fullfeatured/openweathermap-fullfeatured.sh
 interval = 600
-format-underline = ${colors.secondary}
+format-underline = ${colors.foreground}
 label-font = 7
 
 
 [module/i3]
 type = internal/i3
-;font = symbola
 format = <label-state> <label-mode>
-; remove number ordering in i3 workspaces
+; strip number ordering in i3 workspaces
 strip-wsnumbers = true
-
-;label-unfocused-background = ${colors.background-unf}
 
 label-mode = %mode%
 label-mode-foreground = ${colors.foreground}
 label-mode-background = ${colors.background}
 label-mode-padding = 0
-label-mode-margin = 0
-
-;label-mode = %mode%
-;label-mode-padding = 5
-;label-mode-background = #e60053
+;label-mode-margin = 0
 
 pin-workspaces = true
 index-sort = true
@@ -363,42 +319,21 @@ label-focused = %name%
 label-focused-foreground = ${colors.background}
 label-focused-background = ${colors.i3_background}
 label-focused-underline = ${colors.foreground}
-label-focused-padding = 6
-;label-focused-maxlen = 3
+label-focused-padding = ${const.padding}
 label-focused-ellipsis = true
-;label-focused = %name%
-;label-focused-foreground = ${colors.foreground}
-;label-focused-background = ${colors.background-alt}
-;label-focused-underline = ${colors.secondary}
-;label-focused-padding = 5
 
 label-unfocused = %name%
 label-unfocused-foreground = ${colors.i3_unfocused_foreground}
-label-unfocused-padding = 4
-;label-unfocused-maxlen = 3
+label-unfocused-padding = ${const.padding}
 label-unfocused-ellipsis = false
 
-;label-unfocused = %name%
-;label-unfocused-padding = 5
-
 label-visible = %name%
-label-visible-padding = 4
-label-visible-maxlen = 3
-
-;label-visible = %name%
-;label-visible-underline = #555555
-;label-visible-padding = 5
+label-visible-padding = ${const.padding}
 
 label-urgent = %name%
 label-urgent-foreground = ${colors.i3_foreground}
 label-urgent-background = ${colors.i3_urgent_background}
-label-urgent-padding = 4
-label-urgent-maxlen = 3
-
-;label-urgent = %name%
-;label-urgent-foreground = ${colors.foreground-alt}
-;label-urgent-background = ${colors.background-alrt}
-;label-urgent-padding = 5
+label-urgent-padding = ${const.padding}
 
 
 [module/wireless-network]
@@ -406,16 +341,17 @@ type = internal/network
 interface = wlp3s0
 interval = 3
 
-format-connected-background = ${colors.background-mod0}
+format-connected-background = ${colors.background}
 format-connected = "<label-connected>  <ramp-signal> "
-format-connected-underline = ${colors.secondary}
+format-connected-underline = ${colors.foreground}
+format-padding = ${const.format-padding}
 label-connected = " %essid%"
 
 format-disconnected = "  None "
 ;format-disconnected-background = ${colors.background-unf}
-format-disconnected-underline = ${colors.primary}
+format-disconnected-underline = ${colors.foreground}
 label-disconnected = %ifname% disconnected
-label-disconnected-foreground = ${colors.foreground-alt}
+label-disconnected-foreground = ${colors.foreground}
 
 ramp-signal-0 = "0%"
 ramp-signal-1 = "25%"
@@ -431,15 +367,9 @@ type = internal/network
 interface = enp34s0
 interval = 3
 
-format-connected-underline = ${colors.secondary}
+format-connected-underline = ${colors.background}
 format-connected-prefix-foreground = ${colors.foreground}
 label-connected = %local_ip%
-
-;format-disconnected =
-;format-disconnected = <label-disconnected>
-;format-disconnected-underline = #ff0000
-;label-disconnected = %ifname% disconnected
-;label-disconnected-foreground = ${colors.foreground-alt}
 
 
 [module/date]
@@ -453,7 +383,7 @@ time = " %a, %d %b    %H:%M:%S"
 time-alt = %H:%M:%S
 
 format-prefix-foreground = ${colors.foreground-alt}
-format-underline = ${colors.secondary}
+format-underline = ${colors.foreground}
 
 label = %date% %time%
 
@@ -461,16 +391,16 @@ label = %date% %time%
 
 
 [module/clock]
-;format-padding = ${const.format-padding}
+format-padding = ${const.format-padding}
 type = internal/date
 interval = 1
 label = %date% %time%
-date = 🌍 %a %b %d,
+date = %a %b %d,
 time =  %H:%M:%S
+format-underline = ${colors.foreground}
 
 ;format-background = ${colors.foreground}
 ;format-foreground = ${colors.background}
-format-padding = 1
 
 
 #[module/battery]
@@ -517,10 +447,10 @@ format-spacing = 1
 
 label-open = "      "
 label-open-background = ${colors.background}
-label-open-foreground = ${colors.secondary}
+label-open-foreground = ${colors.foreground}
 label-close = "    cancel   "
 ;label-close-background = ${colors.background-mod2}
-label-close-foreground = ${colors.secondary}
+label-close-foreground = ${colors.foreground}
 label-separator = " "
 label-separator-foreground = ${colors.foreground-alt}
 
@@ -548,17 +478,17 @@ exec = setxkbmap -print | awk -F"+" '/xkb_symbols/ {print $2}'
 
 format-prefix = "  "
 format-prefix-foreground = ${colors.foreground}
-format-prefix-underline = ${colors.secondary}
+format-prefix-underline = ${colors.foreground}
 click-left = ~/.scripts/toggle-keyboard.sh
 interval = 0.1
 
 label-layout = %layout%
-label-layout-underline = ${colors.secondary}
+label-layout-underline = ${colors.foreground}
 
 label-indicator-padding = 2
 label-indicator-margin = 1
 label-indicator-background = ${colors.background-mod0}
-label-indicator-underline = ${colors.secondary}
+label-indicator-underline = ${colors.foreground}
 
 
 ; [module/filesystem]
