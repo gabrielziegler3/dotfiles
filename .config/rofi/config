@@ -1,17 +1,31 @@
-rofi.color-enabled:     true
-rofi.color-window:      #222, black, lightcyan
-rofi.color-normal:      #222, lightcyan , black, lightcyan, black
-rofi.color-active:      #002b37, #008ed4, #003643, #008ed4, #66c6ff
-rofi.color-urgent:      #002b37, #da4281, #003643, #008ed4, #890661
+# Dark theme.
+rofi.theme: ~/.cache/wal/colors-rofi-dark.rasi
+# Light theme.
+# rofi.theme: ~/.cache/wal/colors-rofi-light.rasi
 
+# rofi.color-enabled:     true
+# rofi.color-window:      #222, black, lightcyan
+# rofi.color-normal:      #222, lightcyan , black, lightcyan, black
+# rofi.color-active:      #002b37, #008ed4, #003643, #008ed4, #66c6ff
+# rofi.color-urgent:      #002b37, #da4281, #003643, #008ed4, #890661
+
+rofi.modi: run,window,pywal:~/.config/rofi/pywal-menu.sh
+rofi.width: 36
+rofi.show-icons: true
+rofi.sidebar-mode: true
+rofi.terminal: kitty
+rofi.matching: fuzzy
+rofi.kb-mode-next: Shift+Right,Control+Tab,Super+d
 rofi.fake-transparency: true
-rofi.font		Inconsolata for Powerline 10
+rofi.font:              Inconsolata for Powerline 14
 rofi.lines:             8
 rofi.eh:                2
 rofi.bw:                0
 rofi.opacity:           65
 rofi.hide-scrollbar:    true
-rofi.width:             50
 rofi.padding:           10
-rofi.show-icons: 	true
 rofi.sidebar-mode:	false
+
+element-icon {
+    size: 2ch;
+}
