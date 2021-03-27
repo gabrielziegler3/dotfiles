@@ -9,69 +9,177 @@
 ;background = ${xrdb:color0:#222}
 ;background = #cfl000000
 ;background = #1D1F28
-;background = #000000
 background = #50000000
 
 ;it's ARGB so "cfl" is for transparency
-background-alt = #cfl666666
-background-unf = #cfl2E463E
-background-mod0 = #cfl3C5A46
-background-mod1 = #cfla0a0a0
-background-mod2 = #cflc4c4c4
-background-alrt = #cflA1BB76
+;background-alt = #cfl666666
+;background-unf = #cfl2E463E
+;background-mod0 = #cfl3C5A46
+;background-mod1 = #cfla0a0a0
+;background-mod2 = #cflc4c4c4
+;background-alrt = #cflA1BB76
+i3_background = ${xrdb:color3:#222}
+i3_foreground = ${xrdb:color5:#222}
+i3_urgent_background = ${xrdb:color5:#222}
+i3_unfocused_foreground = ${xrdb:color2:#222}
 
-;foreground = ${xrdb:color1:#222}
-;foreground = #e0ffff
-foreground = #FDFDFD
-foreground-alt = #00aaaa
+foreground = ${xrdb:color7:#222}
+foreground-alt=${xrdb:color7:#222}
+;foreground = #FDFDFD
+;foreground-alt = #00aaaa
 primary = #C574DD
 secondary = #5ADECD
 
+status_good = ${xrdb:color7}
+status_sub = ${xrdb:color6}
+status_bad = ${xrdb:color5}
 
-[bar/topbar]
-;monitor = ${env:MONITOR:DVI-I-1}
-dpi = 90
+line-color = #FFFFFF
+transparent = #00FFFFFF
+
+tray_background = #60e7ecdb
+
+
+[const]
 width = 100%
-height = 3%
-
-offset-x = 0%
-offset-y = 0%
-
-bottom = false
-
-radius = 0.0
-fixed-center = true
-background = ${colors.background}
-foreground = ${colors.foreground}
-
-line-size = 2
-line-color = #f00
+height = 35
+clickarea = 25
+offset-x = 10
+offset-y = 5
 
 border-size = 0
-border-color = #00000000
+border-left-size = ${const.border-size}
+border-right = ${const.border-size}
+border-top = ${const.border-size}
+border-bottom = 3
 
-padding-left = 0
-padding-right = 0
+module-margin-left = 0
+module-margin-right = 0
+format-padding = 1
 
-module-margin-left = 1
-module-margin-right = 1
+spacing = 1
+line-height = 4
 
-;font-0 = Misc Termsyn:size=9;1
-font-0 = Ubuntu:size=13;1
-font-1 = FontAwesome:fontformat=truetype:size=13;1
-font-2 = sm4tik:pixelsize=13;1
-font-3 = Font Awesome 5 Free:style=Regular:pixelsize=13;1
-font-4 = Font Awesome 5 Free:style=Solid:pixelsize=13;1
-font-5 = Font Awesome 5 Brands:pixelsize=13;1
-font-6 = Weather Icons:size=13;1
-;font-7 = "Wuncon Siji:pixelsize=12;1"
+line-size = 0
 
-modules-left = i3 pulseaudio player-mpris-tail
-modules-center = date disk redshift
-modules-right = xkeyboard wired-network
+radius = 0
+radius-top = 0
+radius-bottom = 0
+
+font-0 = fixed:pixelsize=12;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = "Wuncon Siji:pixelsize=12;1"
+font-3 = Font Awesome 5 Free:style=Regular:pixelsize=12;1
+font-4 = Font Awesome 5 Free:style=Solid:pixelsize=12;1
+font-5 = Font Awesome 5 Brands:pixelsize=12;1
+
+
+[bar/left]
+;monitor = ${env:MONITOR:DVI-I-1}
+dpi = 100
+top = true
+override-redirect = true
+wm-restack = i3
+width = 500
+height = ${const.height}
+clickareas = ${const.clickareas}
+offset-x = ${const.offset-x}
+offset-y = ${const.offset-y}
+background = ${colors.background}
+foreground = ${colors.foreground}
+line-color = ${colors.line-color}
+line-size = ${const.line-size}
+border-color = ${colors.foreground}
+border-left-size = ${const.border-left-size}
+border-right-size = ${const.border-right}
+border-top-size = ${const.border-top}
+border-bottom-size = ${const.border-bottom}
+radius-top = ${const.radius-top}
+radius-bottom = ${const.radius-bottom}
+module-margin-left = ${const.module-margin-left}
+module-margin-right = ${const.module-margin-right}
+spacing = ${const.spacing}
+lineheight = ${const.lineheight}
+font-0 = ${const.font-0}
+font-1 = ${const.font-1}
+font-2 = ${const.font-2}
+font-3 = ${const.font-3}
+font-4 = ${const.font-4}
+font-5 = ${const.font-5}
+modules-left = i3 pulseaudio
+
+
+[bar/center]
+top = true
+override-redirect = true
+wm-restack = i3
+;monitor = DP-0
+width = 25%
+height = ${const.height}
+clickareas = ${const.clickareas}
+offset-x = 37.5%
+offset-y = ${const.offset-y}
+background = ${colors.background}
+foreground = ${colors.foreground}
+line-color = ${colors.line-color}
+line-size = ${const.line-size}
+border-color = ${colors.foreground}
+border-left-size = ${const.border-left-size}
+border-right-size = ${const.border-right}
+border-top-size = ${const.border-top}
+border-bottom-size = ${const.border-bottom}
+radius-top = ${const.radius-top}
+radius-bottom = ${const.radius-bottom}
+module-margin-left = ${const.module-margin-left}
+module-margin-right = ${const.module-margin-right}
+spacing = ${const.spacing}
+lineheight = ${const.lineheight}
+font-0 = ${const.font-0}
+font-1 = ${const.font-1}
+font-2 = ${const.font-2}
+font-3 = ${const.font-3}
+font-4 = ${const.font-4}
+font-5 = ${const.font-5}
+modules-left = clock
+modules-center = player-mpris-tail
+
+
+[bar/right]
+top = true
+override-redirect = true
+; wm-restack = i3
+;monitor = DP-0
+width = 15%
+height = ${const.height}
+clickareas = ${const.clickareas}
+offset-x = 85%
+offset-y = ${const.offset-y}
+background = ${colors.background}
+foreground = ${colors.foreground}
+line-color = ${colors.line-color}
+line-size = ${const.line-size}
+border-color = ${colors.foreground}
+border-left-size = ${const.border-left-size}
+border-right-size = ${const.border-right}
+border-top-size = ${const.border-top}
+border-bottom-size = ${const.border-bottom}
+radius-top = ${const.radius-top}
+radius-bottom = ${const.radius-bottom}
+module-margin-left = ${const.module-margin-left}
+module-margin-right = ${const.module-margin-right}
+spacing = ${const.spacing}
+lineheight = ${const.lineheight}
+font-0 = ${const.font-0}
+font-1 = ${const.font-1}
+font-2 = ${const.font-2}
+font-3 = ${const.font-3}
+font-4 = ${const.font-4}
+font-5 = ${const.font-5}
+modules-right = redshift disk xkeyboard wired-network
 
 
 [module/pulseaudio]
+format-padding = ${const.format-padding}
 type = internal/pulseaudio
 
 ; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
@@ -119,6 +227,7 @@ click-right = pavucontrol &
 
 
 [module/player-mpris-tail]
+format-padding = ${const.format-padding}
 type = custom/script
 exec = ~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py -f '{:artist:t18:{artist}:}{:artist: - :}{:t20:{title}:}'
 tail = true
@@ -130,6 +239,7 @@ format-underline = ${colors.secondary}
 
 
 [module/redshift]
+format-padding = ${const.format-padding}
 type = custom/script
 format-prefix = " "
 exec = source ~/.scripts/polybar-redshift/env.sh && ~/.scripts/polybar-redshift/redshift.sh temperature
@@ -229,69 +339,66 @@ label-font = 7
 
 
 [module/i3]
-
 type = internal/i3
-;
-;strip-wsnumbers = true
-;
-; label-focused-padding = 4
-; label-unfocused-padding = 4
-;
-;label-focused-background = ${colors.background-alt}
-label-unfocused-background = ${colors.background-unf}
-;
-;label-mode-padding = 0
-;label-mode-background = ${colors.background-unf}
-;
-;label-visible-underline = #555555
-;label-visible-padding = 4
+;font = symbola
+format = <label-state> <label-mode>
+; remove number ordering in i3 workspaces
+strip-wsnumbers = true
 
-; Available tokens:
-;   %mode%
-; Default: %mode%
+;label-unfocused-background = ${colors.background-unf}
+
 label-mode = %mode%
-label-mode-padding = 5
-label-mode-background = #e60053
+label-mode-foreground = ${colors.foreground}
+label-mode-background = ${colors.background}
+label-mode-padding = 0
+label-mode-margin = 0
 
-; Available tokens:
-;   %name%
-;   %icon%
-;   %index%
-;   %output%
-; Default: %icon%  %name%
+;label-mode = %mode%
+;label-mode-padding = 5
+;label-mode-background = #e60053
+
+pin-workspaces = true
+index-sort = true
 label-focused = %name%
-label-focused-foreground = ${colors.foreground}
-label-focused-background = ${colors.background-alt}
-label-focused-underline = ${colors.secondary}
-label-focused-padding = 5
+label-focused-foreground = ${colors.background}
+label-focused-background = ${colors.i3_background}
+label-focused-underline = ${colors.foreground}
+label-focused-padding = 6
+;label-focused-maxlen = 3
+label-focused-ellipsis = true
+;label-focused = %name%
+;label-focused-foreground = ${colors.foreground}
+;label-focused-background = ${colors.background-alt}
+;label-focused-underline = ${colors.secondary}
+;label-focused-padding = 5
 
-; Available tokens:
-;   %name%
-;   %icon%
-;   %index%
-; Default: %icon%  %name%
 label-unfocused = %name%
-label-unfocused-padding = 5
+label-unfocused-foreground = ${colors.i3_unfocused_foreground}
+label-unfocused-padding = 4
+;label-unfocused-maxlen = 3
+label-unfocused-ellipsis = false
 
-; Available tokens:
-;   %name%
-;   %icon%
-;   %index%
-; Default: %icon%  %name%
+;label-unfocused = %name%
+;label-unfocused-padding = 5
+
 label-visible = %name%
-label-visible-underline = #555555
-label-visible-padding = 5
+label-visible-padding = 4
+label-visible-maxlen = 3
 
-; Available tokens:
-;   %name%
-;   %icon%
-;   %index%
-; Default: %icon%  %name%
+;label-visible = %name%
+;label-visible-underline = #555555
+;label-visible-padding = 5
+
 label-urgent = %name%
-;label-urgent-foreground = #000000
-label-urgent-foreground = ${colors.foreground-alt}
-label-urgent-background = ${colors.background-alrt}
-label-urgent-padding = 5
+label-urgent-foreground = ${colors.i3_foreground}
+label-urgent-background = ${colors.i3_urgent_background}
+label-urgent-padding = 4
+label-urgent-maxlen = 3
+
+;label-urgent = %name%
+;label-urgent-foreground = ${colors.foreground-alt}
+;label-urgent-background = ${colors.background-alrt}
+;label-urgent-padding = 5
 
 
 [module/wireless-network]
@@ -305,7 +412,7 @@ format-connected-underline = ${colors.secondary}
 label-connected = " %essid%"
 
 format-disconnected = "  None "
-format-disconnected-background = ${colors.background-unf}
+;format-disconnected-background = ${colors.background-unf}
 format-disconnected-underline = ${colors.primary}
 label-disconnected = %ifname% disconnected
 label-disconnected-foreground = ${colors.foreground-alt}
@@ -319,6 +426,7 @@ ramp-signal-foreground = ${colors.foreground}
 
 
 [module/wired-network]
+format-padding = ${const.format-padding}
 type = internal/network
 interface = enp34s0
 interval = 3
@@ -350,6 +458,19 @@ format-underline = ${colors.secondary}
 label = %date% %time%
 
 ;lable = %time%
+
+
+[module/clock]
+;format-padding = ${const.format-padding}
+type = internal/date
+interval = 1
+label = %date% %time%
+date = 🌍 %a %b %d,
+time =  %H:%M:%S
+
+;format-background = ${colors.foreground}
+;format-foreground = ${colors.background}
+format-padding = 1
 
 
 #[module/battery]
@@ -398,7 +519,7 @@ label-open = "      "
 label-open-background = ${colors.background}
 label-open-foreground = ${colors.secondary}
 label-close = "    cancel   "
-label-close-background = ${colors.background-mod2}
+;label-close-background = ${colors.background-mod2}
 label-close-foreground = ${colors.secondary}
 label-separator = " "
 label-separator-foreground = ${colors.foreground-alt}
@@ -419,20 +540,8 @@ menu-2-1 = cancel
 menu-2-1-exec = menu-open-0
 
 
-[settings]
-screenchange-reload = true
-;compositing-background = xor
-;compositing-background = screen
-;compositing-foreground = source
-;compositing-border = over
-
-
-[global/wm]
-margin-top = 5
-margin-bottom = 5
-
-
 [module/xkeyboard]
+format-padding = ${const.format-padding}
 type = custom/script
 blacklist-0 = num lock
 exec = setxkbmap -print | awk -F"+" '/xkb_symbols/ {print $2}'

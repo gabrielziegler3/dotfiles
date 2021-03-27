@@ -29,14 +29,14 @@ font pango:Monospace 11, FontAwesome 11
 # font, it doesn’t scale on retina/hidpi displays.
 
 # Needed for i3-gaps
-for_window [class="^.*"] border pixel 3
+for_window [class="^.*"] border pixel 5
 # for_window [class="^.*"] border normal 0
 # float all windows by default
 # for_window [class="^.*"] floating enable
 
-gaps inner 5
-gaps outer 5
-gaps top 5
+gaps inner 10
+gaps outer -5
+gaps top 40
 gaps bottom 5
 # smart_gaps on
 # smart_borders on
@@ -266,8 +266,8 @@ set $tb                           #000000
 
 # class                 border  backgr. text indicator child_border
 client.focused          $bg     $bg     $fg  $bg       $bg
-client.focused_inactive $tb     $rb     $fg  $bg       $tb
-client.unfocused        $tb     $rb     $fg  $bg       $tb
+client.focused_inactive $tb     $tb     $fg  $bg       $tb
+client.unfocused        $tb     $tb     $fg  $bg       $tb
 client.urgent           $bg     $bg     $fg  $bg       $bg
 client.placeholder      $bg     $bg     $fg  $bg       $bg
 
