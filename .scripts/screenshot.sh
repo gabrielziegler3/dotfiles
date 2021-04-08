@@ -23,11 +23,12 @@ elif [[ "$1" == "thesis" ]]; then
 
 # If "selection", screenshot selection will be copied to clipboard
 elif [[ "$1" == "selection" ]]; then
-	import $file
+	# import $file
 	# Add border to image
 	# convert $file -bordercolor white -border 13 \( +clone -background black -shadow 80x3+2+2 \) +swap -background white -layers merge +repage $file
-	convert $file
-	xclip -selection clipboard $file -target image/png -i < ${file}
+	# convert $file
+	# xclip -selection clipboard $file -target image/png -i < ${file}
+    flameshot gui
 else
 	echo "Wrong flag! try 'full' or 'selection'"
 fi

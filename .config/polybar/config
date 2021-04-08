@@ -395,7 +395,7 @@ format-padding = ${const.format-padding}
 type = internal/date
 interval = 1
 label = %date% %time%
-date = %a %b %d,
+date = %a %b %d
 time =  %H:%M:%S
 format-underline = ${colors.foreground}
 

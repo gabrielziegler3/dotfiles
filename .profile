@@ -18,7 +18,7 @@ export LIBVA_DRIVER_NAME="radeonsi"
 
 xdg-settings set default-web-browser google-chrome.desktop
 
-export PATH=/home/gabrielziegler/.local/bin${PATH:+:${PATH}}
+export PATH=$HOME/.local/bin${PATH:+:${PATH}}
 
 # No accessibility
 export NO_AT_BRIDGE=1
