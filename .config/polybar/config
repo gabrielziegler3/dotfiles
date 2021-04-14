@@ -177,7 +177,7 @@ type = internal/pulseaudio
 
 ; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
 ; If not, uses default sink
-sink = sh ~/.scripts/pulseaudio-sink.sh
+; sink = sh ~/.scripts/pulseaudio-sink.sh
 
 use-ui-max = false
 ; Interval for volume increase/decrease (in percent points)

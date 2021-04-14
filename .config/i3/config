@@ -62,7 +62,9 @@ bindsym $mod+b exec --no-startup-id kitty -e ranger
 bindsym $mod+c exec --no-startup-id kitty -e ipython
 
 # Rofi dmenu
-bindsym $mod+d exec rofi -show drun -show-icons -modi drun
+bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons -modi drun
+
+# bindsym $mod+d exec rofi -show run
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
@@ -232,7 +234,7 @@ bindsym $mod+Ctrl+j resize grow height 1 px or 1 ppt
 bindsym $mod+Ctrl+h resize grow width 1 px or 1 ppt
 
 # Start Picom
-exec_always --no-startup-id picom -b --config ~/.config/picom.config
+# exec_always --no-startup-id picom -b --config ~/.config/picom.conf
 
 # Start Conky
 exec_always --no-startup-id ~/.config/conky/launch
@@ -338,7 +340,7 @@ bindsym XF86AudioPrev exec playerctl --player=spotify previous
 exec --no-startup-id $HOME/.local/bin/wal -i "$(< "${HOME}/.cache/wal/wal")"
 
 # Cycle wallpapers and apply new colorscheme.
-bindsym $mod+n exec --no-startup-id "$HOME/.local/bin/wal -i $HOME/Pictures/Wallpapers/"
+bindsym $mod+n exec --no-startup-id "$HOME/.local/bin/wal -i $HOME/Pictures/ActiveWallpaper"
 
 # Persist colorscheme
 exec --no-startup-id wal -R

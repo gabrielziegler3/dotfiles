@@ -14,7 +14,7 @@ Plug 'NLKNguyen/papercolor-theme'
 Plug 'ryanoasis/vim-devicons'
 Plug 'rainglow/vim'
 Plug 'vim-scripts/buttercream.vim'
-" Plug 'dylanaraps/wal'
+Plug 'dylanaraps/wal'
 
 " ----- Vim as a programmer's text editor -----------------------------
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -86,8 +86,8 @@ set expandtab
 augroup FoldingMethods
     autocmd!
     autocmd FileType tex set foldmethod=marker
-    autocmd FileType python set foldmethod=indent
-    autocmd FileType python set foldnestmax=1
+    " autocmd FileType python set foldmethod=indent
+    " autocmd FileType python set foldnestmax=1
 augroup END
 
 augroup CompileDocument
@@ -154,18 +154,6 @@ colorscheme papaya_original
 " hi CursorLine cterm=bold ctermbg=darkred ctermfg=white guibg=Black
 
 let ayucolor="mirage"
-
-" ALE Config
-" let g:ale_linters = {'python': ['flake8', 'pyls']}
-" let g:ale_linters = {'python': ['flake8']}
-" let g:ale_fixers = {'python': ['autopep8']}
-" let g:ale_completion_enabled = 1
-" let g:ale_completion_delay = 0
-" let g:ale_fix_on_save = 0
-" let g:ale_python_flake8_options = '--ignore=E501'
-" let g:ale_python_flake8_args = '--ignore=E501'
-
-
 
 " Cycle suggestion with TAB
 inoremap <silent><expr> <Tab>

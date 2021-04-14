@@ -29,4 +29,4 @@ export JAVA_HOME=/usr/lib/jvm/default
 export MANPAGER='less -s -M +Gg'
 
 # Run Picom at start
-picom -b --config ~/.config/picom.conf
+picom -b --config ~/.config/picom/picom.conf
