@@ -32,10 +32,7 @@ tray_background = #60e7ecdb
 
 [const]
 width = 100%
-# fullhd
-# height = 35
-# 4k
-height = 45
+height = 35
 clickarea = 25
 offset-x = 0.5%
 offset-y = 5
@@ -48,7 +45,7 @@ border-bottom = 3
 
 module-margin-left = 0
 module-margin-right = 0
-format-padding = 4
+format-padding = 2
 
 spacing = 1
 line-height = 4
@@ -58,25 +55,15 @@ radius = 0
 radius-top = 0
 radius-bottom = 0
 
-# FULL HD 
-# font-0 = fixed:pixelsize=12;1
-# font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
-# font-2 = "Wuncon Siji:pixelsize=12;1"
-# font-3 = Font Awesome 5 Free:style=Regular:pixelsize=12;1
-# font-4 = Font Awesome 5 Free:style=Solid:pixelsize=12;1
-# font-5 = Font Awesome 5 Brands:pixelsize=12;1
-
-# 4K
-font-0 = fixed:pixelsize=16;1
-font-1 = unifont:fontformat=truetype:size=16:antialias=false;0
-font-2 = "Wuncon Siji:pixelsize=16;1"
-font-3 = Font Awesome 5 Free:style=Regular:pixelsize=16;1
-font-4 = Font Awesome 5 Free:style=Solid:pixelsize=16;1
-font-5 = Font Awesome 5 Brands:pixelsize=16;1
+font-0 = fixed:pixelsize=12;1
+font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+font-2 = "Wuncon Siji:pixelsize=12;1"
+font-3 = Font Awesome 5 Free:style=Regular:pixelsize=12;1
+font-4 = Font Awesome 5 Free:style=Solid:pixelsize=12;1
+font-5 = Font Awesome 5 Brands:pixelsize=12;1
 
 ; mostly for i3 workspaces
 padding = 6
-text-padding = 10
 
 
 [bar/left]
@@ -160,8 +147,7 @@ width = 25%
 height = ${const.height}
 clickareas = ${const.clickareas}
 ; screen_width - bar_width - offset-x
-; offset-x = 1907.2
-offset-x = 74.5%
+offset-x = 1907.2
 offset-y = ${const.offset-y}
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -385,7 +371,7 @@ interval = 3
 
 format-connected-underline = ${colors.background}
 format-connected-prefix-foreground = ${colors.foreground}
-label-connected =  %local_ip%
+label-connected = %local_ip%
 
 
 [module/date]
@@ -410,9 +396,9 @@ label = %date% %time%
 format-padding = ${const.format-padding}
 type = internal/date
 interval = 1
-label =  %date% %time%
+label = %date% %time%
 date = %a %b %d
-time =  %I:%M:%S %p
+time =  %H:%M:%S
 format-underline = ${colors.foreground}
 
 ;format-background = ${colors.foreground}
@@ -501,8 +487,8 @@ interval = 0.1
 label-layout = %layout%
 label-layout-underline = ${colors.foreground}
 
-;label-indicator-padding = 2
-;label-indicator-margin = 1
+label-indicator-padding = 2
+label-indicator-margin = 1
 label-indicator-background = ${colors.background-mod0}
 label-indicator-underline = ${colors.foreground}
 
