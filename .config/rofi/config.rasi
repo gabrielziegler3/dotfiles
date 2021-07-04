@@ -1,6 +1,7 @@
 configuration {
+    dpi: 120;
 	modi: "run,window,pywal:~/.config/rofi/pywal-menu.sh";
-	width: 36;
+	width: 40;
 	lines: 8;
 	font: "Inconsolata for Powerline 14";
 	bw: 0;
@@ -10,6 +11,7 @@ configuration {
 	sidebar-mode: false;
 	eh: 2;
 	matching: "fuzzy";
+    sort: true;
 	hide-scrollbar: true;
 	fake-transparency: true;
 	theme: "~/.cache/wal/colors-rofi-dark.rasi";
