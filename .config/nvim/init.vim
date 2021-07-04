@@ -4,17 +4,11 @@
 call plug#begin('~/.vim/plugged')
 
 " ----- Making Vim look good ------------------------------------------
-Plug 'vim-airline/vim-airline'
-Plug 'vim-airline/vim-airline-themes'
-Plug 'HenryNewcomer/vim-theme-papaya'
-Plug 'cseelus/vim-colors-lucid'
-Plug 'rakr/vim-one'
-Plug 'ayu-theme/ayu-vim'
-Plug 'NLKNguyen/papercolor-theme'
+" Plug 'vim-airline/vim-airline'
+Plug 'itchyny/lightline.vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'rainglow/vim'
 Plug 'vim-scripts/buttercream.vim'
-Plug 'dylanaraps/wal'
 
 " ----- Vim as a programmer's text editor -----------------------------
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -33,6 +27,16 @@ Plug 'chrisbra/csv.vim'
 Plug 'dpelle/vim-LanguageTool'
 Plug 'lervag/vimtex'
 
+" ----- Themes -----------------------------
+Plug 'sonph/onehalf', { 'rtp': 'vim' }
+" Plug 'vim-airline/vim-airline-themes'
+Plug 'HenryNewcomer/vim-theme-papaya'
+Plug 'cseelus/vim-colors-lucid'
+Plug 'rakr/vim-one'
+Plug 'ayu-theme/ayu-vim'
+Plug 'NLKNguyen/papercolor-theme'
+
+
 " ----- Working with Git ----------------------------------------------
 Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
@@ -48,7 +52,10 @@ Plug 'jez/vim-c0'
 Plug 'jez/vim-ispc'
 Plug 'kchmck/vim-coffee-script'
 " Plug 'w0rp/ale'
-Plug 'harenome/vim-mipssyntax'
+" Plug 'kamykn/spelunker.vim'
+" Plug 'dpelle/vim-LanguageTool'
+Plug 'rhysd/vim-grammarous'
+Plug 'kamykn/popup-menu.nvim'
 
 " ---- Extras/Advanced plugins ----------------------------------------
 " Highlight and strip trailing whitespace
@@ -116,16 +123,16 @@ endif
 filetype plugin on
 
 " ----- Plugin-Specific Settings --------------------------------------
-
-" Set highlight syntax for MIPS assembly
-if @% =~# '.spim'
-    set ft=mips
-endif
-
 syntax enable
 
-if (has("termguicolors"))
-    set termguicolors
+" if (has("termguicolors"))
+"     set termguicolors
+" endif
+
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+  set termguicolors
 endif
 
 if has('terminal') && !(&term ==# 'xterm-kitty') && !(&term ==# 'xterm-256color')
@@ -147,7 +154,7 @@ hi SpellRare cterm=underline  ctermfg=red
 set background=dark
 
 " Set the colorscheme
-colorscheme papaya_original
+colorscheme onehalfdark
 
 " Toggle background transparency
 " hi Normal guibg=NONE ctermbg=NONE ctermfg=NONE
@@ -160,24 +167,37 @@ inoremap <silent><expr> <Tab>
       \ pumvisible() ? "\<C-n>" : "\<TAB>"
 inoremap <silent><expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-TAB>"
 
+" ----- lightline -----
+let g:lightline = {
+      \ 'colorscheme': 'onehalfdark',
+      \ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ]
+      \ },
+      \ 'component_function': {
+      \   'gitbranch': 'FugitiveHead'
+      \ },
+      \ }
 " ----- bling/vim-airline settings -----
-" Always show statusbar
-" set statusline^=%{coc#status()}
-set laststatus=2
+" " Always show statusbar
+" " set statusline^=%{coc#status()}
+" set laststatus=2
+" 
+" " Fancy arrow symbols, requires a patched font
+" " To install a patched font, run over to
+" "     https://github.com/abertsch/Menlo-for-Powerline
+" " download all the .ttf files, double-click on them and click "Install"
+" " Finally, uncomment the next line
+" let g:airline_powerline_fonts = 1
+" 
+" " Show PASTE if in paste mode
+" let g:airline_detect_paste=1
+" 
+" " Show airline for tabs too
+" let g:airline#extensions#tabline#enabled = 1
+" " let g:airline_theme='lucius'
+" let g:airline_theme='onehalfdark'
 
-" Fancy arrow symbols, requires a patched font
-" To install a patched font, run over to
-"     https://github.com/abertsch/Menlo-for-Powerline
-" download all the .ttf files, double-click on them and click "Install"
-" Finally, uncomment the next line
-let g:airline_powerline_fonts = 1
-
-" Show PASTE if in paste mode
-let g:airline_detect_paste=1
-
-" Show airline for tabs too
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_theme='lucius'
 
 " ----- jistr/vim-nerdtree-tabs -----
 " Open/close NERDTree Tabs with \t
@@ -199,7 +219,9 @@ nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
 " ----- Spellcheck -----
 " Spell-check set to F6:
+" set nospell
 map <F6> :setlocal spell! spelllang=en_gb,pt_br<CR>
+let g:languagetool_jar="/usr/share/java/languagetool/languagetool-commandline.jar"
 
 " ----- Fugitive -----
 " Toggle git blame
