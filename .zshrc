@@ -112,7 +112,7 @@ fi
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
-# Set keyboard speed 
+# Set keyboard speed
 xset r rate 250 60
 
 # Import colorscheme from 'wal' asynchronously
@@ -129,3 +129,5 @@ source ~/.cache/wal/colors-tty.sh
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+GITSTATUS_LOG_LEVEL=DEBUG

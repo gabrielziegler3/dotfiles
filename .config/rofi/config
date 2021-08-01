@@ -9,6 +9,7 @@ rofi.theme: ~/.cache/wal/colors-rofi-dark.rasi
 # rofi.color-active:      #002b37, #008ed4, #003643, #008ed4, #66c6ff
 # rofi.color-urgent:      #002b37, #da4281, #003643, #008ed4, #890661
 
+rofi.dpi: 120
 rofi.modi: run,window,pywal:~/.config/rofi/pywal-menu.sh
 rofi.width: 36
 rofi.show-icons: true
@@ -18,7 +19,7 @@ rofi.matching: fuzzy
 rofi.kb-mode-next: Shift+Right,Control+Tab,Super+d
 rofi.fake-transparency: true
 rofi.font:              Inconsolata for Powerline 14
-rofi.lines:             8
+rofi.lines:             15
 rofi.eh:                2
 rofi.bw:                0
 rofi.opacity:           65

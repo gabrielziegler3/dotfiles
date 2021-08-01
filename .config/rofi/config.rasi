@@ -10,7 +10,6 @@ configuration {
 	terminal: "kitty";
 	sidebar-mode: false;
 	eh: 2;
-	matching: "fuzzy";
     sort: true;
 	hide-scrollbar: true;
 	fake-transparency: true;
