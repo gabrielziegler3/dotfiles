@@ -17,7 +17,7 @@ elif [[ "$1" == "full" ]]; then
 # If "selectionsave" is passed, selection screenshot will be saved to UnB/
 elif [[ "$1" == "thesis" ]]; then
 	base_folder=~/UnB/TCC/bachelor-thesis/figuras/
-	base_folder=~/Pictures/presentation/
+	# base_folder=~/Pictures/presentation/
 	file=${base_folder}$(date '+%Y-%m-%d_%H-%M-%S')-screenshot.png
 	import $file
 

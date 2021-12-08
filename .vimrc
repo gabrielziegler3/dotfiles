@@ -41,6 +41,7 @@ Plug 'jez/vim-superman'
 Plug 'jez/vim-c0'
 Plug 'jez/vim-ispc'
 Plug 'kchmck/vim-coffee-script'
+Plug 'kamykn/spelunker.vim'
 " Plug 'w0rp/ale'
 
 " ---- Extras/Advanced plugins ----------------------------------------
@@ -157,6 +158,9 @@ nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 " ----- Spellcheck -----
 " Spell-check set to F6:
 map <F6> :setlocal spell! spelllang=en_gb,pt_br<CR>
+
+let g:enable_spelunker_vim = 1
+
 
 " ----- Fugitive -----
 " Toggle git blame

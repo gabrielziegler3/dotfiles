@@ -58,7 +58,7 @@ radius = 0
 radius-top = 0
 radius-bottom = 0
 
-# FULL HD 
+# FULL HD
 # font-0 = fixed:pixelsize=12;1
 # font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
 # font-2 = "Wuncon Siji:pixelsize=12;1"
@@ -67,13 +67,12 @@ radius-bottom = 0
 # font-5 = Font Awesome 5 Brands:pixelsize=12;1
 
 # 4K
-font-0 = fixed:pixelsize=16;1
-font-1 = unifont:fontformat=truetype:size=16:antialias=false;0
-font-2 = "Wuncon Siji:pixelsize=16;1"
-font-3 = Font Awesome 5 Free:style=Regular:pixelsize=16;1
-font-4 = Font Awesome 5 Free:style=Solid:pixelsize=16;1
-font-5 = Font Awesome 5 Brands:pixelsize=16;1
-
+font-0 = fixed:pixelsize=18:antialias=true;
+font-1 = unifont:fontformat=truetype:pixelsize=18:antialias=true;
+font-2 = Wuncon Siji:pixelsize=16:antialias=true;
+font-3 = Font Awesome 5 Free:style=Regular:pixelsize=18:antialias=true;
+font-4 = Font Awesome 5 Free:style=Solid:pixelsize=18:antialias=true;
+font-5 = Font Awesome 5 Brands:pixelsize=18:antialias=true;
 ; mostly for i3 workspaces
 padding = 6
 text-padding = 10

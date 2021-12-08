@@ -62,7 +62,8 @@ bindsym $mod+b exec --no-startup-id kitty -e ranger
 bindsym $mod+c exec --no-startup-id kitty -e ipython
 
 # Rofi dmenu
-bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons -modi drun
+# bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons -modi drun
+bindsym $mod+d exec --no-startup-id rofi -show drun
 
 # bindsym $mod+d exec rofi -show run
 
@@ -341,7 +342,7 @@ bindsym XF86AudioPrev exec playerctl --player=spotify previous
 exec --no-startup-id $HOME/.local/bin/wal -i "$(< "${HOME}/.cache/wal/wal")"
 
 # Cycle wallpapers and apply new colorscheme.
-bindsym $mod+n exec --no-startup-id "$HOME/.local/bin/wal -i $HOME/Pictures/Wallpapers/test-wallpapers"
+bindsym $mod+n exec --no-startup-id "$HOME/.local/bin/wal -i /home/gabrielziegler/Pictures/Wallpapers/"
 
 # Persist colorscheme
 exec --no-startup-id wal -R
