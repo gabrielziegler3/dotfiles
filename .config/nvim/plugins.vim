@@ -7,6 +7,8 @@ Plug 'vim-scripts/buttercream.vim'
 " Nvim LSP
 Plug 'neovim/nvim-lspconfig'
 Plug 'hrsh7th/nvim-compe'
+Plug 'ray-x/lsp_signature.nvim'
+
 
 " ----- Vim as a programmer's text editor -----------------------------
 " Plug 'neoclide/coc.nvim', {'branch': 'release'}
