@@ -54,4 +54,6 @@ Plug 'godlygeek/tabular'
 " Automaticall insert the closing HTML tag
 " All the other syntax plugins I use
 Plug 'ekalinin/Dockerfile.vim'
+" tmux
+Plug 'christoomey/vim-tmux-navigator'
 

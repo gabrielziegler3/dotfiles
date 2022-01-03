@@ -91,13 +91,13 @@ hi SpellRare cterm=underline  ctermfg=red
 set background=dark
 
 " Set the colorscheme
-colorscheme tron-contrast
+colorscheme onehalfdark
 
 " Toggle background transparency
 " hi Normal guibg=NONE ctermbg=NONE ctermfg=NONE
 " hi CursorLine cterm=bold ctermbg=darkred ctermfg=white guibg=Black
 
-let ayucolor="mirage"
+" let ayucolor="mirage"
 
 " Cycle suggestion with TAB
 inoremap <silent><expr> <Tab>
@@ -110,11 +110,10 @@ let g:lightline = {
       \ 'active': {
       \   'left': [ [ 'mode', 'paste' ],
       \             [ 'gitbranch', 'readonly', 'filename', 'modified' ] ],
-      \   'right': [ [ 'lineinfo' ], [ 'percent', 'wordcount' ], [ 'fileformat', 'fileencoding', 'filetype' ] ],
+      \   'right': [ [ 'lineinfo' ], [ 'fileformat', 'fileencoding', 'filetype' ] ],
       \ },
       \ 'component_function': {
       \   'gitbranch': 'FugitiveHead',
-      \   'wordcount': 'WordCount',
       \ },
       \ }
 
@@ -178,3 +177,4 @@ let g:omni_sql_no_default_maps = 1
 " Remove all trailing whitespace by pressing F5
 nnoremap <F5> :let _s=@/<Bar>:%s/\s\+$//e<Bar>:let @/=_s<Bar><CR>
 
+let g:tmux_navigator_no_mappings = 1
