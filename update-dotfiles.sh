@@ -17,7 +17,8 @@ cp -vr ~/.config/nvim/ ~/dotfiles/.config/
 cp -vr ~/.config/ranger/ ~/dotfiles/.config/
 cp -vr ~/.config/rofi/ ~/dotfiles/.config/
 cp -vr ~/.config/kitty/ ~/dotfiles/.config/
-cp -vr .config/neofetch/ ~/.config/
+cp -vr ~/.config/neofetch/ ~/dotfiles/.config/
+cp -vr ~/.tmux ~/dotfiles/.tmux/
 
 # Deprecated
 # cp -vr ~/.config/ncmpcpp/ ~/dotfiles/.config/
