@@ -113,7 +113,7 @@ fi
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # Set keyboard speed
-xset r rate 250 60
+xset r rate 280 70
 
 # Import colorscheme from 'wal' asynchronously
 # &   # Run the process in the background.
@@ -131,3 +131,4 @@ source ~/.cache/wal/colors-tty.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 GITSTATUS_LOG_LEVEL=DEBUG
+

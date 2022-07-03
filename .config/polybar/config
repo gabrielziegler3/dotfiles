@@ -8,7 +8,8 @@
 [colors]
 ;background = ${xrdb:color0:#222}
 ;background = #cfl000000
-background = #90000000
+background = #99000000
+foreground = ${xrdb:color2:#222}
 
 ;it's ARGB so "cfl" is for transparency
 ;background-alrt = #cflA1BB76
@@ -17,7 +18,6 @@ i3_foreground = ${xrdb:color5:#222}
 i3_urgent_background = ${xrdb:color5:#222}
 i3_unfocused_foreground = ${xrdb:color2:#222}
 
-foreground = ${xrdb:color7:#222}
 foreground-alt=${xrdb:color7:#222}
 
 status_good = ${xrdb:color7}
@@ -67,12 +67,12 @@ radius-bottom = 0
 # font-5 = Font Awesome 5 Brands:pixelsize=12;1
 
 # 4K
-font-0 = fixed:pixelsize=18:antialias=true;
-font-1 = unifont:fontformat=truetype:pixelsize=18:antialias=true;
-font-2 = Wuncon Siji:pixelsize=16:antialias=true;
-font-3 = Font Awesome 5 Free:style=Regular:pixelsize=18:antialias=true;
-font-4 = Font Awesome 5 Free:style=Solid:pixelsize=18:antialias=true;
-font-5 = Font Awesome 5 Brands:pixelsize=18:antialias=true;
+font-0 = fixed:pixelsize=20:antialias=true;
+font-1 = unifont:fontformat=truetype:pixelsize=20:antialias=true;
+font-2 = Wuncon Siji:pixelsize=20:antialias=true;
+font-3 = Font Awesome 6 Free:style=Regular:pixelsize=20:antialias=true;
+font-4 = Font Awesome 6 Free:style=Solid:pixelsize=20:antialias=true;
+font-5 = Font Awesome 6 Brands:pixelsize=20:antialias=true;
 ; mostly for i3 workspaces
 padding = 6
 text-padding = 10
@@ -199,7 +199,7 @@ use-ui-max = false
 interval = 3
 format-volume = <ramp-volume> <label-volume>
 
-label-muted = 
+label-muted = "  "
 label-muted-foreground = #666
 
 ramp-volume-0 = "  "

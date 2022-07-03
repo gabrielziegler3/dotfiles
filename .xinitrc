@@ -67,3 +67,6 @@ exec $(get_session)
 
 # Run Picom at start
 picom -b --config ~/.config/picom.conf
+
+# Set keyboard speed
+xset r rate 250 60

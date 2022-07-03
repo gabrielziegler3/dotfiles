@@ -63,7 +63,8 @@ bindsym $mod+c exec --no-startup-id kitty -e ipython
 
 # Rofi dmenu
 # bindsym $mod+d exec --no-startup-id rofi -show drun -show-icons -modi drun
-bindsym $mod+d exec --no-startup-id rofi -show drun
+# bindsym $mod+d exec --no-startup-id rofi -show drun
+bindsym $mod+d exec --no-startup-id ~/.config/rofi/bin/launcher_ribbon
 
 # bindsym $mod+d exec rofi -show run
 
@@ -123,7 +124,7 @@ bindsym $mod+a focus parent
 # We use variables to avoid repeating the names in multiple places.
 set $ws1 "1: "
 set $ws2 "2: "
-set $ws3 "3: "
+set $ws3 "3: "
 set $ws4 "4: "
 set $ws5 "5: "
 set $ws6 "6"
@@ -189,7 +190,7 @@ for_window [class="Pulseeffects"] floating enable
 # Start apps on startup
 exec --no-startup-id kitty
 # exec --no-startup-id brave
-exec --no-startup-id "google-chrome-stable --force-device-scale-factor=1.5"
+exec --no-startup-id "brave-browser-beta --force-device-scale-factor=1.5"
 exec --no-startup-id spotify
 exec --no-startup-id telegram-desktop
 
@@ -241,14 +242,13 @@ bindsym $mod+Ctrl+h resize grow width 1 px or 1 ppt
 # Start Conky
 exec_always --no-startup-id ~/.config/conky/launch
 
-# Setting the background wallpaper:
-# exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/pexels-tim-mossholder-1000653.jpg
-
 # Starts dunst for notifications:
 exec_always --no-startup-id dunst -conf ~/.config/dunst/dunstrc &
 
 # Starts libinput for multi gestures
-exec_always --no-startup-id libinput-gestures-setup start
+# exec_always --no-startup-id libinput-gestures-setup start
+
+exec --no-startup-id picom -b --config ~/.config/picom/picom.conf
 
 # set some nice colors      border     background  text
 # client.focused              #5ADECD    #5ADECD     #1D1F28
@@ -346,3 +346,5 @@ bindsym $mod+n exec --no-startup-id "$HOME/.local/bin/wal -i /home/gabrielziegle
 
 # Persist colorscheme
 exec --no-startup-id wal -R
+
+exec --no-startup-id xset r rate 280 70

@@ -16,9 +16,8 @@ export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 # GPU VAAPI driver config
 export LIBVA_DRIVER_NAME="radeonsi"
 
-xdg-settings set default-web-browser google-chrome.desktop
-
 export PATH=$HOME/.local/bin${PATH:+:${PATH}}
+export PATH=~/.npm/bin:$PATH
 
 # No accessibility
 export NO_AT_BRIDGE=1
@@ -28,5 +27,3 @@ export JAVA_HOME=/usr/lib/jvm/default
 # Display percentage on man document
 export MANPAGER='less -s -M +Gg'
 
-# Run Picom at start
-picom -b --config ~/.config/picom/picom.conf
