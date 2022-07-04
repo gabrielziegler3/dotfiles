@@ -10,6 +10,13 @@ return require('packer').startup(function()
   use { "L3MON4D3/LuaSnip" } -- Snippets plugin
   use { "ayu-theme/ayu-vim" } -- Colorscheme
   use {
+    'kyazdani42/nvim-tree.lua',
+    requires = {
+      'kyazdani42/nvim-web-devicons', -- optional, for file icons
+    },
+    tag = 'nightly' -- optional, updated every week. (see issue #1193)
+  }
+  use {
     "TimUntersberger/neogit", -- Git
     requires = "nvim-lua/plenary.nvim",
   }

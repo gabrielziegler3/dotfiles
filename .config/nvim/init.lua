@@ -15,6 +15,9 @@ vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when th
 -- Install plugins
 require('plugins')
 
+-- Keymappings
+require('keymappings')
+
 -- Setup Lua language server using submodule
 require('lsp')
 require('autocompletion')
@@ -22,3 +25,5 @@ require('autocompletion')
 -- Colorscheme
 require('colorscheme')
 
+-- Plugins setup
+require('tree_configuration')
