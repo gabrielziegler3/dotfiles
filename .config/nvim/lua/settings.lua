@@ -17,6 +17,9 @@ opt.ignorecase = true --Case insensitive searching unless /C or capital in searc
 opt.smartcase = true -- Smart case
 opt.updatetime = 250 --Decrease update time
 opt.signcolumn = "yes" -- Always show sign column
+opt.tabstop = 4
+opt.shiftwidth = 4
+vim.cmd('set expandtab')
 
 -- Highlight on yank
 vim.cmd [[
