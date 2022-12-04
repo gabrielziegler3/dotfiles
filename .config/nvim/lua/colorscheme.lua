@@ -1,2 +1,3 @@
 vim.cmd "let ayucolor='dark'"
-vim.cmd "colorscheme ayu"
+vim.cmd "colorscheme lucid"
+-- vim.cmd "colorscheme ayu"

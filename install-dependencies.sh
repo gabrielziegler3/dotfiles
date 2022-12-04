@@ -19,15 +19,16 @@ sudo pacman --needed -S git \
 	       opera-ffmpeg-codecs \
 	       amdvlk \
 	       unrar  \
+	       zip \
 	       libreoffice-fresh \
 	       atool \
-	       zip \
 	       cmake \
-	       xclip \
+	       curl \
+	       wget \
 	       nodejs \
 	       npm
 
-yay --needed -S termite docker docker-compose polybar xst rxvt-unicode neovim google-chrome rofi telegram-desktop ttf-font-awesome pavucontrol pamixer tzupdate boost slack-desktop code zotero xorg-xwininfo python-neovim-git ttf-inconsolata opera nemo xst vulkan-amdgpu-pro dunst-git
+yay --needed -S termite docker docker-compose polybar neovim google-chrome rofi ttf-font-awesome pavucontrol pamixer tzupdate boost slack-desktop zathura code xorg-xwininfo python-neovim-git ttf-inconsolata opera nemo vulkan-amdgpu-pro dunst-git
 
 # Make docker usable without sudo
 sudo usermod -aG docker $USER
@@ -45,15 +46,7 @@ sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/too
 
 chsh -s $(which zsh)
 
-## Fix Ycm plugin
-
-python /home/gabrielziegler/.vim/plugged/YouCompleteMe/install.py
-
 ## Install Syntax Highlightin for ZSH
 
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git $HOME/.oh-my-zsh/plugins/zsh-syntax-highlighting
-
-# Install NeoVIM dependencies
-curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
