@@ -28,3 +28,9 @@ vim.cmd [[
     autocmd TextYankPost * silent! lua vim.highlight.on_yank()
   augroup end
 ]]
+
+-- Copilot 
+g.copilot_assume_mapped = true
+g.copilot_filetypes = {
+    markdown = true,
+}
