@@ -56,3 +56,15 @@ require'lspconfig'.texlab.setup{}
 -- }
 require('lsp_signature').setup()
 
+local cmp_nvim_lsp = require "cmp_nvim_lsp"
+
+-- Fix for CLANG https://www.reddit.com/r/neovim/comments/12qbcua/multiple_different_client_offset_encodings/
+require("lspconfig").clangd.setup {
+  on_attach = on_attach,
+  capabilities = cmp_nvim_lsp.default_capabilities(),
+  cmd = {
+    "clangd",
+    "--offset-encoding=utf-16",
+  },
+}
+

@@ -25,5 +25,3 @@ require('autocompletion')
 -- Colorscheme
 require('colorscheme')
 
--- Plugins setup
-require('tree_configuration')
