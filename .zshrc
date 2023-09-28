@@ -6,7 +6,7 @@ if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]
 fi
 
 # If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=$HOME/bin:/usr/local/bin:$HOME/scripts/:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
@@ -16,9 +16,10 @@ export ZSH=$HOME/.oh-my-zsh
 # it'll load a random theme each time that oh-my-zsh is loaded.
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 # ZSH_THEME="agnoster"
+ZSH_THEME="powerlevel10k/powerlevel10k"
 
 setopt histignorealldups
-source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
+# source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # Set list of themes to load
 # Setting this variable when ZSH_THEME=random
 # cause zsh load theme from this variable instead of
@@ -68,7 +69,7 @@ source /usr/share/zsh-theme-powerlevel10k/powerlevel10k.zsh-theme
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git pip virtualenv zsh-syntax-highlighting cp sudo docker)
+plugins=(git pip virtualenv zsh-syntax-highlighting cp sudo)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -104,6 +105,11 @@ if [ -f ~/.bash_aliases ]; then
 	. ~/.bash_aliases
 fi
 
+# Load profile
+if [ -f ~/.bash_profile ]; then
+    . ~/.bash_profile
+fi
+
 # Kubernetes autocomplete
 # if [ /usr/local/bin/kubectl ]; then source <(kubectl completion zsh); fi
 
@@ -118,7 +124,7 @@ xset r rate 280 70
 # Import colorscheme from 'wal' asynchronously
 # &   # Run the process in the background.
 # ( ) # Hide shell job control messages.
-# Not supported in the "fish" shell.
+# # Not supported in the "fish" shell.
 (cat ~/.cache/wal/sequences &)
 
 # Alternative (blocks terminal for 0-3ms)
@@ -131,4 +137,6 @@ source ~/.cache/wal/colors-tty.sh
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 GITSTATUS_LOG_LEVEL=DEBUG
+
+BROWSER=/usr/bin/google-chrome-beta
 
