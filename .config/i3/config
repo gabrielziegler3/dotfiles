@@ -11,6 +11,9 @@ set $mod Mod1
 default_border pixel 5
 default_floating_border normal
 
+# Set default wallpaper folder
+set $wallpaper_folder $HOME/Pictures/Wallpapers/new/
+
 # Hide borders
 # hide_edge_borders none
 
@@ -43,7 +46,7 @@ bindsym $mod+z exec --no-startup-id morc_menu
 ## sound-section - DO NOT EDIT if you wish to automatically upgrade Alsa -> Pulseaudio later! ##
 ################################################################################################
 
-exec --no-startup-id volumeicon
+exec --no-startup-id dunst &
 bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 #exec --no-startup-id pulseaudio
 #exec --no-startup-id pa-applet
@@ -58,7 +61,7 @@ bindsym $mod+Ctrl+m exec terminal -e 'alsamixer'
 # Start Applications
 # bindsym $mod+Ctrl+b exec terminal -e 'bmenu'
 # bindsym $mod+F3 exec ranger
-bindsym $mod+Shift+F3 exec pcmanfm_pkexec
+# bindsym $mod+Shift+F3 exec pcmanfm_pkexec
 bindsym $mod+F5 exec terminal -e 'mocp'
 bindsym $mod+t exec --no-startup-id pkill picom
 bindsym $mod+Ctrl+t exec --no-startup-id picom -b
@@ -289,21 +292,23 @@ bindsym $mod+Ctrl+h resize grow width 1 px or 1 ppt
 bindsym $mod+Shift+x exec --no-startup-id blurlock
 
 # Autostart applications
-exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # exec --no-startup-id nitrogen --restore; sleep 1; picom -b
 exec --no-startup-id picom -b
 # exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
-exec --no-startup-id xfce4-power-manager
 exec --no-startup-id pamac-tray
 # exec --no-startup-id clipit
 # exec --no-startup-id blueman-applet
 # exec_always --no-startup-id sbxkb
-exec --no-startup-id start_conky_maia
+# exec --no-startup-id start_conky_maia
 # exec --no-startup-id start_conky_green
 # exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
+exec --no-startup-id wal -i $wallpaper_folder
+# exec --no-startup-id wal -i  "$HOME/Pictures/Wallpapers/" 
+exec --no-startup-id kitty
 
 # Color palette used for the terminal ( ~/.Xresources file )
 # Colors are gathered based on the documentation:
@@ -432,7 +437,7 @@ set $transparent #00000000
 #############################
 
 # Set inner/outer gaps
-gaps inner 14
+gaps inner 10
 gaps outer -2
 
 # Additionally, you can issue commands with the following syntax. This is useful to bind keys to changing the gap size.
@@ -488,12 +493,12 @@ mode "$mode_gaps_outer" {
 bindsym --release Mod4+space exec "~/.scripts/toggle-keyboard.sh"
 
 # Audio/Volume controls
-# increase sound volume
-bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +3%
-# decrease sound volume
-bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -3%
-# toggle mute
-bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle
+# # increase sound volume
+# bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +3%
+# # decrease sound volume
+# bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -3%
+# # toggle mute
+# # bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle
 # bindsym XF86AudioMute exec --no-startup-id amixer -q sset Master toggle
 
 # Media player controls
@@ -508,9 +513,11 @@ bindsym $mod+b exec --no-startup-id kitty -e ranger
 # bindsym $mod+m exec --no-startup-id xst -e ncmpcpp
 
 # Calc
-bindsym $mod+c exec --no-startup-id kitty -e ipython
+bindsym $mod+c exec --no-startup-id kitty -e python
 
 # Cycle wallpapers and apply new colorscheme.
-bindsym $mod+n exec --no-startup-id wal -i "$HOME/Pictures/Wallpapers/"
+bindsym $mod+n exec --no-startup-id wal -i $wallpaper_folder
 
 bindsym --release Mod4+Shift+s exec "~/.scripts/screenshot.sh 'selection'"
+
+exec --no-startup-id sleep 1 && volumeicon

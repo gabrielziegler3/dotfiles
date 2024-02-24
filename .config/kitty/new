@@ -6,8 +6,7 @@
 #: individual font faces and even specify special fonts for particular
 #: characters.
 
-font_family      nerd
-# font_family      monospace
+font_family      monospace
 bold_font        auto
 italic_font      auto
 bold_italic_font auto
@@ -25,7 +24,7 @@ bold_italic_font auto
 #:     italic_font      Operator Mono Book Italic
 #:     bold_italic_font Operator Mono Medium Italic
 
-font_size 12.0
+font_size 11.0
 
 #: Font size (in pts)
 
@@ -618,7 +617,7 @@ sync_to_monitor yes
 
 #: Terminal bell {{{
 
-enable_audio_bell no
+enable_audio_bell yes
 
 #: The audio bell. Useful to disable it in environments that require
 #: silence.
@@ -819,7 +818,7 @@ visual_window_select_characters 1234567890ABCDEFGHIJKLMNOPQRSTUVWXYZ
 #: insensitive, from the set [0-9A-Z]. Specify your preference as a
 #: string of characters.
 
-confirm_os_window_close 0
+confirm_os_window_close -1
 
 #: Ask for confirmation when closing an OS window or a tab with at
 #: least this number of kitty windows in it by window manager (e.g.
@@ -994,8 +993,7 @@ background #000000
 
 #: The foreground and background colors.
 
-background_opacity 0.9
-# background_opacity 1.0
+background_opacity 1.0
 
 #: The opacity of the background. A number between zero and one, where
 #: one is opaque and zero is fully transparent. This will only work if
@@ -1030,8 +1028,7 @@ background_image_linear no
 #: When background image is scaled, whether linear interpolation
 #: should be used.
 
-dynamic_background_opacity yes
-# dynamic_background_opacity no
+dynamic_background_opacity no
 
 #: Allow changing of the background_opacity dynamically, using either
 #: keyboard shortcuts (increase_background_opacity and
@@ -1046,8 +1043,7 @@ background_tint 0.0
 #: only if background_opacity is set and transparent windows are
 #: supported or background_image is set.
 
-# dim_opacity 0.75
-dim_opacity 0
+dim_opacity 0.75
 
 #: How much to dim text that has the DIM/FAINT attribute set. One
 #: means no dimming and zero means fully dimmed (i.e. invisible).
@@ -1348,8 +1344,7 @@ allow_hyperlinks yes
 #: special value of ask means that kitty will ask before opening the
 #: link when clicked.
 
-shell_integration no-cursor
-# shell_integration enabled
+shell_integration enabled
 
 #: Enable shell integration on supported shells. This enables features
 #: such as jumping to previous prompts, browsing the output of the

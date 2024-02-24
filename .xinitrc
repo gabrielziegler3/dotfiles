@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # ~/.xinitrc
 #
@@ -10,6 +10,8 @@ sysresources=/etc/X11/xinit/.Xresources
 sysmodmap=/etc/X11/xinit/.Xmodmap
 
 DEFAULT_SESSION='i3 --shmlog-size 0'
+
+wal -R
 
 # merge in defaults and keymaps
 
@@ -51,7 +53,7 @@ get_session(){
 		gnome) dbus_args+=(gnome-session) ;;
 		i3|i3wm) dbus_args+=(i3 --shmlog-size 0) ;;
 		jwm) dbus_args+=(jwm) ;;
-		kde) dbus_args+=(startkde) ;;
+		kde) dbus_args+=(startplasma-x11) ;;
 		lxde) dbus_args+=(startlxde) ;;
 		lxqt) dbus_args+=(lxqt-session) ;;
 		mate) dbus_args+=(mate-session) ;;
@@ -63,10 +65,4 @@ get_session(){
 	echo "dbus-launch ${dbus_args[*]}"
 }
 
-exec $(get_session)
-
-# Run Picom at start
-picom -b --config ~/.config/picom.conf
-
-# Set keyboard speed
-xset r rate 250 60
+exec $(get_session "$1")
