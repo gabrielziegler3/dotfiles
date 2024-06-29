@@ -1,27 +1,15 @@
-local fn = vim.fn
-local execute = vim.api.nvim_command
+require("theprimeagen")
 
--- Sensible defaults
-require('settings')
+-- set search case insensitive
+vim.o.ignorecase = true
 
--- Auto install packer.nvim if not exists
-local install_path = fn.stdpath('data')..'/site/pack/packer/opt/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  execute('!git clone https://github.com/wbthomason/packer.nvim '..install_path)
-end
-vim.cmd [[packadd packer.nvim]]
-vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile' -- Auto compile when there are changes in plugins.lua
+-- set wrap
+vim.o.wrap = true
 
--- Install plugins
-require('plugins')
+-- disable netrw at the very start of your init.lua
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
 
--- Keymappings
-require('keymappings')
-
--- Setup Lua language server using submodule
-require('lsp')
-require('autocompletion')
-
--- Colorscheme
-require('colorscheme')
+-- optionally enable 24-bit colour
+vim.opt.termguicolors = true
 
