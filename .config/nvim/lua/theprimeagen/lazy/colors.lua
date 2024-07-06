@@ -50,7 +50,6 @@ return {
         config = function()
             vim.g.ayucolor = "dark" -- dark, light, mirage
             vim.cmd("colorscheme ayu")
-            -- transparency
         end
     },
 }
