@@ -26,6 +26,7 @@ return {
     --                 floats = "dark", -- style for floating windows
     --             },
     --         })
+    --         vim.cmd("colorscheme tokyonight")
     --     end
     -- },
     -- {
@@ -45,11 +46,20 @@ return {
     --         ColorMyPencils()
     --     end
     -- },
+    -- {
+    --     "ayu-theme/ayu-vim",
+    --     config = function()
+    --         vim.g.ayucolor = "dark" -- dark, light, mirage
+    --         vim.cmd("colorscheme ayu")
+    --     end
+    -- },
     {
-        "ayu-theme/ayu-vim",
+        'morhetz/gruvbox',
         config = function()
-            vim.g.ayucolor = "dark" -- dark, light, mirage
-            vim.cmd("colorscheme ayu")
+            vim.cmd.colorscheme("gruvbox")
+            vim.g.gruvbox_contrast_dark = 'hard'
+            vim.g.gruvbox_contrast_light = 'hard'
+            vim.opt.background = 'dark'
         end
-    },
+    }
 }
