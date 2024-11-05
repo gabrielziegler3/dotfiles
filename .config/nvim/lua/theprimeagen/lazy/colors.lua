@@ -56,10 +56,21 @@ return {
     {
         'morhetz/gruvbox',
         config = function()
-            vim.cmd.colorscheme("gruvbox")
             vim.g.gruvbox_contrast_dark = 'hard'
             vim.g.gruvbox_contrast_light = 'hard'
-            vim.opt.background = 'dark'
+            -- vim.cmd.colorscheme("gruvbox")
+            -- vim.opt.background = 'dark'
         end
+    },
+    {
+      'projekt0n/github-nvim-theme',
+      name = 'github-theme',
+      lazy = false, -- make sure we load this during startup if it is your main colorscheme
+      priority = 1000, -- make sure to load this before all the other start plugins
+      config = function()
+        require('github-theme').setup({})
+
+        vim.cmd('colorscheme github_dark_high_contrast')
+      end,
     }
 }

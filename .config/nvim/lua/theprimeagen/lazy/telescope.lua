@@ -8,7 +8,26 @@ return {
     },
 
     config = function()
-        require('telescope').setup({})
+        require('telescope').setup({
+            defaults = {
+                path_display = { 'shorten' },
+                prompt_prefix = '❯ ',
+                selection_caret = '❯ ',
+                layout_config = {
+                    width = 0.9,
+                    height = 0.9,
+                    prompt_position = 'top',
+                    preview_cutoff = 120,
+                    horizontal = {
+                        preview_width = 0.6,
+                    },
+                    vertical = {
+                        preview_height = 0.5,
+                    },
+                },
+            },
+
+        })
 
         local builtin = require('telescope.builtin')
         vim.keymap.set('n', '<leader>ff', builtin.find_files, { desc = 'Telescope find files' })
