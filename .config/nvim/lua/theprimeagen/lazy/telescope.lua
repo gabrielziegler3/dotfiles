@@ -10,7 +10,7 @@ return {
     config = function()
         require('telescope').setup({
             defaults = {
-                path_display = { 'shorten' },
+                path_display = { 'smart' },
                 prompt_prefix = '❯ ',
                 selection_caret = '❯ ',
                 layout_config = {
@@ -25,8 +25,13 @@ return {
                         preview_height = 0.5,
                     },
                 },
+                preview = {
+                    title = true,
+                    title_hook = function(filepath)
+                        return filepath
+                    end,
+                },
             },
-
         })
 
         local builtin = require('telescope.builtin')

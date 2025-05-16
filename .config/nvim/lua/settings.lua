@@ -1,4 +1,3 @@
-local api = vim.api
 local g = vim.g
 local opt = vim.opt
 
@@ -10,7 +9,7 @@ local opt = vim.opt
 opt.termguicolors = true -- Enable colors in terminal
 opt.hlsearch = true --Set highlight on search
 opt.number = true --Make line numbers default
-opt.relativenumber = true --Make relative number default
+-- opt.relativenumber = true --Make relative number default
 opt.breakindent = true --Enable break indent
 opt.undofile = true --Save undo history
 opt.ignorecase = true --Case insensitive searching unless /C or capital in search
@@ -29,7 +28,7 @@ vim.cmd [[
   augroup end
 ]]
 
--- Copilot 
+-- Copilot
 g.copilot_assume_mapped = true
 g.copilot_filetypes = {
     markdown = true,

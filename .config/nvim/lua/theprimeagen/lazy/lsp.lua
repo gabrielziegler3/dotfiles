@@ -1,7 +1,7 @@
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
-        "williamboman/mason.nvim",
+        { "williamboman/mason.nvim", version = "^2.0.0" },
         "williamboman/mason-lspconfig.nvim",
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-buffer",
@@ -80,7 +80,11 @@ return {
         })
 
         vim.diagnostic.config({
-            -- update_in_insert = true,
+            virtual_text = {
+                prefix = "●",
+                spacing = 2,
+                source = "if_many",
+            },
             float = {
                 focusable = false,
                 style = "minimal",
@@ -89,6 +93,12 @@ return {
                 header = "",
                 prefix = "",
             },
+        })
+
+        vim.api.nvim_create_autocmd("CursorHold", {
+            callback = function()
+                vim.diagnostic.open_float(nil, { focus = false })
+            end,
         })
     end
 }
