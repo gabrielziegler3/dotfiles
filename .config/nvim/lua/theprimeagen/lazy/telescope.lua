@@ -28,8 +28,14 @@ return {
                 preview = {
                     title = true,
                     title_hook = function(filepath)
-                        return filepath
+                      return vim.fn.fnamemodify(filepath, ":p")  -- full absolute path
                     end,
+                },
+                mappings = {
+                  i = {
+                    ["<C-p>"] = require("telescope.actions").cycle_history_prev,
+                    ["<C-n>"] = require("telescope.actions").cycle_history_next,
+                  },
                 },
             },
         })
