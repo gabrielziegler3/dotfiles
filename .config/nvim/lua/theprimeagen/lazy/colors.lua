@@ -46,31 +46,31 @@ return {
     --         ColorMyPencils()
     --     end
     -- },
+    {
+      'ayu-theme/ayu-vim',
+      config = function()
+        vim.g.ayu_mirage = true  -- or false for ayu-dark
+        vim.cmd('colorscheme ayu')
+      end
+    }
     -- {
-    --     "ayu-theme/ayu-vim",
+    --     'morhetz/gruvbox',
     --     config = function()
-    --         vim.g.ayucolor = "dark" -- dark, light, mirage
-    --         vim.cmd("colorscheme ayu")
+    --         vim.g.gruvbox_contrast_dark = 'hard'
+    --         vim.g.gruvbox_contrast_light = 'hard'
+    --         -- vim.cmd.colorscheme("gruvbox")
+    --         -- vim.opt.background = 'dark'
     --     end
     -- },
-    {
-        'morhetz/gruvbox',
-        config = function()
-            vim.g.gruvbox_contrast_dark = 'hard'
-            vim.g.gruvbox_contrast_light = 'hard'
-            -- vim.cmd.colorscheme("gruvbox")
-            -- vim.opt.background = 'dark'
-        end
-    },
-    {
-      'projekt0n/github-nvim-theme',
-      name = 'github-theme',
-      lazy = false, -- make sure we load this during startup if it is your main colorscheme
-      priority = 1000, -- make sure to load this before all the other start plugins
-      config = function()
-        require('github-theme').setup({})
+    -- {
+    --   'projekt0n/github-nvim-theme',
+    --   name = 'github-theme',
+    --   lazy = false, -- make sure we load this during startup if it is your main colorscheme
+    --   priority = 1000, -- make sure to load this before all the other start plugins
+    --   config = function()
+    --     require('github-theme').setup({})
 
-        vim.cmd('colorscheme github_dark_high_contrast')
-      end,
-    }
+    --     vim.cmd('colorscheme github_dark_high_contrast')
+    --   end,
+    -- }
 }
