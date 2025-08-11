@@ -40,11 +40,13 @@ autocmd('TextYankPost', {
     end,
 })
 
-autocmd({"BufWritePre"}, {
-    group = ThePrimeagenGroup,
-    pattern = "*",
-    command = [[%s/\s\+$//e]],
-})
+-- Remove trailing whitespace on save
+-- This autocmd runs before every buffer write and removes any whitespace at the end of lines
+-- autocmd({"BufWritePre"}, {
+--     group = ThePrimeagenGroup,
+--     pattern = "*",
+--     command = [[%s/\s\+$//e]],
+-- })
 
 autocmd('LspAttach', {
     group = ThePrimeagenGroup,
@@ -66,3 +68,15 @@ autocmd('LspAttach', {
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
+
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+  callback = function()
+    vim.opt_local.tabstop = 2       -- Number of spaces a <Tab> counts for
+    vim.opt_local.shiftwidth = 2    -- Number of spaces to use for each step of (auto)indent
+    vim.opt_local.softtabstop = 2   -- Number of spaces a tab feels like when editing
+    vim.opt_local.expandtab = true  -- Use spaces instead of tabs
+  end,
+})
+
