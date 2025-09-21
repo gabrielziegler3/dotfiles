@@ -6,7 +6,11 @@ return {
     },
     config = function()
       require('local-highlight').setup({
-        animation = false, -- disable animation to avoid needing snacks.nvim
+        animation = true, -- enable animations with snacks.nvim
+        file_types = {'*'}, -- enable for all filetypes
+        hlgroup = 'Search',
+        cw_hlgroup = nil,
+        insert_mode = false,
       })
     end,
     event = 'BufRead',
