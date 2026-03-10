@@ -21,6 +21,8 @@ cp -vr ~/.config/rofi/ ~/SideProjects/dotfiles/.config/
 cp -vr ~/.config/kitty/ ~/SideProjects/dotfiles/.config/
 cp -vr ~/.config/neofetch/ ~/SideProjects/dotfiles/.config/
 cp -vr ~/.config/easyeffects/output/ ~/SideProjects/dotfiles/.config/easyeffects/output/
+cp -vr ~/.config/hypr/ ~/SideProjects/dotfiles/.config/hypr/
+cp -vr ~/.config/waybar/ ~/SideProjects/dotfiles/.config/waybar/
 cp -vr ~/.tmux ~/SideProjects/dotfiles/.tmux/
 
 # ram-monitor script

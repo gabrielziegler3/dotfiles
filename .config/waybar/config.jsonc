@@ -1,0 +1,75 @@
+{
+    "layer": "top",
+    "position": "bottom",
+    "height": 30,
+    "modules-left": ["hyprland/workspaces"],
+    "modules-center": ["custom/spotify"],
+    "modules-right": [
+        "pulseaudio",
+        "cpu",
+        "memory",
+        "temperature",
+        "disk",
+        "network",
+        "clock",
+        "tray"
+    ],
+
+    "hyprland/workspaces": {
+        "format": "{id}",
+        "on-click": "activate"
+    },
+
+    "custom/spotify": {
+        "exec": "playerctl --player=spotify metadata --format '{{ artist }} - {{ title }}'",
+        "interval": 1,
+        "format": "  {}",
+        "max-length": 50,
+        "on-click": "playerctl --player=spotify play-pause"
+    },
+
+    "pulseaudio": {
+        "format": "  {volume}%",
+        "format-muted": "  muted",
+        "on-click": "pavucontrol"
+    },
+
+    "cpu": {
+        "format": "  {usage}%",
+        "interval": 3
+    },
+
+    "memory": {
+        "format": "  {used:.1f}G / {total:.1f}G",
+        "interval": 3
+    },
+
+    "temperature": {
+        "hwmon-path-abs": "/sys/devices/pci0000:00/0000:00:18.3/hwmon",
+        "input-filename": "temp1_input",
+        "format": "  {temperatureC}°C",
+        "interval": 5
+    },
+
+    "disk": {
+        "format": "  {used} / {total}",
+        "path": "/",
+        "interval": 30
+    },
+
+    "network": {
+        "format-wifi": "  {essid}",
+        "format-ethernet": "  {ifname}",
+        "format-disconnected": "  disconnected",
+        "interval": 10
+    },
+
+    "clock": {
+        "format": "  {:%a %d %b  %H:%M}",
+        "interval": 60
+    },
+
+    "tray": {
+        "spacing": 10
+    }
+}

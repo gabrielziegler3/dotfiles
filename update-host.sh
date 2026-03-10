@@ -26,6 +26,8 @@ then
     cp -vr .config/kitty/ ~/.config/
     cp -vr .config/neofetch/ ~/.config/
     cp -vr .config/easyeffects/ ~/.config/
+    cp -vr .config/hypr/ ~/.config/
+    cp -vr .config/waybar/ ~/.config/
 
     # ram-monitor script
     mkdir -p ~/.local/bin/ && cp -v .local/bin/ram-monitor.sh ~/.local/bin/ && chmod +x ~/.local/bin/ram-monitor.sh
