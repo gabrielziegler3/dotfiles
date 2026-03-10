@@ -138,6 +138,11 @@ handle_image() {
                   - "${IMAGE_CACHE_PATH}" < "${FILE_PATH}" \
                   && exit 6 || exit 1;;
 
+        ## HEIC/HEIF Images
+        image/heic|image/heif|image/heic-sequence|image/heif-sequence)
+            convert -- "${FILE_PATH}" "${IMAGE_CACHE_PATH}" && exit 6
+            exit 1;;
+
         ## Image
         image/*)
             local orientation

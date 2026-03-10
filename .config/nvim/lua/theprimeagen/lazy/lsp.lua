@@ -24,12 +24,13 @@ return {
 
         require("fidget").setup({})
         require("mason").setup()
-        require'lspconfig'.eslint.setup{}
         require("mason-lspconfig").setup({
             ensure_installed = {
                 "lua_ls",
                 "pyright",
---                 "pyrefly",
+                "ts_ls",
+                "ruff",
+                "eslint",
                 "texlab",
             },
             handlers = {
@@ -46,12 +47,76 @@ return {
                         capabilities = capabilities,
                         settings = {
                             Lua = {
-				    runtime = { version = "Lua 5.1" },
+                                runtime = { version = "Lua 5.1" },
                                 diagnostics = {
                                     globals = { "vim", "it", "describe", "before_each", "after_each" },
                                 }
                             }
                         }
+                    }
+                end,
+
+                ["pyright"] = function()
+                    require("lspconfig").pyright.setup {
+                        capabilities = capabilities,
+                        settings = {
+                            pyright = {
+                                autoImportCompletion = true,
+                            },
+                            python = {
+                                analysis = {
+                                    autoSearchPaths = true,
+                                    diagnosticMode = "openFilesOnly",
+                                    useLibraryCodeForTypes = true,
+                                    typeCheckingMode = "basic",
+                                }
+                            }
+                        }
+                    }
+                end,
+
+                ["ruff"] = function()
+                    require("lspconfig").ruff.setup {
+                        capabilities = capabilities,
+                        on_attach = function(client, bufnr)
+                            client.server_capabilities.hoverProvider = false
+                        end
+                    }
+                end,
+
+                ["ts_ls"] = function()
+                    require("lspconfig").ts_ls.setup {
+                        capabilities = capabilities,
+                        settings = {
+                            javascript = {
+                                inlayHints = {
+                                    includeInlayEnumMemberValueHints = true,
+                                    includeInlayFunctionLikeReturnTypeHints = true,
+                                    includeInlayFunctionParameterTypeHints = true,
+                                    includeInlayParameterNameHints = "all",
+                                    includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                                    includeInlayPropertyDeclarationTypeHints = true,
+                                    includeInlayVariableTypeHints = true,
+                                },
+                            },
+                            typescript = {
+                                inlayHints = {
+                                    includeInlayEnumMemberValueHints = true,
+                                    includeInlayFunctionLikeReturnTypeHints = true,
+                                    includeInlayFunctionParameterTypeHints = true,
+                                    includeInlayParameterNameHints = "all",
+                                    includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                                    includeInlayPropertyDeclarationTypeHints = true,
+                                    includeInlayVariableTypeHints = true,
+                                },
+                            },
+                        }
+                    }
+                end,
+
+                ["eslint"] = function()
+                    require("lspconfig").eslint.setup {
+                        capabilities = capabilities,
                     }
                 end,
             }

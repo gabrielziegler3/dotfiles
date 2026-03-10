@@ -10,7 +10,7 @@ then
     
     # Update all rices
     echo "Updating rice files in ~/"
-    cp -v .zshrc .bashrc .vimrc .profile .Xresources .xinitrc .bash_aliases ~/
+    cp -v .zshrc .bashrc .vimrc .profile .Xresources .xinitrc .bash_aliases .tmux.conf .p10k.zsh .gitconfig ~/
     
     # Update config files
     echo "Updating config files in ~/.config/"
@@ -25,6 +25,11 @@ then
     cp -vr .config/picom/ ~/.config/
     cp -vr .config/kitty/ ~/.config/
     cp -vr .config/neofetch/ ~/.config/
+    cp -vr .config/easyeffects/ ~/.config/
+
+    # ram-monitor script
+    mkdir -p ~/.local/bin/ && cp -v .local/bin/ram-monitor.sh ~/.local/bin/ && chmod +x ~/.local/bin/ram-monitor.sh
+
     # Deprecated
     # cp -vr .config/ncmpcpp/ ~/.config/
     # cp -vr .config/cava ~/.config/

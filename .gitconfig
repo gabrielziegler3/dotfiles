@@ -2,3 +2,7 @@
 	name = Gabriel Ziegler
 	email = gabrielziegler3@gmail.com
 	username = gabrielziegler3
+[push]
+	autoSetupRemote = true
+[init]
+	defaultBranch = main

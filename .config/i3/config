@@ -12,7 +12,7 @@ default_border pixel 5
 default_floating_border normal
 
 # Set default wallpaper folder
-set $wallpaper_folder $HOME/Pictures/Wallpapers/new/
+set $wallpaper_folder $HOME/Pictures/Wallpapers/
 
 # Hide borders
 # hide_edge_borders none
@@ -295,6 +295,8 @@ bindsym $mod+Shift+x exec --no-startup-id blurlock
 # exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # exec --no-startup-id nitrogen --restore; sleep 1; picom -b
 exec --no-startup-id picom -b
+# Set display resolution and refresh rate
+exec --no-startup-id xrandr --output DisplayPort-1 --mode 2560x1440 --rate 155
 # exec --no-startup-id manjaro-hello
 exec --no-startup-id nm-applet
 exec --no-startup-id pamac-tray
@@ -306,8 +308,9 @@ exec --no-startup-id pamac-tray
 # exec --no-startup-id xautolock -time 10 -locker blurlock
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
-exec --no-startup-id wal -i $wallpaper_folder
-# exec --no-startup-id wal -i  "$HOME/Pictures/Wallpapers/" 
+# exec --no-startup-id ~/.scripts/wal-colorblind.sh $wallpaper_folder
+# exec --no-startup-id wal -i  "$HOME/Pictures/Wallpapers/"
+exec --no-startup-id ~/.scripts/cycle-wallpaper.sh $wallpaper_folder
 exec --no-startup-id kitty
 
 # Color palette used for the terminal ( ~/.Xresources file )
@@ -344,35 +347,26 @@ exec --no-startup-id kitty
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
 	i3bar_command i3bar
-	status_command i3status
+	status_command i3blocks -c ~/.config/i3/i3blocks.conf
 	position bottom
-
-## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
-#	tray_output primary
-#	tray_output eDP1
+	tray_output primary
+	font pango:MesloLGS Nerd Font 10
 
 	bindsym button4 nop
 	bindsym button5 nop
-#   font xft:URWGothic-Book 11
 	strip_workspace_numbers yes
 
     colors {
-        background #222D31
-        statusline $fg
-        separator  #454947
+        background #1a1b26
+        statusline #c0caf5
+        separator  #3b4261
 
 #                           border  backgr. text
-        focused_workspace   $bg     $bg     $fg                      
-        active_workspace    $tb     $tb     $fg                      
-        inactive_workspace  $tb     $tb     $fg                      
-        binding_mode        $bg     $bg     $fg                      
-        urgent_workspace    $bg     $bg     $fg                      
-
-        # focused_workspace  #F9FAF9 #16a085 #292F34
-        # active_workspace   #595B5B #353836 #FDF6E3
-        # inactive_workspace #595B5B #222D31 #EEE8D5
-        # binding_mode       #16a085 #2C2C2C #F9FAF9
-        # urgent_workspace   #16a085 #FDF6E3 #E5201D
+        focused_workspace   #7aa2f7 #7aa2f7 #1a1b26
+        active_workspace    #3b4261 #3b4261 #c0caf5
+        inactive_workspace  #1a1b26 #1a1b26 #565f89
+        binding_mode        #f7768e #f7768e #1a1b26
+        urgent_workspace    #f7768e #f7768e #1a1b26
     }
 }
 
@@ -494,12 +488,12 @@ bindsym --release Mod4+space exec "~/.scripts/toggle-keyboard.sh"
 
 # Audio/Volume controls
 # # increase sound volume
-# bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +3%
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +3%
 # # decrease sound volume
-# bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -3%
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -3%
 # # toggle mute
 # # bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle
-# bindsym XF86AudioMute exec --no-startup-id amixer -q sset Master toggle
+bindsym XF86AudioMute exec --no-startup-id amixer -q sset Master toggle
 
 # Media player controls
 bindsym XF86AudioPause exec playerctl --player=spotify play-pause
@@ -513,11 +507,20 @@ bindsym $mod+b exec --no-startup-id kitty -e ranger
 # bindsym $mod+m exec --no-startup-id xst -e ncmpcpp
 
 # Calc
-bindsym $mod+c exec --no-startup-id kitty -e python
+bindsym $mod+c exec --no-startup-id kitty -e python3
 
-# Cycle wallpapers and apply new colorscheme.
-bindsym $mod+n exec --no-startup-id wal -i $wallpaper_folder
+# Cycle wallpapers randomly.
+bindsym $mod+n exec --no-startup-id ~/.scripts/cycle-wallpaper.sh $wallpaper_folder
+
+# Linkedin answer
+bindsym $mod+y exec --no-startup-id sh -c 'xclip -selection clipboard < ~/.scripts/linkedin_response.md'
 
 bindsym --release Mod4+Shift+s exec "~/.scripts/screenshot.sh 'selection'"
 
 exec --no-startup-id sleep 1 && volumeicon
+
+# EasyEffects - system-wide audio EQ (edifier-r1000t4 preset)
+exec --no-startup-id easyeffects --gapplication-service
+
+# RAM usage monitor - sends desktop notifications when memory is low
+exec --no-startup-id ~/.local/bin/ram-monitor.sh
