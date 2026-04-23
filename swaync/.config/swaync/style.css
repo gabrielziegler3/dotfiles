@@ -1,0 +1,186 @@
+/* Tokyo Night theme for swaync */
+
+* {
+  font-family: "MesloLGS Nerd Font";
+  font-size: 14px;
+}
+
+/* ── Notification popups ── */
+
+.notification-row {
+  outline: none;
+  padding: 0;
+  margin: 0;
+}
+
+.notification {
+  background: rgba(26, 27, 38, 0.92);
+  border: 1px solid rgba(65, 72, 104, 0.6);
+  border-radius: 12px;
+  margin: 6px 12px;
+  padding: 0;
+  color: #c0caf5;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4),
+              0 0 0 1px rgba(122, 162, 247, 0.08);
+}
+
+.notification:hover {
+  border-color: rgba(122, 162, 247, 0.4);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5),
+              0 0 0 1px rgba(122, 162, 247, 0.15);
+}
+
+.notification-content {
+  padding: 12px 14px;
+}
+
+.notification-default-action {
+  border-radius: 12px;
+}
+
+.notification-action {
+  background: rgba(65, 72, 104, 0.3);
+  border: 1px solid rgba(65, 72, 104, 0.4);
+  border-radius: 8px;
+  color: #c0caf5;
+  margin: 4px;
+  padding: 6px 12px;
+}
+
+.notification-action:hover {
+  background: rgba(122, 162, 247, 0.2);
+  border-color: rgba(122, 162, 247, 0.5);
+}
+
+.close-button {
+  background: rgba(247, 118, 142, 0.85);
+  color: #1a1b26;
+  border-radius: 50%;
+  min-width: 22px;
+  min-height: 22px;
+  margin: 8px;
+  padding: 0;
+  border: none;
+}
+
+.close-button:hover {
+  background: #f7768e;
+  box-shadow: 0 0 8px rgba(247, 118, 142, 0.4);
+}
+
+.summary {
+  color: #c0caf5;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.body {
+  color: #a9b1d6;
+  font-size: 13px;
+}
+
+.time {
+  color: #565f89;
+  font-size: 12px;
+  margin-right: 4px;
+}
+
+.image {
+  border-radius: 8px;
+  margin: 4px 8px 4px 0;
+}
+
+.notification.critical {
+  border-color: rgba(247, 118, 142, 0.6);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4),
+              0 0 0 1px rgba(247, 118, 142, 0.2);
+}
+
+.notification.low {
+  border-color: rgba(65, 72, 104, 0.4);
+}
+
+/* ── Control center panel ── */
+
+.control-center {
+  background: rgba(26, 27, 38, 0.95);
+  border: 1px solid rgba(65, 72, 104, 0.5);
+  border-radius: 14px;
+  color: #c0caf5;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.55),
+              0 0 0 1px rgba(122, 162, 247, 0.06);
+  padding: 8px 0;
+}
+
+.control-center .notification-row {
+  border-bottom: none;
+}
+
+.control-center .notification-row .notification {
+  margin: 4px 8px;
+  background: rgba(36, 40, 59, 0.8);
+  border-color: rgba(65, 72, 104, 0.35);
+  box-shadow: none;
+}
+
+.control-center .notification-row .notification:hover {
+  background: rgba(36, 40, 59, 1);
+  border-color: rgba(122, 162, 247, 0.35);
+}
+
+.control-center-list {
+  background: transparent;
+  padding: 4px 0;
+}
+
+/* ── Widgets ── */
+
+.widget-title {
+  color: #c0caf5;
+  font-size: 15px;
+  font-weight: bold;
+  padding: 10px 16px 6px;
+  margin: 0;
+}
+
+.widget-title > button {
+  background: rgba(247, 118, 142, 0.15);
+  color: #f7768e;
+  border-radius: 8px;
+  padding: 4px 14px;
+  border: 1px solid rgba(247, 118, 142, 0.3);
+  font-size: 13px;
+  font-weight: bold;
+}
+
+.widget-title > button:hover {
+  background: rgba(247, 118, 142, 0.25);
+  border-color: rgba(247, 118, 142, 0.5);
+  box-shadow: 0 0 8px rgba(247, 118, 142, 0.2);
+}
+
+.widget-dnd {
+  color: #a9b1d6;
+  padding: 6px 16px 10px;
+  font-size: 13px;
+}
+
+.widget-dnd > switch {
+  background: rgba(65, 72, 104, 0.5);
+  border-radius: 12px;
+  border: 1px solid rgba(65, 72, 104, 0.4);
+  min-height: 24px;
+  min-width: 48px;
+}
+
+.widget-dnd > switch:checked {
+  background: rgba(122, 162, 247, 0.35);
+  border-color: rgba(122, 162, 247, 0.5);
+}
+
+.widget-dnd > switch slider {
+  background: #c0caf5;
+  border-radius: 50%;
+  min-width: 20px;
+  min-height: 20px;
+}

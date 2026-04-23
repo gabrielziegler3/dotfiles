@@ -1,0 +1,78 @@
+/* Tokyo Night theme — matches i3blocks bar colors */
+
+* {
+    font-family: "MesloLGS Nerd Font";
+    font-size: 13px;
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+}
+
+window#waybar {
+    background-color: rgba(26, 27, 38, 0.8);
+    color: #c0caf5;
+}
+
+#workspaces button {
+    padding: 0 8px;
+    color: #565f89;
+    background: transparent;
+}
+
+#workspaces button.active {
+    color: #1a1b26;
+    background-color: #7aa2f7;
+    border-radius: 4px;
+}
+
+#workspaces button.urgent {
+    color: #1a1b26;
+    background-color: #f7768e;
+    border-radius: 4px;
+}
+
+#custom-spotify {
+    color: #9ece6a;
+}
+
+#pulseaudio {
+    color: #7aa2f7;
+}
+
+#cpu {
+    color: #ff9e64;
+}
+
+#memory {
+    color: #bb9af7;
+}
+
+#temperature {
+    color: #f7768e;
+}
+
+#disk {
+    color: #73daca;
+}
+
+#network {
+    color: #7dcfff;
+}
+
+#clock {
+    color: #c0caf5;
+    font-weight: bold;
+}
+
+#tray {
+    padding: 0 5px;
+}
+
+/* Spacing between modules */
+#custom-notification {
+    color: #7aa2f7;
+}
+
+#pulseaudio, #cpu, #memory, #temperature, #disk, #network, #clock, #custom-notification, #tray {
+    padding: 0 10px;
+}

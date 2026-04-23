@@ -1,35 +1,74 @@
 # Dotfiles
 
-## Inspirations
+Managed with [GNU Stow](https://www.gnu.org/software/stow/).
 
-Some snippets and configurations (specially, Polybar and PyWal config) were taken from [this repo](https://github.com/NicklasLallo/dotfiles).
+## Quick start
 
-## Information
+```bash
+git clone git@github.com:gabrielziegler3/dotfiles.git ~/dotfiles
+cd ~/dotfiles
+
+# Install everything
+./bootstrap.sh
+
+# Or pick specific packages
+./bootstrap.sh zsh nvim kitty tmux hyprland waybar swaync
+```
+
+## Packages
+
+| Package | What it configures |
+|---------|--------------------|
+| `zsh` | .zshrc, Powerlevel10k |
+| `bash` | .bashrc, .bash_aliases |
+| `vim` | .vimrc |
+| `shell` | .profile, .xinitrc, .Xresources |
+| `git` | .gitconfig |
+| `tmux` | .tmux.conf, plugins |
+| `kitty` | Terminal emulator |
+| `nvim` | Neovim (Lua config) |
+| **i3** | i3wm, i3blocks, i3lock (X11) |
+| **polybar** | Status bar (X11/i3) |
+| **dunst** | Notifications (X11) |
+| `rofi` | App launcher |
+| `picom` | Compositor (X11) |
+| `ranger` | TUI file manager |
+| `neofetch` | System info |
+| **hyprland** | Hyprland WM (Wayland) |
+| **waybar** | Status bar (Wayland) |
+| **swaync** | Notification center (Wayland) |
+| `scripts` | Helper scripts |
+| `claude` | Claude Code settings |
+
+**i3 stack** (X11): `i3`, `polybar`, `dunst`, `picom`
+**Hyprland stack** (Wayland): `hyprland`, `waybar`, `swaync`
+
+## Stow cheatsheet
+
+```bash
+stow --restow --no-folding <pkg>   # re-apply a package
+stow -D <pkg>                      # unlink a package
+stow --adopt <pkg>                 # adopt existing files into repo (then git diff to review)
+```
+
+## System
 
 * OS: Manjaro
-* WM: i3
+* WM: Hyprland (Wayland) / i3 (X11 legacy)
 * Terminal: kitty
-* Shell: zsh
-* File Manager: Nemo for GUI, Ranger for terminal
-* Launcher: Rofi
-* Bar: Polybar (3 instances)
+* Shell: zsh + Powerlevel10k
 * Editor: Neovim
+* Launcher: Rofi
 
-## Custom keybinds
-### i3
+## Voice Dictation (Vocalinux)
 
-Mostly default keybindings. For more information check out the i3 config file. Here are some additions:
+Voice-to-text for CLI/terminal using [Vocalinux](https://github.com/jatinkrmalik/vocalinux) with whisper.cpp (Vulkan GPU backend).
 
-* <kbd>Super</kbd> + <kbd>enter</kbd> - Launch Kitty running tmux
-* <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>enter</kbd> - Launch Kitty running ranger
-* <kbd>Super</kbd> + <kbd>d</kbd> - Launch Rofi
-* <kbd>Super</kbd> + <kbd>hjkl</kbd> - Move focus with vim keybindings
-* <kbd>Super</kbd> + <kbd>Shift</kbd> + <kbd>hjkl</kbd> - Move windows with vim keybindings
-* <kbd>Super</kbd> + <kbd>n</kbd> - Run `pywal`. Automatically select a new random wallpaper from `~/Pictures/Wallpapers/`, generate new colorthemes for polybar, kitty, i3, rofi, and automatically tell those applications to update (polybar restarts quietly). This is also done on each restart.
+**Install:**
+```bash
+curl -fsSL raw.githubusercontent.com/jatinkrmalik/vocalinux/v0.8.0-beta/install.sh -o /tmp/vl.sh && bash /tmp/vl.sh
+```
+Choose: whisper.cpp -> GPU (Vulkan) -> Download models now.
 
 ### Demo
 ![Demo](./figures/system-demo.gif)
-
-### Full screen picture
-
-![](./figures/fullscreen.png)

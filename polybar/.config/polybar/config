@@ -1,0 +1,547 @@
+;-------------------------------------------------
+;                                                ;
+;                 Ziegler Custom                 ;
+;                                                ;
+;-------------------------------------------------
+
+
+[colors]
+;background = ${xrdb:color0:#222}
+;background = #cfl000000
+background = #99000000
+foreground = ${xrdb:color2:#222}
+
+;it's ARGB so "cfl" is for transparency
+;background-alrt = #cflA1BB76
+i3_background = ${xrdb:color3:#222}
+i3_foreground = ${xrdb:color5:#222}
+i3_urgent_background = ${xrdb:color5:#222}
+i3_unfocused_foreground = ${xrdb:color2:#222}
+
+foreground-alt=${xrdb:color7:#222}
+
+status_good = ${xrdb:color7}
+status_sub = ${xrdb:color6}
+status_bad = ${xrdb:color5}
+
+line-color = #FFFFFF
+transparent = #00FFFFFF
+
+tray_background = #60e7ecdb
+
+
+[const]
+width = 100%
+# fullhd
+# height = 35
+# 4k
+height = 45
+clickarea = 25
+offset-x = 0.5%
+offset-y = 5
+
+border-size = 0
+border-left-size = ${const.border-size}
+border-right = ${const.border-size}
+border-top = ${const.border-size}
+border-bottom = 3
+
+module-margin-left = 0
+module-margin-right = 0
+format-padding = 4
+
+spacing = 1
+line-height = 4
+line-size = 0
+
+radius = 0
+radius-top = 0
+radius-bottom = 0
+
+# FULL HD
+# font-0 = fixed:pixelsize=12;1
+# font-1 = unifont:fontformat=truetype:size=8:antialias=false;0
+# font-2 = "Wuncon Siji:pixelsize=12;1"
+# font-3 = Font Awesome 5 Free:style=Regular:pixelsize=12;1
+# font-4 = Font Awesome 5 Free:style=Solid:pixelsize=12;1
+# font-5 = Font Awesome 5 Brands:pixelsize=12;1
+
+# 4K
+font-0 = fixed:pixelsize=20:antialias=true;
+font-1 = unifont:fontformat=truetype:pixelsize=20:antialias=true;
+font-2 = Wuncon Siji:pixelsize=20:antialias=true;
+font-3 = Font Awesome 6 Free:style=Regular:pixelsize=20:antialias=true;
+font-4 = Font Awesome 6 Free:style=Solid:pixelsize=20:antialias=true;
+font-5 = Font Awesome 6 Brands:pixelsize=20:antialias=true;
+; mostly for i3 workspaces
+padding = 6
+text-padding = 10
+
+
+[bar/left]
+monitor = ${env:MONITOR:}
+dpi = 100
+top = true
+override-redirect = true
+wm-restack = i3
+width = 25%
+height = ${const.height}
+clickareas = ${const.clickareas}
+offset-x = ${const.offset-x}
+offset-y = ${const.offset-y}
+background = ${colors.background}
+foreground = ${colors.foreground}
+line-color = ${colors.line-color}
+line-size = ${const.line-size}
+;border-color = ${colors.foreground}
+;border-left-size = ${const.border-left-size}
+;border-right-size = ${const.border-right}
+;border-top-size = ${const.border-top}
+;border-bottom-size = ${const.border-bottom}
+radius-top = ${const.radius-top}
+radius-bottom = ${const.radius-bottom}
+module-margin-left = ${const.module-margin-left}
+module-margin-right = ${const.module-margin-right}
+spacing = ${const.spacing}
+lineheight = ${const.lineheight}
+font-0 = ${const.font-0}
+font-1 = ${const.font-1}
+font-2 = ${const.font-2}
+font-3 = ${const.font-3}
+font-4 = ${const.font-4}
+font-5 = ${const.font-5}
+modules-left = i3
+
+
+[bar/center]
+monitor = ${env:MONITOR:}
+top = true
+override-redirect = true
+wm-restack = i3
+;monitor = DP-0
+width = 30%
+height = ${const.height}
+clickareas = ${const.clickareas}
+offset-x = 35%
+offset-y = ${const.offset-y}
+background = ${colors.background}
+foreground = ${colors.foreground}
+line-color = ${colors.line-color}
+line-size = ${const.line-size}
+;border-color = ${colors.foreground}
+;border-left-size = ${const.border-left-size}
+;border-right-size = ${const.border-right}
+;border-top-size = ${const.border-top}
+;border-bottom-size = ${const.border-bottom}
+radius-top = ${const.radius-top}
+radius-bottom = ${const.radius-bottom}
+module-margin-left = ${const.module-margin-left}
+module-margin-right = ${const.module-margin-right}
+spacing = ${const.spacing}
+lineheight = ${const.lineheight}
+font-0 = ${const.font-0}
+font-1 = ${const.font-1}
+font-2 = ${const.font-2}
+font-3 = ${const.font-3}
+font-4 = ${const.font-4}
+font-5 = ${const.font-5}
+modules-left = pulseaudio
+modules-center = spotify
+
+
+[bar/right]
+monitor = ${env:MONITOR:}
+top = true
+override-redirect = true
+wm-restack = i3
+;monitor = DP-0
+width = 25%
+height = ${const.height}
+clickareas = ${const.clickareas}
+; screen_width - bar_width - offset-x
+; offset-x = 1907.2
+offset-x = 74.5%
+offset-y = ${const.offset-y}
+background = ${colors.background}
+foreground = ${colors.foreground}
+line-color = ${colors.line-color}
+line-size = ${const.line-size}
+;border-color = ${colors.foreground}
+;border-left-size = ${const.border-left-size}
+;border-right-size = ${const.border-right}
+;border-top-size = ${const.border-top}
+;border-bottom-size = ${const.border-bottom}
+radius-top = ${const.radius-top}
+radius-bottom = ${const.radius-bottom}
+module-margin-left = ${const.module-margin-left}
+module-margin-right = ${const.module-margin-right}
+spacing = ${const.spacing}
+lineheight = ${const.lineheight}
+font-0 = ${const.font-0}
+font-1 = ${const.font-1}
+font-2 = ${const.font-2}
+font-3 = ${const.font-3}
+font-4 = ${const.font-4}
+font-5 = ${const.font-5}
+modules-right = redshift disk xkeyboard wired-network clock
+
+
+[module/pulseaudio]
+format-padding = ${const.format-padding}
+type = internal/pulseaudio
+
+; Sink to be used, if it exists (find using `pacmd list-sinks`, name field)
+; If not, uses default sink
+; sink = sh ~/.scripts/pulseaudio-sink.sh
+
+use-ui-max = false
+; Interval for volume increase/decrease (in percent points)
+interval = 3
+format-volume = <ramp-volume> <label-volume>
+
+label-muted = "  "
+label-muted-foreground = #666
+
+ramp-volume-0 = "  "
+ramp-volume-1 = "  "
+ramp-volume-2 = "  "
+
+click-right = pavucontrol &
+
+
+[module/spotify]
+format-padding = ${const.format-padding}
+type = custom/script
+exec = ~/.scripts/spotify_status.sh
+exec-if = pgrep spotify > /dev/null
+interval = 2.0
+click-left = playerctl -p spotify play-pause
+format-foreground = ${colors.foreground}
+# format-background = #191A29
+label = "%output%"
+content = 
+content-foreground = #23B37A
+
+
+[module/player-mpris-tail]
+format-padding = ${const.format-padding}
+type = custom/script
+exec = ~/polybar-scripts/polybar-scripts/player-mpris-tail/player-mpris-tail.py -f '{:artist:t18:{artist}:}{:artist: - :}{:t20:{title}:}'
+tail = true
+label = %output%
+format-underline = ${colors.primary}
+
+
+[module/redshift]
+format-padding = ${const.format-padding}
+type = custom/script
+format-prefix = " "
+exec = source ~/.scripts/polybar-redshift/env.sh && ~/.scripts/polybar-redshift/redshift.sh temperature
+click-left = source ~/.scripts/polybar-redshift/env.sh && ~/.scripts/polybar-redshift/redshift.sh toggle
+scroll-up = source ~/.scripts/polybar-redshift/env.sh && ~/.scripts/polybar-redshift/redshift.sh increase
+scroll-down = source ~/.scripts/polybar-redshift/env.sh && ~/.scripts/polybar-redshift/redshift.sh decrease
+interval=0.5
+
+
+[module/system-usb-udev]
+type = custom/script
+exec = ~/polybar-scripts/system-usb-udev.sh
+tail = true
+click-left = ~/polybar-scripts/system-usb-udev.sh --mount
+click-right = ~/polybar-scripts/system-usb-udev.sh --unmount
+
+
+[module/disk]
+type = custom/script
+interval = 10
+;format = <label>
+format-prefix = " "
+format-underline = ${colors.foreground}
+exec = ~/.scripts/ssd-storage.sh
+
+
+[module/memory]
+type = internal/memory
+
+; Seconds to sleep between updates
+; Default: 1
+interval = 3
+format-prefix = " "
+label = %gb_used%
+
+; Only applies if <bar-used> is used
+bar-used-indicator =
+bar-used-width = 50
+bar-used-foreground-0 = #55aa55
+bar-used-foreground-1 = #557755
+bar-used-foreground-2 = #f5a70a
+bar-used-foreground-3 = #ff5555
+bar-used-fill = ▐
+bar-used-empty = ▐
+bar-used-empty-foreground = #444444
+
+; Only applies if <ramp-used> is used
+ramp-used-0 = ▁
+ramp-used-1 = ▂
+ramp-used-2 = ▃
+ramp-used-3 = ▄
+ramp-used-4 = ▅
+ramp-used-5 = ▆
+ramp-used-6 = ▇
+ramp-used-7 = █
+
+; Only applies if <ramp-free> is used
+ramp-free-0 = ▁
+ramp-free-1 = ▂
+ramp-free-2 = ▃
+ramp-free-3 = ▄
+ramp-free-4 = ▅
+ramp-free-5 = ▆
+ramp-free-6 = ▇
+ramp-free-7 = █
+
+
+[module/cpu]
+type = internal/cpu
+interval = 0.5
+format-prefix = "CPU"
+label = %percentage%%
+
+
+[module/openweathermap-fullfeatured]
+type = custom/script
+exec = ~/polybar-scripts/polybar-scripts/openweathermap-fullfeatured/openweathermap-fullfeatured.sh
+interval = 600
+format-underline = ${colors.foreground}
+label-font = 7
+
+
+[module/i3]
+type = internal/i3
+format = <label-state> <label-mode>
+; strip number ordering in i3 workspaces
+strip-wsnumbers = true
+
+label-mode = %mode%
+label-mode-foreground = ${colors.foreground}
+label-mode-background = ${colors.background}
+label-mode-padding = 0
+;label-mode-margin = 0
+
+pin-workspaces = true
+index-sort = true
+label-focused = %name%
+label-focused-foreground = ${colors.background}
+label-focused-background = ${colors.i3_background}
+label-focused-underline = ${colors.foreground}
+label-focused-padding = ${const.padding}
+label-focused-ellipsis = true
+
+label-unfocused = %name%
+label-unfocused-foreground = ${colors.i3_unfocused_foreground}
+label-unfocused-padding = ${const.padding}
+label-unfocused-ellipsis = false
+
+label-visible = %name%
+label-visible-padding = ${const.padding}
+
+label-urgent = %name%
+label-urgent-foreground = ${colors.i3_foreground}
+label-urgent-background = ${colors.i3_urgent_background}
+label-urgent-padding = ${const.padding}
+
+
+[module/wireless-network]
+type = internal/network
+interface = wlp3s0
+interval = 3
+
+format-connected-background = ${colors.background}
+format-connected = "<label-connected>  <ramp-signal> "
+format-connected-underline = ${colors.foreground}
+format-padding = ${const.format-padding}
+label-connected = " %essid%"
+
+format-disconnected = "  None "
+;format-disconnected-background = ${colors.background-unf}
+format-disconnected-underline = ${colors.foreground}
+label-disconnected = %ifname% disconnected
+label-disconnected-foreground = ${colors.foreground}
+
+ramp-signal-0 = "0%"
+ramp-signal-1 = "25%"
+ramp-signal-2 = "50%"
+ramp-signal-3 = "75%"
+ramp-signal-4 = "100%"
+ramp-signal-foreground = ${colors.foreground}
+
+
+[module/wired-network]
+format-padding = ${const.format-padding}
+type = internal/network
+interface = enp34s0
+interval = 3
+
+format-connected-underline = ${colors.background}
+format-connected-prefix-foreground = ${colors.foreground}
+label-connected =  %local_ip%
+
+
+[module/date]
+type = internal/date
+interval = 1
+
+date =
+date-alt = " %Y-%m-%d"
+
+time = " %a, %d %b    %H:%M:%S"
+time-alt = %H:%M:%S
+
+format-prefix-foreground = ${colors.foreground-alt}
+format-underline = ${colors.foreground}
+
+label = %date% %time%
+
+;lable = %time%
+
+
+[module/clock]
+format-padding = ${const.format-padding}
+type = internal/date
+interval = 1
+label =  %date% %time%
+date = %a %b %d
+time =  %I:%M:%S %p
+format-underline = ${colors.foreground}
+
+;format-background = ${colors.foreground}
+;format-foreground = ${colors.background}
+
+
+#[module/battery]
+#type = internal/battery
+#battery = BAT0
+#adapter = AC
+#full-at = 97
+#
+#format-full-background = ${colors.background-mod2}
+#format-charging-background = ${colors.background-mod1}
+#format-charging = "⁣   <animation-charging> <label-charging>"
+#format-charging-underline = #ffb52a
+#
+#
+#format-discharging-background = ${colors.background-alt}
+#format-discharging = "⁣  <ramp-capacity> <label-discharging>  "
+#format-discharging-underline = ${self.format-charging-underline}
+#
+#format-full =
+#format-full-prefix-foreground = ${colors.foreground-alt}
+#format-full-underline = ${self.format-charging-underline}
+#
+#ramp-capacity-0 = 
+#ramp-capacity-1 = 
+#ramp-capacity-2 = 
+#ramp-capacity-3 = 
+#ramp-capacity-4 = 
+#
+#ramp-capacity-foreground = ${colors.foreground-alt}
+#
+#animation-charging-0 = 
+#animation-charging-1 = 
+#animation-charging-2 = 
+#animation-charging-3 = 
+#animation-charging-4 = 
+#animation-charging-foreground = ${colors.foreground-alt}
+#animation-charging-framerate = 750
+
+
+[module/powermenu]
+type = custom/menu
+
+format-spacing = 1
+
+label-open = "      "
+label-open-background = ${colors.background}
+label-open-foreground = ${colors.foreground}
+label-close = "    cancel   "
+;label-close-background = ${colors.background-mod2}
+label-close-foreground = ${colors.foreground}
+label-separator = " "
+label-separator-foreground = ${colors.foreground-alt}
+
+menu-0-0 = reboot
+menu-0-0-exec = menu-open-1
+menu-0-1 = "power off   "
+menu-0-1-exec = menu-open-2
+
+menu-1-0 = cancel
+menu-1-0-exec = menu-open-0
+menu-1-1 = reboot
+menu-1-1-exec = sudo restart
+
+menu-2-0 = power off
+menu-2-0-exec = sudo poweroff
+menu-2-1 = cancel
+menu-2-1-exec = menu-open-0
+
+
+[module/xkeyboard]
+format-padding = ${const.format-padding}
+type = custom/script
+blacklist-0 = num lock
+exec = setxkbmap -print | awk -F"+" '/xkb_symbols/ {print $2}'
+
+format-prefix = "  "
+format-prefix-foreground = ${colors.foreground}
+format-prefix-underline = ${colors.foreground}
+click-left = ~/.scripts/toggle-keyboard.sh
+interval = 0.1
+
+label-layout = %layout%
+label-layout-underline = ${colors.foreground}
+
+;label-indicator-padding = 2
+;label-indicator-margin = 1
+label-indicator-background = ${colors.background-mod0}
+label-indicator-underline = ${colors.foreground}
+
+
+; [module/filesystem]
+; type = internal/fs
+; interval = 25
+;
+; mount-0 = /
+;
+; label-mounted = %{F#0a81f5}%mountpoint%%{F-}: %percentage_used%%
+; label-unmounted = %mountpoint% not mounted
+; label-unmounted-foreground = ${colors.foreground-alt}
+;
+; [module/backlight]
+; type = internal/backlight
+;
+; ; Use the following command to list available cards:
+; ; $ ls -1 /sys/class/backlight/
+; card = intel_backlight
+
+[module/backlight]
+type = internal/xbacklight
+
+; XRandR output to get get values from
+; Default: the monitor defined for the running bar
+output = HDMI-1
+
+; Create scroll handlers used to set the backlight value
+; Default: true
+enable-scroll = false
+
+;[module/backlight-acpi]
+;inherit = module/xbacklight
+;type = internal/backlight
+;card = intel_backlight
+
+[module/isrunning-compton]
+type = custom/script
+exec = ~/polybar-scripts/polybar-scripts/isrunning-compton/isrunning-compton.sh
+interval = 5
+click-left = ~/polybar-scripts/isrunning-compton.sh --toggle
+

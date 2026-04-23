@@ -1,0 +1,15 @@
+\.git
+\.gitmodules
+\.gitignore
+\.all-contributorsrc
+README\.md
+LICENSE
+bootstrap\.sh
+install-dependencies\.sh
+update-dotfiles\.sh
+update-host\.sh
+ml-requirements\.txt
+figures
+polybar-scripts
+\.stow-local-ignore
+migrate-to-laptop\.sh
