@@ -15,6 +15,7 @@
         "temperature",
         "disk",
         "network",
+        "battery",
         "clock",
         "custom/notification",
         "tray"
@@ -59,6 +60,19 @@
         "format-ethernet": " {ifname}",
         "format-disconnected": " disconnected",
         "interval": 10
+    },
+    "battery": {
+        "bat": "BAT0",
+        "states": {
+            "warning": 30,
+            "critical": 15
+        },
+        "format": "{icon} {capacity}%",
+        "format-charging": "󰂄 {capacity}%",
+        "format-plugged": "󰚥 {capacity}%",
+        "format-full": "󰂅 {capacity}%",
+        "format-icons": ["󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹"],
+        "interval": 30
     },
     "clock": {
         "format": " {:%a %d %b  %H:%M}",

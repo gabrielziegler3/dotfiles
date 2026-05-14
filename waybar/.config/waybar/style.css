@@ -59,6 +59,18 @@ window#waybar {
     color: #7dcfff;
 }
 
+#battery {
+    color: #9ece6a;
+}
+
+#battery.warning {
+    color: #ff9e64;
+}
+
+#battery.critical {
+    color: #f7768e;
+}
+
 #clock {
     color: #c0caf5;
     font-weight: bold;
@@ -73,6 +85,6 @@ window#waybar {
     color: #7aa2f7;
 }
 
-#pulseaudio, #cpu, #memory, #temperature, #disk, #network, #clock, #custom-notification, #tray {
+#pulseaudio, #cpu, #memory, #temperature, #disk, #network, #battery, #clock, #custom-notification, #tray {
     padding: 0 10px;
 }
