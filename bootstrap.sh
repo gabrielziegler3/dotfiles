@@ -14,7 +14,7 @@ cd "$DOTFILES_DIR"
 # All stow packages (directories that contain dotfiles)
 ALL_PACKAGES=(
     zsh bash vim shell git tmux
-    kitty nvim
+    kitty nvim yazi
     i3 polybar dunst rofi picom ranger neofetch
     hyprland waybar swaync
     scripts claude

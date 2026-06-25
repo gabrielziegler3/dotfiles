@@ -1,0 +1,22 @@
+[mgr]
+sort_by = "mtime"
+sort_reverse = true
+
+[opener]
+edit = [
+	{ run = "nvim %s", block = true },
+]
+view = [
+	{ run = '/usr/libexec/imv/imv "$@"', orphan = true, desc = "imv" },
+]
+
+[open]
+prepend_rules = [
+	{ mime = "image/*", use = "view" },
+]
+
+[plugin]
+prepend_previewers = [
+	{ mime = "image/heic", run = "heic" },
+	{ mime = "image/heif", run = "heic" },
+]

@@ -12,7 +12,7 @@ cd ~/dotfiles
 ./bootstrap.sh
 
 # Or pick specific packages
-./bootstrap.sh zsh nvim kitty tmux hyprland waybar swaync
+./bootstrap.sh zsh nvim yazi kitty tmux hyprland waybar swaync
 ```
 
 ## Packages
@@ -27,6 +27,7 @@ cd ~/dotfiles
 | `tmux` | .tmux.conf, plugins |
 | `kitty` | Terminal emulator |
 | `nvim` | Neovim (Lua config) |
+| `yazi` | Terminal file manager |
 | **i3** | i3wm, i3blocks, i3lock (X11) |
 | **polybar** | Status bar (X11/i3) |
 | **dunst** | Notifications (X11) |
