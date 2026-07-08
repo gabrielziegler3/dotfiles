@@ -10,6 +10,7 @@
     ],
     "modules-right": [
         "pulseaudio",
+        "custom/btprofile",
         "cpu",
         "memory",
         "temperature",
@@ -35,6 +36,13 @@
         "format": " {volume}%",
         "format-muted": " muted",
         "on-click": "pavucontrol"
+    },
+    "custom/btprofile": {
+        "exec": "~/.config/waybar/scripts/bt-profile-status.sh",
+        "interval": 5,
+        "on-click": "~/.local/bin/bt-toggle-profile",
+        "tooltip": true,
+        "tooltip-format": "Click to toggle Bluetooth audio profile (A2DP <-> HFP)"
     },
     "cpu": {
         "format": " {usage}%",
