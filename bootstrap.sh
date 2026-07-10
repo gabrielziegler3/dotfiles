@@ -17,7 +17,7 @@ ALL_PACKAGES=(
     kitty nvim yazi
     i3 polybar dunst rofi picom ranger neofetch
     hyprland waybar swaync
-    scripts claude
+    scripts claude applications
 )
 
 # i3/X11 stack vs Hyprland/Wayland stack
