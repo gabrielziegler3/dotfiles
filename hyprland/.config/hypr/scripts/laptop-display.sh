@@ -7,8 +7,18 @@ set -euo pipefail
 externals="DP-1|HDMI-A-1|DP-2|HDMI-A-2"
 
 apply() {
-    # Keep laptop panel on at all times, even when external monitor connected.
-    hyprctl keyword monitor "eDP-1, preferred, auto, 1"
+    # Single-screen policy: if any external (DP*/HDMI*) is connected, use it
+    # exclusively and turn the laptop panel off. When alone, turn eDP-1 back on.
+    if hyprctl monitors all -j | python3 -c '
+import sys, json, re
+ext = re.compile(r"^(DP-|HDMI-)")
+mons = json.load(sys.stdin)
+sys.exit(0 if any(ext.match(m["name"]) for m in mons) else 1)
+'; then
+        hyprctl keyword monitor "eDP-1, disable"
+    else
+        hyprctl keyword monitor "eDP-1, preferred, auto, 1"
+    fi
 }
 
 if [ "${1:-}" = "--apply-only" ]; then
