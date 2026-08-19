@@ -1,0 +1,113 @@
+#!/usr/bin/env bash
+# Pick PipeWire/PulseAudio devices through rofi. Never exposes loopback,
+# monitor, or unplugged endpoints. Selected device becomes the default and
+# active streams are moved to it.
+set -euo pipefail
+
+usage() {
+    echo "Usage: ${0##*/} output|input [--dry-run]" >&2
+    exit 2
+}
+
+kind=${1:-}
+dry_run=${2:-}
+[[ $kind == output || $kind == input ]] || usage
+[[ -z $dry_run || $dry_run == --dry-run ]] || usage
+
+if [[ $kind == output ]]; then
+    default=$(pactl get-default-sink)
+    list_command=(list sinks)
+    default_command=set-default-sink
+    move_command=move-sink-input
+    stream_command=(list short sink-inputs)
+    mute_command=set-sink-mute
+    get_volume_command=get-sink-volume
+    set_volume_command=set-sink-volume
+    prompt="Audio output"
+else
+    default=$(pactl get-default-source)
+    list_command=(list sources)
+    default_command=set-default-source
+    move_command=move-source-output
+    stream_command=(list short source-outputs)
+    mute_command=set-source-mute
+    get_volume_command=get-source-volume
+    set_volume_command=set-source-volume
+    prompt="Microphone input"
+fi
+
+# Keep devices whose active port is usable (available or availability unknown).
+# This deliberately hides unplugged HDMI/headset endpoints and Loopback.
+mapfile -t devices < <(
+    pactl -f json "${list_command[@]}" | jq -r --arg default "$default" --arg kind "$kind" '
+        [ .[]
+          | select(if $kind == "input" then (.name | endswith(".monitor") | not) else true end)
+          | select((.name + " " + .description) | test("loopback"; "i") | not)
+          | select(any(.ports[]?; .availability == "available" or .availability == "availability unknown"))
+          | {
+              name,
+              label: (.properties["node.nick"] // .description),
+              is_default: (.name == $default)
+            }
+        ]
+        | .[]
+        | [.name, (if .is_default then "● " else "  " end) + .label] | @tsv
+    '
+)
+
+((${#devices[@]})) || {
+    notify-send -u critical "Audio device picker" "No usable ${kind} devices found."
+    exit 1
+}
+
+names=()
+labels=()
+for device in "${devices[@]}"; do
+    names+=("${device%%$'\t'*}")
+    labels+=("${device#*$'\t'}")
+done
+
+if [[ $dry_run == --dry-run ]]; then
+    printf '%s\n' "${labels[@]}"
+    exit 0
+fi
+
+choice=$(printf '%s\n' "${labels[@]}" | rofi -dmenu -i -p "$prompt" -format i || true)
+[[ $choice =~ ^[0-9]+$ ]] && (( choice < ${#names[@]} )) || exit 0
+selected=${names[choice]}
+selected_label=${labels[choice]#??}
+
+# Revalidate immediately before making a change: hotplug can change device IDs
+# while the picker is open.
+if ! pactl -f json "${list_command[@]}" | jq -e --arg selected "$selected" --arg kind "$kind" '
+    any(.
+        | select(.name == $selected)
+        | select(if $kind == "input" then (.name | endswith(".monitor") | not) else true end)
+        | select((.name + " " + .description) | test("loopback"; "i") | not)
+        | select(any(.ports[]?; .availability == "available" or .availability == "availability unknown"))
+    )
+' >/dev/null; then
+    notify-send -u critical "Audio device picker" "Device disappeared. Nothing changed."
+    exit 1
+fi
+
+# Carry the previous device's volume over. Without this the new device keeps
+# its own stored level, which is 100% for anything not adjusted before.
+previous_volume=$(pactl "$get_volume_command" "$default" 2>/dev/null \
+    | grep -oP '\d+(?=%)' | head -1 || true)
+
+pactl "$default_command" "$selected"
+pactl "$mute_command" "$selected" 0
+
+if [[ ${previous_volume:-} =~ ^[0-9]+$ ]]; then
+    (( previous_volume > 100 )) && previous_volume=100
+    pactl "$set_volume_command" "$selected" "${previous_volume}%"
+fi
+
+# Move existing app streams too. New streams use the new default.
+while read -r stream_id _; do
+    [[ -n ${stream_id:-} ]] || continue
+    pactl "$move_command" "$stream_id" "$selected"
+done < <(pactl "${stream_command[@]}")
+
+notify-send -u normal "${kind^} selected" "$selected_label"
