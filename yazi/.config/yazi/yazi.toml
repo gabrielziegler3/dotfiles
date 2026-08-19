@@ -9,9 +9,13 @@ edit = [
 view = [
 	{ run = '/usr/libexec/imv/imv "$@"', orphan = true, desc = "imv" },
 ]
+play = [
+	{ run = 'mpv --hwdec=no --vo=gpu --gpu-context=wayland -- "$@"', orphan = true, for = "unix", desc = "mpv (GPU rendering)" },
+]
 
 [open]
 prepend_rules = [
+	{ mime = "video/*", use = "play" },
 	{ mime = "image/*", use = "view" },
 ]
 

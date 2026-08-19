@@ -38,6 +38,19 @@ return {
                   },
                 },
             },
+            pickers = {
+                find_files = {
+                    find_command = {
+                        "rg", "--files", "--hidden", "--no-ignore",
+                        "--glob", "!**/.git/*",
+                    },
+                },
+                live_grep = {
+                    additional_args = {
+                        "--hidden", "--no-ignore", "--glob", "!**/.git/*",
+                    },
+                },
+            },
         })
 
         local builtin = require('telescope.builtin')

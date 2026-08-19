@@ -29,21 +29,32 @@ fi
 apply  # run once at startup
 
 # react to hotplug events via Hyprland's event socket (.socket2)
+# Outer reconnect loop: if the socket drops (recv returns empty) the listener
+# would otherwise exit permanently, leaving eDP-1 stranded "disable" after a
+# dock+unplug -> black screen on unplug. Reconnect forever instead of dying.
 SOCK="$XDG_RUNTIME_DIR/hypr/$HYPRLAND_INSTANCE_SIGNATURE/.socket2.sock"
 exec python3 -u -c '
-import socket, sys, subprocess, os
+import socket, sys, subprocess, os, time
 sock = sys.argv[1]
-s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
-s.connect(sock)
-buf = b""
+script = os.path.expanduser("~/.config/hypr/scripts/laptop-display.sh")
 while True:
-    data = s.recv(4096)
-    if not data:
-        break
-    buf += data
-    while b"\n" in buf:
-        line, buf = buf.split(b"\n", 1)
-        ev = line.decode(errors="replace")
-        if ev.startswith("monitoradded") or ev.startswith("monitorremoved"):
-            subprocess.run([os.path.expanduser("~/.config/hypr/scripts/laptop-display.sh"), "--apply-only"])
+    s = socket.socket(socket.AF_UNIX, socket.SOCK_STREAM)
+    try:
+        s.connect(sock)
+    except OSError:
+        time.sleep(1)   # socket not ready yet (startup race) — retry
+        continue
+    buf = b""
+    while True:
+        data = s.recv(4096)
+        if not data:
+            break       # connection closed — break to outer loop and reconnect
+        buf += data
+        while b"\n" in buf:
+            line, buf = buf.split(b"\n", 1)
+            ev = line.decode(errors="replace")
+            if ev.startswith("monitoradded") or ev.startswith("monitorremoved"):
+                subprocess.run([script, "--apply-only"])
+    s.close()
+    time.sleep(1)       # avoid busy-loop if reconnect keeps failing
 ' "$SOCK"

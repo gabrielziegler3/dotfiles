@@ -1,3 +1,6 @@
+configuration {
+    font: "MesloLGS Nerd Font 18";
+}
 
 /* Dark theme. */
 @import "~/.cache/wal/colors-rofi-dark"

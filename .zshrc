@@ -159,3 +159,6 @@ if [ -f '/home/gabrielziegler/kadoa/google-cloud-sdk/path.zsh.inc' ]; then . '/h
 
 # The next line enables shell command completion for gcloud.
 if [ -f '/home/gabrielziegler/kadoa/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/gabrielziegler/kadoa/google-cloud-sdk/completion.zsh.inc'; fi
+
+# opencode
+export PATH=/home/gabrielziegler/.opencode/bin:$PATH

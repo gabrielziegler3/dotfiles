@@ -10,7 +10,7 @@ profile=$(pactl list cards 2>/dev/null | awk '
 
 case "${profile:-none}" in
     a2dp-sink*)        echo "󰋋 A2DP" ;;       # headphones icon
-    headset-head-unit*) echo "󰂑 HFP" ;;       # headset-with-mic icon
+    headset-head-unit*) echo "󰂑 Mic + Audio" ;; # headset-with-mic icon
     off)               echo "󰟎 off" ;;
     *)                 echo "" ;;             # no BT audio device
 esac

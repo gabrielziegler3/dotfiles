@@ -35,14 +35,18 @@
     "pulseaudio": {
         "format": " {volume}%",
         "format-muted": " muted",
-        "on-click": "pavucontrol"
+        "on-click": "~/.local/bin/audio-device-picker output",
+        "on-click-right": "~/.local/bin/audio-device-picker input",
+        "on-click-middle": "pactl set-sink-mute @DEFAULT_SINK@ toggle",
+        "tooltip": true,
+        "tooltip-format": "{desc}: {volume}%\nLeft click: choose output\nRight click: choose microphone\nMiddle click: mute"
     },
     "custom/btprofile": {
         "exec": "~/.config/waybar/scripts/bt-profile-status.sh",
         "interval": 5,
         "on-click": "~/.local/bin/bt-toggle-profile",
         "tooltip": true,
-        "tooltip-format": "Click to toggle Bluetooth audio profile (A2DP <-> HFP)"
+        "tooltip-format": "Click to toggle Bluetooth audio (A2DP) or mic + audio (HFP mSBC)"
     },
     "cpu": {
         "format": " {usage}%",
