@@ -14,7 +14,7 @@ export LESS_TERMCAP_us=$'\E[1;32m'     # begin underline
 export LESS_TERMCAP_ue=$'\E[0m'        # reset underline
 
 # GPU VAAPI driver config
-export LIBVA_DRIVER_NAME="radeonsi"
+# export LIBVA_DRIVER_NAME="radeonsi"
 
 export PATH=$HOME/.local/bin${PATH:+:${PATH}}
 export PATH=~/.npm/bin:$PATH

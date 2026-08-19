@@ -1,26 +1,14 @@
 [mgr]
-sort_by = "mtime"
+sort_by      = "mtime"
 sort_reverse = true
+sort_dir_first = true
 
 [opener]
-edit = [
-	{ run = "nvim %s", block = true },
-]
-view = [
-	{ run = '/usr/libexec/imv/imv "$@"', orphan = true, desc = "imv" },
-]
 play = [
-	{ run = 'mpv --hwdec=no --vo=gpu --gpu-context=wayland -- "$@"', orphan = true, for = "unix", desc = "mpv (GPU rendering)" },
+    { run = 'mpv --hwdec=no --vo=gpu --gpu-context=wayland -- %s', orphan = true, for = "unix", desc = "mpv (GPU rendering)" },
 ]
 
 [open]
 prepend_rules = [
-	{ mime = "video/*", use = "play" },
-	{ mime = "image/*", use = "view" },
-]
-
-[plugin]
-prepend_previewers = [
-	{ mime = "image/heic", run = "heic" },
-	{ mime = "image/heif", run = "heic" },
+    { mime = "video/*", use = "play" },
 ]

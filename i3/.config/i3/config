@@ -12,7 +12,7 @@ default_border pixel 5
 default_floating_border normal
 
 # Set default wallpaper folder
-set $wallpaper_folder $HOME/Pictures/Wallpapers/new/
+set $wallpaper_folder $HOME/Pictures/Wallpapers/
 
 # Hide borders
 # hide_edge_borders none
@@ -266,13 +266,13 @@ mode "$mode_system" {
 #         bindsym k resize grow height 5 px or 5 ppt
 #         bindsym l resize shrink height 5 px or 5 ppt
 #         bindsym semicolon resize grow width 5 px or 5 ppt
-# 
+#
 #         # same bindings, but for the arrow keys
 #         bindsym Left resize shrink width 10 px or 10 ppt
 #         bindsym Down resize grow height 10 px or 10 ppt
 #         bindsym Up resize shrink height 10 px or 10 ppt
 #         bindsym Right resize grow width 10 px or 10 ppt
-# 
+#
 #         # exit resize mode: Enter or Escape
 #         bindsym Return mode "default"
 #         bindsym Escape mode "default"
@@ -307,7 +307,7 @@ exec --no-startup-id pamac-tray
 exec_always --no-startup-id ff-theme-util
 exec_always --no-startup-id fix_xcursor
 exec --no-startup-id wal -i $wallpaper_folder
-# exec --no-startup-id wal -i  "$HOME/Pictures/Wallpapers/" 
+# exec --no-startup-id wal -i  "$HOME/Pictures/Wallpapers/"
 exec --no-startup-id kitty
 
 # Color palette used for the terminal ( ~/.Xresources file )
@@ -316,7 +316,7 @@ exec --no-startup-id kitty
 # Change the variable name at the place you want to match the color
 # of your terminal like this:
 # [example]
-# If you want your bar to have the same background color as your 
+# If you want your bar to have the same background color as your
 # terminal background change the line 362 from:
 # background #14191D
 # to:
@@ -343,8 +343,9 @@ exec --no-startup-id kitty
 
 # Start i3bar to display a workspace bar (plus the system information i3status if available)
 bar {
-	i3bar_command i3bar
-	status_command i3status
+                i3bar_command i3bar
+                # Use i3blocks for flexible blocks (music, wifi, etc.)
+                status_command i3blocks -c ~/.config/i3blocks/config
 	position bottom
 
 ## please set your primary output first. Example: 'xrandr --output eDP1 --primary'
@@ -362,11 +363,11 @@ bar {
         separator  #454947
 
 #                           border  backgr. text
-        focused_workspace   $bg     $bg     $fg                      
-        active_workspace    $tb     $tb     $fg                      
-        inactive_workspace  $tb     $tb     $fg                      
-        binding_mode        $bg     $bg     $fg                      
-        urgent_workspace    $bg     $bg     $fg                      
+        focused_workspace   $bg     $bg     $fg
+        active_workspace    $tb     $tb     $fg
+        inactive_workspace  $tb     $tb     $fg
+        binding_mode        $bg     $bg     $fg
+        urgent_workspace    $bg     $bg     $fg
 
         # focused_workspace  #F9FAF9 #16a085 #292F34
         # active_workspace   #595B5B #353836 #FDF6E3
@@ -385,8 +386,8 @@ bindsym $mod+m bar mode toggle
 #   client.focused_inactive #2F3D44 #2F3D44 #1ABC9C #454948
 #   client.unfocused        #2F3D44 #2F3D44 #1ABC9C #454948
 #   client.urgent           #CB4B16 #FDF6E3 #1ABC9C #268BD2
-#   client.placeholder      #000000 #0c0c0c #ffffff #000000 
-# 
+#   client.placeholder      #000000 #0c0c0c #ffffff #000000
+#
 #   client.background       #2B2C2B
 
 
@@ -448,7 +449,7 @@ gaps outer -2
 # Smart gaps (gaps used if only more than one container on the workspace)
 smart_gaps on
 
-# Smart borders (draw borders around container only if it is not the only container on this workspace) 
+# Smart borders (draw borders around container only if it is not the only container on this workspace)
 # on|no_gaps (on=always activate and no_gaps=only activate if the gap size to the edge of the screen is 0)
 smart_borders on
 
@@ -489,17 +490,17 @@ mode "$mode_gaps_outer" {
         bindsym Escape mode "default"
 }
 
-# Toggle keyboard language layout between US and US(intl)
+# Toggle keyboard language layout between US and US(ttintl)
 bindsym --release Mod4+space exec "~/.scripts/toggle-keyboard.sh"
 
 # Audio/Volume controls
 # # increase sound volume
-# bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +3%
-# # decrease sound volume
-# bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -3%
-# # toggle mute
-# # bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle
-# bindsym XF86AudioMute exec --no-startup-id amixer -q sset Master toggle
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +3%
+# decrease sound volume
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -3%
+# toggle mute
+# bindsym XF86AudioMute exec amixer -D pulse set Master 1+ toggle
+bindsym XF86AudioMute exec --no-startup-id amixer -q sset Master toggle
 
 # Media player controls
 bindsym XF86AudioPause exec playerctl --player=spotify play-pause
@@ -513,7 +514,7 @@ bindsym $mod+b exec --no-startup-id kitty -e ranger
 # bindsym $mod+m exec --no-startup-id xst -e ncmpcpp
 
 # Calc
-bindsym $mod+c exec --no-startup-id kitty -e python
+bindsym $mod+c exec --no-startup-id kitty -e python3
 
 # Cycle wallpapers and apply new colorscheme.
 bindsym $mod+n exec --no-startup-id wal -i $wallpaper_folder
