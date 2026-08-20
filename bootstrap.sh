@@ -13,16 +13,12 @@ cd "$DOTFILES_DIR"
 
 # All stow packages (directories that contain dotfiles)
 ALL_PACKAGES=(
-    zsh bash vim shell git tmux
+    zsh bash shell git tmux
     kitty nvim yazi
-    i3 polybar dunst rofi picom ranger neofetch nemo
+    rofi ranger neofetch nemo
     hyprland waybar swaync
     scripts bin applications
 )
-
-# i3/X11 stack vs Hyprland/Wayland stack
-I3_PACKAGES=(i3 polybar dunst picom)
-HYPRLAND_PACKAGES=(hyprland waybar swaync)
 
 # ── Helpers ──────────────────────────────────────────────────────
 info()  { printf "\033[0;36m%s\033[0m\n" "$*"; }

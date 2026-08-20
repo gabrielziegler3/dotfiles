@@ -1,2 +1,3 @@
 __pycache__/
-.config/nvim/pack/
+nvim/.config/nvim/pack/
+tmux/.tmux/plugins/

@@ -1,3 +1,0 @@
-[submodule "polybar-scripts"]
-	path = polybar-scripts
-	url = git@github.com:gabrielziegler3/polybar-scripts.git

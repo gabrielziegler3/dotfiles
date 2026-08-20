@@ -22,26 +22,23 @@ cd ~/dotfiles
 | `zsh` | .zshrc, Powerlevel10k |
 | `bash` | .bashrc, .bash_aliases |
 | `vim` | .vimrc |
-| `shell` | .profile, .xinitrc, .Xresources |
+| `shell` | .profile, .env_variables |
 | `git` | .gitconfig |
 | `tmux` | .tmux.conf, plugins |
 | `kitty` | Terminal emulator |
 | `nvim` | Neovim (Lua config) |
 | `yazi` | Terminal file manager |
-| **i3** | i3wm, i3blocks, i3lock (X11) |
-| **polybar** | Status bar (X11/i3) |
-| **dunst** | Notifications (X11) |
 | `rofi` | App launcher |
-| `picom` | Compositor (X11) |
 | `ranger` | TUI file manager |
 | `neofetch` | System info |
 | **hyprland** | Hyprland WM (Wayland) |
 | **waybar** | Status bar (Wayland) |
 | **swaync** | Notification center (Wayland) |
-| `scripts` | Helper scripts |
-| `claude` | Claude Code settings |
+| `scripts` | Helper scripts (~/.scripts) |
+| `bin` | Executables (~/.local/bin) |
+| `nemo` | File manager |
+| `applications` | Desktop entries |
 
-**i3 stack** (X11): `i3`, `polybar`, `dunst`, `picom`
 **Hyprland stack** (Wayland): `hyprland`, `waybar`, `swaync`
 
 ## Stow cheatsheet
@@ -49,13 +46,13 @@ cd ~/dotfiles
 ```bash
 stow --restow --no-folding <pkg>   # re-apply a package
 stow -D <pkg>                      # unlink a package
-stow --adopt <pkg>                 # adopt existing files into repo (then git diff to review)
+./bootstrap.sh --adopt <pkg>       # adopt existing $HOME files into repo (then git diff to review)
 ```
 
 ## System
 
-* OS: Manjaro
-* WM: Hyprland (Wayland) / i3 (X11 legacy)
+* OS: Ubuntu
+* WM: Hyprland (Wayland)
 * Terminal: kitty
 * Shell: zsh + Powerlevel10k
 * Editor: Neovim
